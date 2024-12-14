@@ -1,2 +1,2 @@
 from .base import BasePage
-from .elements_pages import TextboxPage
+from .elements_pages import TextboxPage, CheckboxPage

@@ -17,3 +17,6 @@ class BasePage:
 
     def get_element_text(self, el):
         return self.__dict__[el['title']]['locator'].text_content()
+
+    def all_els(self, els):
+        return self.__dict__[els['title']]['locator'].all()

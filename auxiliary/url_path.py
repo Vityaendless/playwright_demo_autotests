@@ -11,3 +11,7 @@ class UrlPaths:
     @property
     def textbox(self):
         return self.get_path("text-box")
+
+    @property
+    def checkbox(self):
+        return self.get_path("checkbox")

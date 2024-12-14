@@ -1,6 +1,6 @@
 from auxiliary.pages import BasePage
 from auxiliary.url_path import UrlPaths
-from auxiliary.locators import TextboxPageLocator as TextboxPL
+from auxiliary.locators import TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL
 
 
 class TextboxPage(BasePage):
@@ -56,4 +56,34 @@ class TextboxPage(BasePage):
             'title': 'output',
             'locator': self.page.locator(TextboxPL.OUTPUT_P_ADDRESS),
             'selector': TextboxPL.OUTPUT_P_ADDRESS
+        }
+
+class CheckboxPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().checkbox
+        self.expand_all = {
+            'title': 'expand_all',
+            'locator': self.page.locator(CheckboxPL.EXPAND_ALL),
+            'selector': CheckboxPL.EXPAND_ALL
+        }
+        self.collapse_all = {
+            'title': 'collapse_all',
+            'locator': self.page.locator(CheckboxPL.COLLAPSE_ALL),
+            'selector': CheckboxPL.COLLAPSE_ALL
+        }
+        self.result = {
+            'title': 'result',
+            'locator': self.page.locator(CheckboxPL.RESULT),
+            'selector': CheckboxPL.RESULT
+        }
+        self.home = {
+            'title': 'home',
+            'locator': self.page.locator(CheckboxPL.HOME),
+            'selector': CheckboxPL.HOME
+        }
+        self.els = {
+            'title': 'els',
+            'locator': self.page.locator(CheckboxPL.ELS),
+            'selector': CheckboxPL.ELS
         }

@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
 from auxiliary.helper import Helper
-from auxiliary.pages import TextboxPage
+from auxiliary.pages import TextboxPage, CheckboxPage
 
 
 class Controller:
@@ -10,3 +10,4 @@ class Controller:
         self.page = page
         self.helper = Helper()
         self.textbox_page = TextboxPage(self.page)
+        self.checkbox_page = CheckboxPage(self.page)

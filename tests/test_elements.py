@@ -33,3 +33,34 @@ class TestElements:
             controller.helper.to_contain_text(controller.textbox_page.output_email, email)
             controller.helper.to_contain_text(controller.textbox_page.output_c_address, curr_address)
             controller.helper.to_contain_text(controller.textbox_page.output_p_address, per_address)
+
+    @allure.feature("Раскрывающийся список")
+    @allure.story("Иеархия элементов")
+    @allure.title("Тест выбора элементов в иеархии")
+    @allure.description("Выбор элементов и иеархии и проверка этого выбора")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_checkbox(self, controller):
+        els_lst = []
+        with allure.step('Открыть элементов иеархии'):
+            controller.checkbox_page.navigate()
+        with allure.step('Проверить отсуствие элемента результата'):
+            controller.helper.not_to_be_visible(controller.checkbox_page.result)
+        with allure.step('Раскрыть иеархию'):
+            controller.checkbox_page.click(controller.checkbox_page.expand_all)
+        with allure.step('Нажать кнопку "Home"'):
+            controller.checkbox_page.click(controller.checkbox_page.home)
+        with allure.step('Проверить наличие элемента результата'):
+            controller.helper.to_be_visible(controller.checkbox_page.result)
+        all_els = controller.checkbox_page.all_els(controller.checkbox_page.els)
+        with allure.step('Получить названия всех элементов иеархии'):
+            for el in all_els:
+                els_lst.append(el.text_content().lower().split(".")[0].replace(' file', 'File'))
+        with allure.step('Скрыть иеархию'):
+            controller.checkbox_page.click(controller.checkbox_page.collapse_all)
+        with allure.step('Проверить, что все элементы отобразились в строке результата'):
+            for title in els_lst:
+                controller.helper.to_contain_text(controller.checkbox_page.result, title)
+        with allure.step('Повторно нажать кнопку "Home"'):
+            controller.checkbox_page.click(controller.checkbox_page.home)
+        with allure.step('Повторно проверить отсуствие элемента результата'):
+            controller.helper.not_to_be_visible(controller.checkbox_page.result)
