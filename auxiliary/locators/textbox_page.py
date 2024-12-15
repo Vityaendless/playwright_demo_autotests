@@ -17,3 +17,12 @@ class CheckboxPageLocator:
     HOME = "//label[@for='tree-node-home']"
     ELS = ".rct-title"
     RESULT = "#result"
+
+
+class RadioBtnPageLocator:
+    YES = "//label[@for='yesRadio']"
+    YES_RADIO = "#yesRadio"
+    IMPRESSIVE = "//label[@for='impressiveRadio']"
+    IMPRESSIVE_RADIO = "#impressiveRadio"
+    NO_RADIO = "#noRadio"
+    RESULT = ".mt-3 .text-success"

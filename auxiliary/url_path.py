@@ -15,3 +15,7 @@ class UrlPaths:
     @property
     def checkbox(self):
         return self.get_path("checkbox")
+
+    @property
+    def radio_btn(self):
+        return self.get_path("radio-button")

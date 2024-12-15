@@ -12,6 +12,9 @@ class BasePage:
     def click(self, el):
         self.__dict__[el['title']]['locator'].click()
 
+    def check(self, el):
+        self.__dict__[el['title']]['locator'].check()
+
     def fill(self, el, text="Default text"):
         self.__dict__[el['title']]['locator'].fill(text)
 

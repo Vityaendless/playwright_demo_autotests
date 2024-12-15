@@ -1,6 +1,7 @@
 from auxiliary.pages import BasePage
 from auxiliary.url_path import UrlPaths
-from auxiliary.locators import TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL
+from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
+                                RadioBtnPageLocator as RadioPL)
 
 
 class TextboxPage(BasePage):
@@ -86,4 +87,40 @@ class CheckboxPage(BasePage):
             'title': 'els',
             'locator': self.page.locator(CheckboxPL.ELS),
             'selector': CheckboxPL.ELS
+        }
+
+
+class RadioBtnPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().radio_btn
+        self.yes = {
+            'title': 'yes',
+            'locator': self.page.locator(RadioPL.YES),
+            'selector': RadioPL.YES
+        }
+        self.yes_radio = {
+            'title': 'yes_radio',
+            'locator': self.page.locator(RadioPL.YES_RADIO),
+            'selector': RadioPL.YES_RADIO
+        }
+        self.impressive = {
+            'title': 'impressive',
+            'locator': self.page.locator(RadioPL.IMPRESSIVE),
+            'selector': RadioPL.IMPRESSIVE
+        }
+        self.impressive_radio = {
+            'title': 'impressive_radio',
+            'locator': self.page.locator(RadioPL.IMPRESSIVE_RADIO),
+            'selector': RadioPL.IMPRESSIVE_RADIO
+        }
+        self.no_radio = {
+            'title': 'no_radio',
+            'locator': self.page.locator(RadioPL.NO_RADIO),
+            'selector': RadioPL.NO_RADIO
+        }
+        self.result = {
+            'title': 'result',
+            'locator': self.page.locator(RadioPL.RESULT),
+            'selector': RadioPL.RESULT
         }

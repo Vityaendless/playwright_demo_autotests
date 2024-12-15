@@ -41,7 +41,7 @@ class TestElements:
     @allure.severity(allure.severity_level.NORMAL)
     def test_checkbox(self, controller):
         els_lst = []
-        with allure.step('Открыть элементов иеархии'):
+        with allure.step('Открыть страницу элементов иеархии'):
             controller.checkbox_page.navigate()
         with allure.step('Проверить отсуствие элемента результата'):
             controller.helper.not_to_be_visible(controller.checkbox_page.result)
@@ -64,3 +64,30 @@ class TestElements:
             controller.checkbox_page.click(controller.checkbox_page.home)
         with allure.step('Повторно проверить отсуствие элемента результата'):
             controller.helper.not_to_be_visible(controller.checkbox_page.result)
+
+    @allure.feature("Выбор ответа через radio btns")
+    @allure.story("Выбор ответа")
+    @allure.title("Тест выбора ответа")
+    @allure.description("Выбор ответа и проверка этого выбора")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_radio_btn(self, controller):
+        with allure.step('Открыть страницу выбора на основе radio btns'):
+            controller.radio_btn_page.navigate()
+        with allure.step('Проверить отсуствие элемента результата'):
+            controller.helper.not_to_be_visible(controller.radio_btn_page.result)
+        with allure.step('Проверить стартовое отображение элементов'):
+            controller.helper.to_be_disabled(controller.radio_btn_page.no_radio)
+            controller.helper.not_to_be_disabled(controller.radio_btn_page.yes_radio)
+            controller.helper.not_to_be_disabled(controller.radio_btn_page.impressive_radio)
+        with allure.step('Выбрать первый ответ "YES"'):
+            controller.radio_btn_page.check(controller.radio_btn_page.yes)
+        with allure.step('Проверить, что в результате ответ "YES"'):
+            controller.helper.to_have_text(
+                controller.radio_btn_page.result, controller.radio_btn_page.yes['title'].capitalize()
+            )
+        with allure.step('Выбрать первый ответ "IMPRESSIVE"'):
+            controller.radio_btn_page.check(controller.radio_btn_page.impressive)
+        with allure.step('Проверить, что в результате ответ "IMPRESSIVE"'):
+            controller.helper.to_have_text(
+                controller.radio_btn_page.result, controller.radio_btn_page.impressive['title'].capitalize()
+            )
