@@ -91,3 +91,30 @@ class TestElements:
             controller.helper.to_have_text(
                 controller.radio_btn_page.result, controller.radio_btn_page.impressive['title'].capitalize()
             )
+
+    @allure.feature("Проверка кликабельности")
+    @allure.story("Производим различные клики мыши")
+    @allure.title("Тест различных кликов по элементам")
+    @allure.description("Производим клик по элементу и проверяем результат в зависимости от типа клика")
+    @allure.severity(allure.severity_level.MINOR)
+    def test_buttons(self, controller):
+        with allure.step('Открыть страницу кликов по кнопкам'):
+            controller.btn_page.navigate()
+        with allure.step('Проверить кликабельность элемента dbl клика'):
+            controller.helper.not_to_be_visible(controller.btn_page.dbl_click_result)
+            controller.btn_page.click(controller.btn_page.dbl_click_el)
+            controller.helper.not_to_be_visible(controller.btn_page.dbl_click_result)
+            controller.btn_page.dblclick(controller.btn_page.dbl_click_el)
+            controller.helper.to_be_visible(controller.btn_page.dbl_click_result)
+        with allure.step('Проверить кликабельность элемента right клика'):
+            controller.helper.not_to_be_visible(controller.btn_page.right_click_result)
+            controller.btn_page.click(controller.btn_page.right_click_el)
+            controller.helper.not_to_be_visible(controller.btn_page.right_click_result)
+            controller.btn_page.click(controller.btn_page.right_click_el, button="right")
+            controller.helper.to_be_visible(controller.btn_page.right_click_result)
+        with allure.step('Проверить кликабельность элемента клика'):
+            controller.helper.not_to_be_visible(controller.btn_page.click_result)
+            controller.btn_page.click(controller.btn_page.click_el, button="right")
+            controller.helper.not_to_be_visible(controller.btn_page.click_result)
+            controller.btn_page.click(controller.btn_page.click_el)
+            controller.helper.to_be_visible(controller.btn_page.click_result)

@@ -9,8 +9,11 @@ class BasePage:
     def navigate(self):
         self.page.goto(self.url)
 
-    def click(self, el):
-        self.__dict__[el['title']]['locator'].click()
+    def click(self, el, button='left'):
+        self.__dict__[el['title']]['locator'].click(button=button)
+
+    def dblclick(self, el):
+        self.__dict__[el['title']]['locator'].dblclick()
 
     def check(self, el):
         self.__dict__[el['title']]['locator'].check()

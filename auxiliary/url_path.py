@@ -19,3 +19,7 @@ class UrlPaths:
     @property
     def radio_btn(self):
         return self.get_path("radio-button")
+
+    @property
+    def buttons(self):
+        return self.get_path("buttons")

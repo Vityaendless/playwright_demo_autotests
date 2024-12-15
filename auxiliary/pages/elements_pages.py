@@ -1,7 +1,7 @@
 from auxiliary.pages import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
-                                RadioBtnPageLocator as RadioPL)
+                                RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL)
 
 
 class TextboxPage(BasePage):
@@ -123,4 +123,40 @@ class RadioBtnPage(BasePage):
             'title': 'result',
             'locator': self.page.locator(RadioPL.RESULT),
             'selector': RadioPL.RESULT
+        }
+
+
+class BtnPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().buttons
+        self.dbl_click_el = {
+            'title': 'dbl_click_el',
+            'locator': self.page.locator(ButtonsPL.DBL_CLICK),
+            'selector': ButtonsPL.DBL_CLICK
+        }
+        self.dbl_click_result = {
+            'title': 'dbl_click_result',
+            'locator': self.page.locator(ButtonsPL.DBL_CLICK_RESULT),
+            'selector': ButtonsPL.DBL_CLICK_RESULT
+        }
+        self.right_click_el = {
+            'title': 'right_click_el',
+            'locator': self.page.locator(ButtonsPL.RIGHT_CLICK),
+            'selector': ButtonsPL.RIGHT_CLICK
+        }
+        self.right_click_result = {
+            'title': 'right_click_result',
+            'locator': self.page.locator(ButtonsPL.RIGHT_CLICK_RESULT),
+            'selector': ButtonsPL.RIGHT_CLICK_RESULT
+        }
+        self.click_el = {
+            'title': 'click_el',
+            'locator': self.page.locator(ButtonsPL.CLICK),
+            'selector': ButtonsPL.CLICK
+        }
+        self.click_result = {
+            'title': 'click_result',
+            'locator': self.page.locator(ButtonsPL.CLICK_RESULT),
+            'selector': ButtonsPL.CLICK_RESULT
         }

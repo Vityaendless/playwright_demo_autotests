@@ -26,3 +26,12 @@ class RadioBtnPageLocator:
     IMPRESSIVE_RADIO = "#impressiveRadio"
     NO_RADIO = "#noRadio"
     RESULT = ".mt-3 .text-success"
+
+
+class ButtonsPageLocator:
+    DBL_CLICK = "#doubleClickBtn"
+    DBL_CLICK_RESULT = "#doubleClickMessage"
+    RIGHT_CLICK = "#rightClickBtn"
+    RIGHT_CLICK_RESULT = "#rightClickMessage"
+    CLICK = "//button[text()='Click Me']"
+    CLICK_RESULT = "#dynamicClickMessage"
