@@ -1,7 +1,8 @@
 from auxiliary.pages import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
-                                RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL)
+                                RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
+                                LinksPageLocator as LinksPL)
 
 
 class TextboxPage(BasePage):
@@ -159,4 +160,55 @@ class BtnPage(BasePage):
             'title': 'click_result',
             'locator': self.page.locator(ButtonsPL.CLICK_RESULT),
             'selector': ButtonsPL.CLICK_RESULT
+        }
+
+
+class LinksPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().links
+        self.home = {
+            'title': 'home',
+            'locator': self.page.locator(LinksPL.HOME),
+            'selector': LinksPL.HOME
+        }
+        self.dyn_home = {
+            'title': 'dyn_home',
+            'locator': self.page.locator(LinksPL.DYN_HOME),
+            'selector': LinksPL.DYN_HOME
+        }
+        self.created = {
+            'title': 'created',
+            'locator': self.page.locator(LinksPL.CREATED),
+            'selector': LinksPL.CREATED
+        }
+        self.no_content = {
+            'title': 'no_content',
+            'locator': self.page.locator(LinksPL.NO_CONTENT),
+            'selector': LinksPL.NO_CONTENT
+        }
+        self.moved = {
+            'title': 'moved',
+            'locator': self.page.locator(LinksPL.MOVED),
+            'selector': LinksPL.MOVED
+        }
+        self.bad_request = {
+            'title': 'bad_request',
+            'locator': self.page.locator(LinksPL.BAD_REQUEST),
+            'selector': LinksPL.BAD_REQUEST
+        }
+        self.unauthorized = {
+            'title': 'unauthorized',
+            'locator': self.page.locator(LinksPL.UNAUTHORIZED),
+            'selector': LinksPL.UNAUTHORIZED
+        }
+        self.forbidden = {
+            'title': 'forbidden',
+            'locator': self.page.locator(LinksPL.FORBIDDEN),
+            'selector': LinksPL.FORBIDDEN
+        }
+        self.invalid = {
+            'title': 'invalid',
+            'locator': self.page.locator(LinksPL.INVALID),
+            'selector': LinksPL.INVALID
         }

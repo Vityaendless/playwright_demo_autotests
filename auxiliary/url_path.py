@@ -23,3 +23,7 @@ class UrlPaths:
     @property
     def buttons(self):
         return self.get_path("buttons")
+
+    @property
+    def links(self):
+        return self.get_path("links")

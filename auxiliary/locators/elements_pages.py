@@ -35,3 +35,15 @@ class ButtonsPageLocator:
     RIGHT_CLICK_RESULT = "#rightClickMessage"
     CLICK = "//button[text()='Click Me']"
     CLICK_RESULT = "#dynamicClickMessage"
+
+
+class LinksPageLocator:
+    HOME = "#simpleLink"
+    DYN_HOME = "#dynamicLink"
+    CREATED = "#created"
+    NO_CONTENT = "#no-content"
+    MOVED = "#moved"
+    BAD_REQUEST = "#bad-request"
+    UNAUTHORIZED = "#unauthorized"
+    FORBIDDEN = "#forbidden"
+    INVALID = "#invalid-url"

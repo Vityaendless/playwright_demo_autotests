@@ -2,6 +2,8 @@ import time
 import pytest
 import allure
 
+from auxiliary.url_path import BASE_URL
+
 @allure.epic("Тесты элементов")
 class TestElements:
 
@@ -118,3 +120,19 @@ class TestElements:
             controller.helper.not_to_be_visible(controller.btn_page.click_result)
             controller.btn_page.click(controller.btn_page.click_el)
             controller.helper.to_be_visible(controller.btn_page.click_result)
+
+    @allure.feature("Проверка работы ссылок")
+    @allure.story("Проверяем ответы и переходы по ссылкам")
+    @allure.title("Тест различных ответов и переходов по ссылкам")
+    @allure.description("Производим клик ссылке и проверяем переход по ней или возврат нужного ответа")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_buttons(self, controller):
+        with allure.step('Открыть страницу проверки ссылок'):
+            controller.links_page.navigate()
+        with allure.step('Проверить параметрв ссылки "HOME"'):
+            controller.helper.to_have_attribute(controller.links_page.home, "target", "_blank")
+            controller.helper.to_have_attribute(controller.links_page.home, "href", BASE_URL[:-1])
+            with controller.links_page.page.context.expect_page() as tab:
+                controller.links_page.click(controller.links_page.home)
+            new_tab = tab.value
+            assert new_tab.url == BASE_URL

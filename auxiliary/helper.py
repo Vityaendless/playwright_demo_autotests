@@ -28,3 +28,8 @@ class Helper:
     def to_contain_text(el, text, timeout=TIMEOUT):
         (expect(el['locator'], f"Element {el['title']} doesn't contain text:[{text}]").
          to_contain_text(text, timeout=timeout))
+
+    @staticmethod
+    def to_have_attribute(el, attr, value):
+        (expect(el['locator'], f"Element {el['title']} don't have attribute:[{attr}] with value:[{value}]").
+         to_have_attribute(attr, value))
