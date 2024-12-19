@@ -1,5 +1,9 @@
+import requests
+
 from auxiliary.pages import BasePage
-from auxiliary.url_path import UrlPaths
+from auxiliary.url_path import UrlPaths, BASE_URL
+from auxiliary.helper import Helper
+from auxiliary.constants import RCode
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
                                 RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
                                 LinksPageLocator as LinksPL)
@@ -212,3 +216,20 @@ class LinksPage(BasePage):
             'locator': self.page.locator(LinksPL.INVALID),
             'selector': LinksPL.INVALID
         }
+        self.result = {
+            'title': 'result',
+            'locator': self.page.locator(LinksPL.RESULT),
+            'selector': LinksPL.RESULT
+        }
+
+    def get_new_tab(self, el):
+        with self.page.context.expect_page() as tab:
+            self.click(el)
+        return tab.value
+
+    def resp_check(self, el):
+        response = requests.get(url=BASE_URL + el['title'])
+        code = response.status_code
+        Helper.to_contain_text(self.result, str(code))
+        name = RCode.get_name(code)
+        Helper.to_contain_text(self.result, name)

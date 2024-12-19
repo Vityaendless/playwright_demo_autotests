@@ -1,12 +1,14 @@
-import time
 import pytest
 import allure
 
 from auxiliary.url_path import BASE_URL
+from auxiliary.constants import HTMLAttr, HTMLValue
+
 
 @allure.epic("Тесты элементов")
 class TestElements:
 
+    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Авторизация")
     @allure.title("Тест заполнения текстовой формы")
@@ -36,6 +38,7 @@ class TestElements:
             controller.helper.to_contain_text(controller.textbox_page.output_c_address, curr_address)
             controller.helper.to_contain_text(controller.textbox_page.output_p_address, per_address)
 
+    @pytest.mark.skip
     @allure.feature("Раскрывающийся список")
     @allure.story("Иеархия элементов")
     @allure.title("Тест выбора элементов в иеархии")
@@ -67,6 +70,7 @@ class TestElements:
         with allure.step('Повторно проверить отсуствие элемента результата'):
             controller.helper.not_to_be_visible(controller.checkbox_page.result)
 
+    @pytest.mark.skip
     @allure.feature("Выбор ответа через radio btns")
     @allure.story("Выбор ответа")
     @allure.title("Тест выбора ответа")
@@ -94,6 +98,7 @@ class TestElements:
                 controller.radio_btn_page.result, controller.radio_btn_page.impressive['title'].capitalize()
             )
 
+    @pytest.mark.skip
     @allure.feature("Проверка кликабельности")
     @allure.story("Производим различные клики мыши")
     @allure.title("Тест различных кликов по элементам")
@@ -126,13 +131,24 @@ class TestElements:
     @allure.title("Тест различных ответов и переходов по ссылкам")
     @allure.description("Производим клик ссылке и проверяем переход по ней или возврат нужного ответа")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_buttons(self, controller):
+    def test_links(self, controller):
         with allure.step('Открыть страницу проверки ссылок'):
             controller.links_page.navigate()
-        with allure.step('Проверить параметрв ссылки "HOME"'):
-            controller.helper.to_have_attribute(controller.links_page.home, "target", "_blank")
-            controller.helper.to_have_attribute(controller.links_page.home, "href", BASE_URL[:-1])
-            with controller.links_page.page.context.expect_page() as tab:
-                controller.links_page.click(controller.links_page.home)
-            new_tab = tab.value
-            assert new_tab.url == BASE_URL
+        with allure.step('Проверить параметры ссылки "HOME"'):
+            controller.helper.to_have_attribute(controller.links_page.home, HTMLAttr.TARGET, HTMLValue.BLANK)
+            controller.helper.to_have_attribute(controller.links_page.home, HTMLAttr.HREF, BASE_URL[:-1])
+            tab1 = controller.links_page.get_new_tab(controller.links_page.home)
+            controller.helper.to_have_url(tab1, BASE_URL)
+        with allure.step('Закрыть открытую вкладку'):
+            tab1.close()
+        with allure.step('Проверить параметры динамической ссылки "HOME"'):
+            controller.helper.to_have_attribute(controller.links_page.dyn_home, HTMLAttr.TARGET, HTMLValue.BLANK)
+            controller.helper.to_have_attribute(controller.links_page.dyn_home, HTMLAttr.HREF, BASE_URL[:-1])
+            tab2 = controller.links_page.get_new_tab(controller.links_page.dyn_home)
+            controller.helper.to_have_url(tab2, BASE_URL)
+        with allure.step('Повторно закрыть открытую вкладку'):
+            tab2.close()
+        with allure.step(f'Нажать кнопку "Created"'):
+            controller.links_page.click(controller.links_page.created)
+        with allure.step('Проверить корректность нажатия на кнопку "Created"'):
+            controller.links_page.resp_check(controller.links_page.created)

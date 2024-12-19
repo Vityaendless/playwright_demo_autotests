@@ -47,3 +47,4 @@ class LinksPageLocator:
     UNAUTHORIZED = "#unauthorized"
     FORBIDDEN = "#forbidden"
     INVALID = "#invalid-url"
+    RESULT = "#linkResponse"

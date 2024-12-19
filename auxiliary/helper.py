@@ -33,3 +33,7 @@ class Helper:
     def to_have_attribute(el, attr, value):
         (expect(el['locator'], f"Element {el['title']} don't have attribute:[{attr}] with value:[{value}]").
          to_have_attribute(attr, value))
+
+    @staticmethod
+    def to_have_url(page, url):
+        expect(page, f"The page doesn't have url: [{url}]").to_have_url(url)
