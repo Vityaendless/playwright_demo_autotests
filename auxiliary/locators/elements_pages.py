@@ -48,3 +48,10 @@ class LinksPageLocator:
     FORBIDDEN = "#forbidden"
     INVALID = "#invalid-url"
     RESULT = "#linkResponse"
+
+
+class BrokenLinksImagesPageLocator:
+    VALID_IMG = "//p[text()='Valid image']/following::img[1]"
+    BROKEN_IMG = "//p[text()='Broken image']/following::img[1]"
+    VALID_LINK = "//p[text()='Valid Link']/following::a[1]"
+    BROKEN_LINK = "//p[text()='Broken Link']/following::a[1]"

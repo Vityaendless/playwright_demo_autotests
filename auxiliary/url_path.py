@@ -27,3 +27,7 @@ class UrlPaths:
     @property
     def links(self):
         return self.get_path("links")
+
+    @property
+    def broken_img_links(self):
+        return self.get_path("broken")

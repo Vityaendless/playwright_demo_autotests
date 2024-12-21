@@ -6,7 +6,7 @@ from auxiliary.helper import Helper
 from auxiliary.constants import RCode
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
                                 RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
-                                LinksPageLocator as LinksPL)
+                                LinksPageLocator as LinksPL, BrokenLinksImagesPageLocator as BrImgLinksPL)
 
 
 class TextboxPage(BasePage):
@@ -211,8 +211,8 @@ class LinksPage(BasePage):
             'locator': self.page.locator(LinksPL.FORBIDDEN),
             'selector': LinksPL.FORBIDDEN
         }
-        self.invalid = {
-            'title': 'invalid',
+        self.invalid_url = {
+            'title': 'invalid_url',
             'locator': self.page.locator(LinksPL.INVALID),
             'selector': LinksPL.INVALID
         }
@@ -228,8 +228,40 @@ class LinksPage(BasePage):
         return tab.value
 
     def resp_check(self, el):
-        response = requests.get(url=BASE_URL + el['title'])
+        response = requests.get(url=BASE_URL + el['selector'][1:])
         code = response.status_code
-        Helper.to_contain_text(self.result, str(code))
+        Helper.to_contain_text(self.result, Helper.to_str(code))
         name = RCode.get_name(code)
         Helper.to_contain_text(self.result, name)
+
+
+class BrokenImagesLinksPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().broken_img_links
+        self.valid_img = {
+            'title': 'valid_img',
+            'locator': self.page.locator(BrImgLinksPL.VALID_IMG),
+            'selector': BrImgLinksPL.VALID_IMG
+        }
+        self.broken_img = {
+            'title': 'broken_img',
+            'locator': self.page.locator(BrImgLinksPL.BROKEN_IMG),
+            'selector': BrImgLinksPL.BROKEN_IMG
+        }
+        self.valid_link = {
+            'title': 'valid_link',
+            'locator': self.page.locator(BrImgLinksPL.VALID_LINK),
+            'selector': BrImgLinksPL.VALID_LINK
+        }
+        self.broken_link = {
+            'title': 'broken_link',
+            'locator': self.page.locator(BrImgLinksPL.BROKEN_LINK),
+            'selector': BrImgLinksPL.BROKEN_LINK
+        }
+
+    @staticmethod
+    def check_resp_code(url, code):
+        response = requests.get(url=url)
+        r_code = response.status_code
+        Helper.is_eq(Helper.to_str(r_code), Helper.to_str(code))

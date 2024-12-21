@@ -1,3 +1,4 @@
 from .elements_pages import (
-    TextboxPageLocator, CheckboxPageLocator, RadioBtnPageLocator, ButtonsPageLocator, LinksPageLocator
+    TextboxPageLocator, CheckboxPageLocator, RadioBtnPageLocator, ButtonsPageLocator, LinksPageLocator,
+    BrokenLinksImagesPageLocator
 )

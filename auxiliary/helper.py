@@ -37,3 +37,11 @@ class Helper:
     @staticmethod
     def to_have_url(page, url):
         expect(page, f"The page doesn't have url: [{url}]").to_have_url(url)
+
+    @staticmethod
+    def is_eq(first, second):
+        assert first == second, f"[{first}] != [{second}]"
+
+    @staticmethod
+    def to_str(i):
+        return str(i)
