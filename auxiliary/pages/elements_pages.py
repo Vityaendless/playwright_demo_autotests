@@ -7,7 +7,8 @@ from auxiliary.constants import RCode
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
                                 RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
                                 LinksPageLocator as LinksPL, BrokenLinksImagesPageLocator as BrImgLinksPL,
-                                UploadDownloadPageLocator as UploadDownloadPL)
+                                UploadDownloadPageLocator as UploadDownloadPL,
+                                DynamicPropertiesPageLocator as DynPropertiesPL)
 
 
 class TextboxPage(BasePage):
@@ -291,4 +292,30 @@ class UploadDownloadPage(BasePage):
             'title': 'upload_path',
             'locator': self.page.locator(UploadDownloadPL.UPLOAD_PATH),
             'selector': UploadDownloadPL.UPLOAD_PATH
+        }
+
+
+class DynPropertiesPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().dynamic_properties
+        self.random_id = {
+            'title': 'random_id',
+            'locator': self.page.locator(DynPropertiesPL.RANDOM_ID),
+            'selector': DynPropertiesPL.RANDOM_ID
+        }
+        self.enable_after = {
+            'title': 'enable_after',
+            'locator': self.page.locator(DynPropertiesPL.ENABLE_AFTER),
+            'selector': DynPropertiesPL.ENABLE_AFTER
+        }
+        self.color_change = {
+            'title': 'color_change',
+            'locator': self.page.locator(DynPropertiesPL.COLOR_CHANGE),
+            'selector': DynPropertiesPL.COLOR_CHANGE
+        }
+        self.visible_after = {
+            'title': 'visible_after',
+            'locator': self.page.locator(DynPropertiesPL.VISIBLE_AFTER),
+            'selector': DynPropertiesPL.VISIBLE_AFTER
         }

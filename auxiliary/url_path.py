@@ -35,3 +35,7 @@ class UrlPaths:
     @property
     def upload_download(self):
         return self.get_path("upload-download")
+
+    @property
+    def dynamic_properties(self):
+        return self.get_path("dynamic-properties")

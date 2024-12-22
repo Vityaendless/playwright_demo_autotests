@@ -13,6 +13,10 @@ class Helper:
         expect(el['locator'], f"Element {el['title']} is visible").not_to_be_visible(timeout=timeout)
 
     @staticmethod
+    def to_be_enabled(el, timeout=TIMEOUT):
+        expect(el['locator'], f"Element {el['title']} is disabled").to_be_enabled(timeout=timeout)
+
+    @staticmethod
     def to_be_disabled(el):
         expect(el['locator'], f"Element {el['title']} is enabled").to_be_disabled()
 
@@ -33,6 +37,11 @@ class Helper:
     def to_have_attribute(el, attr, value):
         (expect(el['locator'], f"Element {el['title']} don't have attribute:[{attr}] with value:[{value}]").
          to_have_attribute(attr, value))
+
+    @staticmethod
+    def to_have_css(el, attr, value, timeout=TIMEOUT):
+        (expect(el['locator'], f"Element {el['title']} don't have css:[{attr}] with value:[{value}]").
+         to_have_css(attr, value, timeout=timeout))
 
     @staticmethod
     def to_have_url(page, url):

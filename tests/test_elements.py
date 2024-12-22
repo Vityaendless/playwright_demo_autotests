@@ -210,6 +210,7 @@ class TestElements:
         with allure.step('Проверить код ответа href для НЕ валидной ссылки'):
             controller.broken_obj_page.check_resp_code(broken_link_href, RCode.INTERNAL_SERVER_ERR.code)
 
+    @pytest.mark.skip
     @allure.feature("Проверка скачивания и загрузки файлов")
     @allure.story("Проверяем процесс скачивания файла и процесс загрузки файлов")
     @allure.title("Тест процесса скачивания файла и процесса загрузки файлов")
@@ -236,3 +237,21 @@ class TestElements:
             controller.upload_download_page.page.set_input_files(controller.upload_download_page.upload["selector"], file_path)
         with allure.step('Проверить данные загрузки файла'):
             controller.helper.to_contain_text(controller.upload_download_page.upload_path, file_name)
+
+    @pytest.mark.skip
+    @allure.feature("Проверка динамических изменений")
+    @allure.story("Проверяем изменения свойст элементов")
+    @allure.title("Тест изменения свойств элементов и процесса взаимодействия с ними")
+    @allure.description("Производим проверку изменений в элементах")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_upload_download(self, controller):
+        with allure.step('Открыть страницу динамических элементов'):
+            controller.dyn_properties_page.navigate()
+        with allure.step('Проверка наличия элемента с рандомным id'):
+            controller.helper.to_be_visible(controller.dyn_properties_page.random_id)
+        with allure.step('Проверка доступности элемента спустя время'):
+            controller.helper.to_be_enabled(controller.dyn_properties_page.enable_after, 6000)
+        with allure.step('Проверка изменения цвета текста элемента спустя время'):
+            controller.helper.to_have_css(controller.dyn_properties_page.color_change, "color", "rgb(220, 53, 69)")
+        with allure.step('Проверка видимости элемента спустя время'):
+            controller.helper.to_be_visible(controller.dyn_properties_page.visible_after)

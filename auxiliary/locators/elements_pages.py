@@ -62,3 +62,10 @@ class UploadDownloadPageLocator:
     UPLOAD = "#uploadFile"
     UPLOAD_RESULT = "#uploadFile"
     UPLOAD_PATH = "#uploadedFilePath"
+
+
+class DynamicPropertiesPageLocator:
+    RANDOM_ID = "//p[text()='This text has random Id']"
+    ENABLE_AFTER = "#enableAfter"
+    COLOR_CHANGE = "#colorChange"
+    VISIBLE_AFTER = "#visibleAfter"
