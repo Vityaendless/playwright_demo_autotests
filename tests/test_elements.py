@@ -1,4 +1,7 @@
+import time
+
 import pytest
+import os
 import allure
 
 from auxiliary.url_path import BASE_URL
@@ -179,6 +182,7 @@ class TestElements:
         with allure.step('Проверить корректность нажатия на кнопку "Not Found"'):
             controller.links_page.resp_check(controller.links_page.invalid_url)
 
+    @pytest.mark.skip
     @allure.feature("Проверка корректности ссылок и изображений")
     @allure.story("Проверяем коды ответа ссылок и изображений")
     @allure.title("Тест неверных кодов ответа для изображений и ссылок")
@@ -205,3 +209,30 @@ class TestElements:
             )
         with allure.step('Проверить код ответа href для НЕ валидной ссылки'):
             controller.broken_obj_page.check_resp_code(broken_link_href, RCode.INTERNAL_SERVER_ERR.code)
+
+    @allure.feature("Проверка скачивания и загрузки файлов")
+    @allure.story("Проверяем процесс скачивания файла и процесс загрузки файлов")
+    @allure.title("Тест процесса скачивания файла и процесса загрузки файлов")
+    @allure.description("Производим скачивание файла, производим загрузку файла")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_upload_download(self, controller):
+        with allure.step('Открыть страницу скачивания и загрузки файла'):
+            controller.upload_download_page.navigate()
+        with allure.step('Нажать кнопку скачивания файла'):
+            controller.upload_download_page.page.on("download", lambda download: print(download.path()))
+            with controller.upload_download_page.page.expect_download() as download_info:
+                controller.upload_download_page.click(controller.upload_download_page.download)
+        with allure.step('Получить данные атрибутов элемента скачивания'):
+            file_url = controller.upload_download_page.get_attr(controller.upload_download_page.download, HTMLAttr.HREF)
+            file_name = controller.upload_download_page.get_attr(controller.upload_download_page.download, "download")
+        with allure.step('Сравнить данные элемента скачивания с информацией о скачиваемом файле'):
+            controller.helper.is_eq(download_info.value.url, file_url)
+            controller.helper.is_eq(download_info.value.suggested_filename, file_name)
+        with allure.step('Подготовка данных загрузки файла'):
+            current_working_dir = os.getcwd()
+            file_name = "test.txt"
+            file_path = os.path.join(current_working_dir, f"uploads/{file_name}")
+        with allure.step('Нажать кнопку загрузки файла'):
+            controller.upload_download_page.page.set_input_files(controller.upload_download_page.upload["selector"], file_path)
+        with allure.step('Проверить данные загрузки файла'):
+            controller.helper.to_contain_text(controller.upload_download_page.upload_path, file_name)

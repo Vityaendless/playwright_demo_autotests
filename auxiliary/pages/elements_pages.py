@@ -6,7 +6,8 @@ from auxiliary.helper import Helper
 from auxiliary.constants import RCode
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
                                 RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
-                                LinksPageLocator as LinksPL, BrokenLinksImagesPageLocator as BrImgLinksPL)
+                                LinksPageLocator as LinksPL, BrokenLinksImagesPageLocator as BrImgLinksPL,
+                                UploadDownloadPageLocator as UploadDownloadPL)
 
 
 class TextboxPage(BasePage):
@@ -265,3 +266,29 @@ class BrokenImagesLinksPage(BasePage):
         response = requests.get(url=url)
         r_code = response.status_code
         Helper.is_eq(Helper.to_str(r_code), Helper.to_str(code))
+
+
+class UploadDownloadPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().upload_download
+        self.download = {
+            'title': 'download',
+            'locator': self.page.locator(UploadDownloadPL.DOWNLOAD),
+            'selector': UploadDownloadPL.DOWNLOAD
+        }
+        self.upload = {
+            'title': 'upload',
+            'locator': self.page.locator(UploadDownloadPL.UPLOAD),
+            'selector': UploadDownloadPL.UPLOAD
+        }
+        self.upload_result = {
+            'title': 'upload_result',
+            'locator': self.page.locator(UploadDownloadPL.UPLOAD_RESULT),
+            'selector': UploadDownloadPL.UPLOAD_RESULT
+        }
+        self.upload_path = {
+            'title': 'upload_path',
+            'locator': self.page.locator(UploadDownloadPL.UPLOAD_PATH),
+            'selector': UploadDownloadPL.UPLOAD_PATH
+        }

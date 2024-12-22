@@ -55,3 +55,10 @@ class BrokenLinksImagesPageLocator:
     BROKEN_IMG = "//p[text()='Broken image']/following::img[1]"
     VALID_LINK = "//p[text()='Valid Link']/following::a[1]"
     BROKEN_LINK = "//p[text()='Broken Link']/following::a[1]"
+
+
+class UploadDownloadPageLocator:
+    DOWNLOAD = "#downloadButton"
+    UPLOAD = "#uploadFile"
+    UPLOAD_RESULT = "#uploadFile"
+    UPLOAD_PATH = "#uploadedFilePath"
