@@ -8,7 +8,7 @@ from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLoc
                                 RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
                                 LinksPageLocator as LinksPL, BrokenLinksImagesPageLocator as BrImgLinksPL,
                                 UploadDownloadPageLocator as UploadDownloadPL,
-                                DynamicPropertiesPageLocator as DynPropertiesPL)
+                                DynamicPropertiesPageLocator as DynPropertiesPL, WebTablesPageLocator as WebTablesPL)
 
 
 class TextboxPage(BasePage):
@@ -318,4 +318,20 @@ class DynPropertiesPage(BasePage):
             'title': 'visible_after',
             'locator': self.page.locator(DynPropertiesPL.VISIBLE_AFTER),
             'selector': DynPropertiesPL.VISIBLE_AFTER
+        }
+
+
+class WebTablesPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().web_tables
+        self.delete_btn = {
+            'title': 'delete_btn',
+            'locator': self.page.locator(WebTablesPL.DELETE_RECORD),
+            'selector': WebTablesPL.DELETE_RECORD
+        }
+        self.rows = {
+            'title': 'rows',
+            'locator': self.page.locator(WebTablesPL.ROWS),
+            'selector': WebTablesPL.ROWS
         }

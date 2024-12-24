@@ -69,3 +69,12 @@ class DynamicPropertiesPageLocator:
     ENABLE_AFTER = "#enableAfter"
     COLOR_CHANGE = "#colorChange"
     VISIBLE_AFTER = "#visibleAfter"
+
+
+class WebTablesPageLocator:
+    DELETE_RECORD = "//span[contains(@id, 'delete-record')]"
+    ROWS = ("//div[not(contains(@class, '-padRow')) "
+            "and (contains(@class, '-odd') "
+            "or (contains(@class, '-even'))) "
+            "and (@role='row')]")
+

@@ -3,6 +3,7 @@ import time
 import pytest
 import os
 import allure
+from random import choice
 
 from auxiliary.url_path import BASE_URL
 from auxiliary.constants import HTMLAttr, HTMLValue, RCode
@@ -255,3 +256,25 @@ class TestElements:
             controller.helper.to_have_css(controller.dyn_properties_page.color_change, "color", "rgb(220, 53, 69)")
         with allure.step('Проверка видимости элемента спустя время'):
             controller.helper.to_be_visible(controller.dyn_properties_page.visible_after)
+
+
+    @allure.feature("Проверка функциональности таблиц")
+    @allure.story("Проверяем работу с записями в таблицах")
+    @allure.title("Тест удаления записи из таблицы")
+    @allure.description("Производим удаление элемента из таблицы и проверяем, что запись удалена")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_delete_row(self, controller):
+        with allure.step('Открыть страницу рвботы с таблицами'):
+            controller.web_table_page.navigate()
+        with allure.step('Получить все записи на странице'):
+            rows = controller.web_table_page.all_els(controller.web_table_page.rows)
+        with allure.step('Выбрать рандомную запись и получить ее индекс'):
+            random_row = choice(rows)
+            index = rows.index(random_row)
+        with (allure.step('Нажать на кнопку удаления, соотвествующую записи')):
+            dlt_selector = controller.web_table_page.delete_btn['selector']
+            controller.web_table_page.page.locator(f"({dlt_selector})[{index+1}]").click()
+        with (allure.step('Получить все записи после удаления')):
+            rows_after_deleting = controller.web_table_page.all_els(controller.web_table_page.rows)
+        with (allure.step('Проверить что кол-во записей уменьшилось на 1')):
+            controller.helper.is_eq(len(rows) - 1, len(rows_after_deleting))

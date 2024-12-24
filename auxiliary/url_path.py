@@ -39,3 +39,7 @@ class UrlPaths:
     @property
     def dynamic_properties(self):
         return self.get_path("dynamic-properties")
+
+    @property
+    def web_tables(self):
+        return self.get_path("webtables")
