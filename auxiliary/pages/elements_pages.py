@@ -335,3 +335,13 @@ class WebTablesPage(BasePage):
             'locator': self.page.locator(WebTablesPL.ROWS),
             'selector': WebTablesPL.ROWS
         }
+        self.search_input = {
+            'title': 'search_input',
+            'locator': self.page.locator(WebTablesPL.SEARCH_INPUT),
+            'selector': WebTablesPL.SEARCH_INPUT
+        }
+        self.no_rows = {
+            'title': 'no_rows',
+            'locator': self.page.locator(WebTablesPL.NO_ROWS),
+            'selector': WebTablesPL.NO_ROWS
+        }

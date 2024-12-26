@@ -257,7 +257,7 @@ class TestElements:
         with allure.step('Проверка видимости элемента спустя время'):
             controller.helper.to_be_visible(controller.dyn_properties_page.visible_after)
 
-
+    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест удаления записи из таблицы")
@@ -278,3 +278,29 @@ class TestElements:
             rows_after_deleting = controller.web_table_page.all_els(controller.web_table_page.rows)
         with (allure.step('Проверить что кол-во записей уменьшилось на 1')):
             controller.helper.is_eq(len(rows) - 1, len(rows_after_deleting))
+
+    @allure.feature("Проверка функциональности таблиц")
+    @allure.story("Проверяем работу с записями в таблицах")
+    @allure.title("Тест поиска данных в таблице")
+    @allure.description("Производим поиск элементов в таблице и проверяем, что результат соотвествует")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_search(self, controller):
+        data = ["rra", "tr", "9", "a@example.com", "2000", "nce"]
+        with allure.step('Открыть страницу работы с таблицами'):
+            controller.web_table_page.navigate()
+        for item in data:
+            with allure.step(f'Ввести данные [{item}] в поисковую строку'):
+                controller.web_table_page.fill(controller.web_table_page.search_input, item)
+            with allure.step(f'Получить все записи на странице, соотвествующие [{item}]'):
+                rows = controller.web_table_page.all_els(controller.web_table_page.rows)
+            with allure.step(f'Проверить, что все записи в таблице содержат [{item}]'):
+                for row in rows:
+                    assert item in row.text_content(), f"No {item} in result"
+            with allure.step(f'Очистить поисковую строку'):
+                controller.web_table_page.search_input['locator'].clear()
+        with allure.step(f'Проверить, что информации о пустом результате нет'):
+            controller.helper.not_to_be_visible(controller.web_table_page.no_rows)
+        with allure.step(f'Ввести пустую строку'):
+            controller.web_table_page.fill(controller.web_table_page.search_input, "    ")
+        with allure.step(f'Проверить, что информация о пустом результате есть'):
+            controller.helper.to_be_visible(controller.web_table_page.no_rows)

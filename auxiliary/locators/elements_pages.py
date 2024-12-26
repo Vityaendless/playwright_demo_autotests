@@ -77,4 +77,5 @@ class WebTablesPageLocator:
             "and (contains(@class, '-odd') "
             "or (contains(@class, '-even'))) "
             "and (@role='row')]")
-
+    SEARCH_INPUT = "#searchBox"
+    NO_ROWS = ".rt-noData"
