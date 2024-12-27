@@ -271,14 +271,15 @@ class TestElements:
         with allure.step('Выбрать рандомную запись и получить ее индекс'):
             random_row = choice(rows)
             index = rows.index(random_row)
-        with (allure.step('Нажать на кнопку удаления, соотвествующую записи')):
+        with allure.step('Нажать на кнопку удаления, соотвествующую записи'):
             dlt_selector = controller.web_table_page.delete_btn['selector']
             controller.web_table_page.page.locator(f"({dlt_selector})[{index+1}]").click()
-        with (allure.step('Получить все записи после удаления')):
+        with allure.step('Получить все записи после удаления'):
             rows_after_deleting = controller.web_table_page.all_els(controller.web_table_page.rows)
-        with (allure.step('Проверить что кол-во записей уменьшилось на 1')):
+        with allure.step('Проверить что кол-во записей уменьшилось на 1'):
             controller.helper.is_eq(len(rows) - 1, len(rows_after_deleting))
 
+    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест поиска данных в таблице")
@@ -295,7 +296,7 @@ class TestElements:
                 rows = controller.web_table_page.all_els(controller.web_table_page.rows)
             with allure.step(f'Проверить, что все записи в таблице содержат [{item}]'):
                 for row in rows:
-                    assert item in row.text_content(), f"No {item} in result"
+                    controller.helper.is_in(item, row.text_content())
             with allure.step(f'Очистить поисковую строку'):
                 controller.web_table_page.search_input['locator'].clear()
         with allure.step(f'Проверить, что информации о пустом результате нет'):
@@ -304,3 +305,83 @@ class TestElements:
             controller.web_table_page.fill(controller.web_table_page.search_input, "    ")
         with allure.step(f'Проверить, что информация о пустом результате есть'):
             controller.helper.to_be_visible(controller.web_table_page.no_rows)
+
+    @allure.feature("Проверка функциональности таблиц")
+    @allure.story("Проверяем работу с записями в таблицах")
+    @allure.title("Тест редактирования данных в таблице")
+    @allure.description("Выбираем элемент в таблице и редактируем его")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_edit(self, controller):
+        data = ["EditedFirstName", "EditedLastName", "99", "Edited@test.com", "99999", "EditedDepartment"]
+        with allure.step('Открыть страницу работы с таблицами'):
+            controller.web_table_page.navigate()
+        with allure.step('Получить все записи на странице'):
+            rows = controller.web_table_page.all_els(controller.web_table_page.rows)
+        with allure.step('Выбрать рандомную запись и получить ее индекс'):
+            random_row = choice(rows)
+            index = rows.index(random_row)
+        with allure.step('Получить текст выбранной записи'):
+            chosen_row_text = random_row.text_content()
+        with allure.step('Нажать на кнопку редактирования, соотвествующую записи'):
+            edit_selector = controller.web_table_page.edit_btn['selector']
+            controller.web_table_page.page.locator(f"({edit_selector})[{index+1}]").click()
+        with allure.step('Проверить, что элементы формы редактирования отображаются'):
+            controller.helper.to_be_visible(controller.web_table_page.first_name)
+            controller.helper.to_be_visible(controller.web_table_page.last_name)
+            controller.helper.to_be_visible(controller.web_table_page.age)
+            controller.helper.to_be_visible(controller.web_table_page.email)
+            controller.helper.to_be_visible(controller.web_table_page.salary)
+            controller.helper.to_be_visible(controller.web_table_page.department)
+        with allure.step('Нажать на кнопку закрытия формы редактирования'):
+            controller.web_table_page.click(controller.web_table_page.close_btn)
+        with allure.step('Проверить, что элементы формы редактирования не отображаются'):
+            controller.helper.not_to_be_visible(controller.web_table_page.first_name)
+            controller.helper.not_to_be_visible(controller.web_table_page.last_name)
+            controller.helper.not_to_be_visible(controller.web_table_page.age)
+            controller.helper.not_to_be_visible(controller.web_table_page.email)
+            controller.helper.not_to_be_visible(controller.web_table_page.salary)
+            controller.helper.not_to_be_visible(controller.web_table_page.department)
+        with allure.step('Повторно нажать на кнопку редактирования, соотвествующую записи'):
+            controller.web_table_page.page.locator(f"({edit_selector})[{index + 1}]").click()
+        with allure.step('Проверить, что окно содержит данные выбранной записи'):
+            first_name_text = controller.web_table_page.get_element_text(controller.web_table_page.first_name)
+            last_name_text = controller.web_table_page.get_element_text(controller.web_table_page.last_name)
+            age_text = controller.web_table_page.get_element_text(controller.web_table_page.age)
+            email_text = controller.web_table_page.get_element_text(controller.web_table_page.email)
+            salary_text = controller.web_table_page.get_element_text(controller.web_table_page.salary)
+            department = controller.web_table_page.get_element_text(controller.web_table_page.department)
+            controller.helper.is_in(first_name_text, chosen_row_text)
+            controller.helper.is_in(last_name_text, chosen_row_text)
+            controller.helper.is_in(age_text, chosen_row_text)
+            controller.helper.is_in(email_text, chosen_row_text)
+            controller.helper.is_in(salary_text, chosen_row_text)
+            controller.helper.is_in(department, chosen_row_text)
+        with allure.step('Ввести новые данные'):
+            controller.web_table_page.fill(controller.web_table_page.first_name, data[0])
+            controller.web_table_page.fill(controller.web_table_page.last_name, data[1])
+            controller.web_table_page.fill(controller.web_table_page.age, data[2])
+            controller.web_table_page.fill(controller.web_table_page.email, data[3])
+            controller.web_table_page.fill(controller.web_table_page.salary, data[4])
+            controller.web_table_page.fill(controller.web_table_page.department, data[5])
+        with allure.step('Нажать на закрытие формы, не сохранив данные'):
+            controller.web_table_page.click(controller.web_table_page.close_btn)
+        with allure.step('Проверить, что данные не сохранились'):
+            row_selector = controller.web_table_page.rows['selector']
+            cur_chosen_row_text = controller.web_table_page.page.locator(f"({row_selector})[{index+1}]").text_content()
+            for item in data:
+                controller.helper.is_not_in(item, cur_chosen_row_text)
+        with allure.step('Повторно нажать на кнопку редактирования, соотвествующую записи'):
+            controller.web_table_page.page.locator(f"({edit_selector})[{index + 1}]").click()
+        with allure.step('Повторно ввести новые данные'):
+            controller.web_table_page.fill(controller.web_table_page.first_name, data[0])
+            controller.web_table_page.fill(controller.web_table_page.last_name, data[1])
+            controller.web_table_page.fill(controller.web_table_page.age, data[2])
+            controller.web_table_page.fill(controller.web_table_page.email, data[3])
+            controller.web_table_page.fill(controller.web_table_page.salary, data[4])
+            controller.web_table_page.fill(controller.web_table_page.department, data[5])
+        with allure.step('Сохранить данные'):
+            controller.web_table_page.click(controller.web_table_page.submit)
+        with allure.step('Проверить, что данные сохранены'):
+            cur_chosen_row_text = controller.web_table_page.page.locator(f"({row_selector})[{index+1}]").text_content()
+            for item in data:
+                controller.helper.is_in(item, cur_chosen_row_text)

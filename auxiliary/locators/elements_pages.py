@@ -73,9 +73,18 @@ class DynamicPropertiesPageLocator:
 
 class WebTablesPageLocator:
     DELETE_RECORD = "//span[contains(@id, 'delete-record')]"
+    EDIT_RECORD = "//span[contains(@id, 'edit-record')]"
     ROWS = ("//div[not(contains(@class, '-padRow')) "
             "and (contains(@class, '-odd') "
             "or (contains(@class, '-even'))) "
             "and (@role='row')]")
     SEARCH_INPUT = "#searchBox"
     NO_ROWS = ".rt-noData"
+    FIRST_NAME = "#firstName"
+    LAST_NAME = "#lastName"
+    EMAIL = "#userEmail"
+    AGE = "#age"
+    SALARY = "#salary"
+    DEPARTMENT = "#department"
+    CLOSE_BTN = ".close"
+    SUBMIT = "#submit"

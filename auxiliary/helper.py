@@ -52,5 +52,13 @@ class Helper:
         assert first == second, f"[{first}] != [{second}]"
 
     @staticmethod
+    def is_in(first, second):
+        assert first in second, f"[{first}] not in [{second}]"
+
+    @staticmethod
+    def is_not_in(first, second):
+        assert first not in second, f"[{first}] in [{second}]"
+
+    @staticmethod
     def to_str(i):
         return str(i)

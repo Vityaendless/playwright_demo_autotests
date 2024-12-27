@@ -345,3 +345,48 @@ class WebTablesPage(BasePage):
             'locator': self.page.locator(WebTablesPL.NO_ROWS),
             'selector': WebTablesPL.NO_ROWS
         }
+        self.edit_btn = {
+            'title': 'edit_btn',
+            'locator': self.page.locator(WebTablesPL.EDIT_RECORD),
+            'selector': WebTablesPL.EDIT_RECORD
+        }
+        self.first_name = {
+            'title': 'first_name',
+            'locator': self.page.locator(WebTablesPL.FIRST_NAME),
+            'selector': WebTablesPL.FIRST_NAME
+        }
+        self.last_name = {
+            'title': 'last_name',
+            'locator': self.page.locator(WebTablesPL.LAST_NAME),
+            'selector': WebTablesPL.LAST_NAME
+        }
+        self.email = {
+            'title': 'email',
+            'locator': self.page.locator(WebTablesPL.EMAIL),
+            'selector': WebTablesPL.EMAIL
+        }
+        self.age = {
+            'title': 'age',
+            'locator': self.page.locator(WebTablesPL.AGE),
+            'selector': WebTablesPL.AGE
+        }
+        self.salary = {
+            'title': 'salary',
+            'locator': self.page.locator(WebTablesPL.SALARY),
+            'selector': WebTablesPL.SALARY
+        }
+        self.department = {
+            'title': 'department',
+            'locator': self.page.locator(WebTablesPL.DEPARTMENT),
+            'selector': WebTablesPL.DEPARTMENT
+        }
+        self.close_btn = {
+            'title': 'close_btn',
+            'locator': self.page.locator(WebTablesPL.CLOSE_BTN),
+            'selector': WebTablesPL.CLOSE_BTN
+        }
+        self.submit = {
+            'title': 'submit',
+            'locator': self.page.locator(WebTablesPL.SUBMIT),
+            'selector': WebTablesPL.SUBMIT
+        }
