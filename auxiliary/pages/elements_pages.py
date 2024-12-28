@@ -3,7 +3,7 @@ import requests
 from auxiliary.pages import BasePage
 from auxiliary.url_path import UrlPaths, BASE_URL
 from auxiliary.helper import Helper
-from auxiliary.constants import RCode
+from auxiliary.constants import RCode, TABLE_ROW
 from auxiliary.locators import (TextboxPageLocator as TextboxPL, CheckboxPageLocator as CheckboxPL,
                                 RadioBtnPageLocator as RadioPL, ButtonsPageLocator as ButtonsPL,
                                 LinksPageLocator as LinksPL, BrokenLinksImagesPageLocator as BrImgLinksPL,
@@ -390,3 +390,32 @@ class WebTablesPage(BasePage):
             'locator': self.page.locator(WebTablesPL.SUBMIT),
             'selector': WebTablesPL.SUBMIT
         }
+        self.add_btn = {
+            'title': 'add_btn',
+            'locator': self.page.locator(WebTablesPL.ADD_RECORD),
+            'selector': WebTablesPL.ADD_RECORD
+        }
+
+    def form_els_visibility(self):
+        Helper.to_be_visible(self.first_name)
+        Helper.to_be_visible(self.last_name)
+        Helper.to_be_visible(self.age)
+        Helper.to_be_visible(self.email)
+        Helper.to_be_visible(self.salary)
+        Helper.to_be_visible(self.department)
+
+    def form_els_not_visibility(self):
+        Helper.not_to_be_visible(self.first_name)
+        Helper.not_to_be_visible(self.last_name)
+        Helper.not_to_be_visible(self.age)
+        Helper.not_to_be_visible(self.email)
+        Helper.not_to_be_visible(self.salary)
+        Helper.not_to_be_visible(self.department)
+
+    def fill_data_in_form(self):
+        self.fill(self.first_name, TABLE_ROW[0])
+        self.fill(self.last_name, TABLE_ROW[1])
+        self.fill(self.age, TABLE_ROW[2])
+        self.fill(self.email, TABLE_ROW[3])
+        self.fill(self.salary, TABLE_ROW[4])
+        self.fill(self.department, TABLE_ROW[5])

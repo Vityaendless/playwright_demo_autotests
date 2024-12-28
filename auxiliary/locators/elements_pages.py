@@ -88,3 +88,4 @@ class WebTablesPageLocator:
     DEPARTMENT = "#department"
     CLOSE_BTN = ".close"
     SUBMIT = "#submit"
+    ADD_RECORD = "#addNewRecordButton"
