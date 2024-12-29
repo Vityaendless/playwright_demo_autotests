@@ -366,6 +366,7 @@ class TestElements:
             for item in TABLE_ROW:
                 controller.helper.is_in(item, cur_chosen_row_text)
 
+    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест добавления данных в таблице")

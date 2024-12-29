@@ -43,3 +43,7 @@ class UrlPaths:
     @property
     def web_tables(self):
         return self.get_path("webtables")
+
+    @property
+    def tabs(self):
+        return self.get_path("tabs")

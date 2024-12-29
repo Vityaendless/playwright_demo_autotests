@@ -12,6 +12,13 @@ class BasePage:
     def click(self, el, button='left'):
         self.__dict__[el['title']]['locator'].click(button=button)
 
+    def is_not_clickable(self, el):
+        try:
+            self.click(el)
+        except Exception:
+            return True
+        return False
+
     def dblclick(self, el):
         self.__dict__[el['title']]['locator'].dblclick()
 

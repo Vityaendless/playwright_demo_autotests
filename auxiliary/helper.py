@@ -34,6 +34,14 @@ class Helper:
          to_contain_text(text, timeout=timeout))
 
     @staticmethod
+    def to_have_class(el, cls):
+        expect(el['locator'], f"Element {el['title']} don't have class:[{cls}]").to_have_class(cls)
+
+    @staticmethod
+    def not_to_have_class(el, cls):
+        expect(el['locator'], f"Element {el['title']} have class:[{cls}]").not_to_have_class(cls)
+
+    @staticmethod
     def to_have_attribute(el, attr, value):
         (expect(el['locator'], f"Element {el['title']} don't have attribute:[{attr}] with value:[{value}]").
          to_have_attribute(attr, value))
