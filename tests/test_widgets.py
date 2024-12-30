@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from auxiliary.constants import TAB_CLASSES
 
@@ -6,6 +7,46 @@ from auxiliary.constants import TAB_CLASSES
 @allure.epic("Тесты виджетов")
 class TestWidgets:
 
+    @allure.feature("Раздел аккордеона")
+    @allure.story("Разбиение информации по разделам аккордеона")
+    @allure.title("Проверка доступности разделов аккордеона")
+    @allure.description("Проверка переключения между разделами аккордеона")
+    @allure.severity(allure.severity_level.MINOR)
+    def test_accordian(self, controller):
+        with allure.step('Открыть страницу аккордеона'):
+            controller.accordian_page.navigate()
+        with allure.step('Проверить доступность заголовков аккордеона'):
+            controller.helper.to_be_visible(controller.accordian_page.section1_heading)
+            controller.helper.to_be_enabled(controller.accordian_page.section1_heading)
+            controller.helper.to_be_visible(controller.accordian_page.section2_heading)
+            controller.helper.to_be_enabled(controller.accordian_page.section2_heading)
+            controller.helper.to_be_visible(controller.accordian_page.section3_heading)
+            controller.helper.to_be_enabled(controller.accordian_page.section3_heading)
+        with allure.step('Проверить доступность содержимого первой вкладки аккордеона'):
+            controller.helper.to_be_visible(controller.accordian_page.section1_content)
+            controller.helper.not_to_be_visible(controller.accordian_page.section2_content)
+            controller.helper.not_to_be_visible(controller.accordian_page.section3_content)
+        with allure.step('Сделать клик по первой вкладке аккордеона'):
+            controller.accordian_page.click(controller.accordian_page.section1_heading)
+        with allure.step('Проверить недоступность всего контента'):
+            controller.helper.not_to_be_visible(controller.accordian_page.section1_content)
+            controller.helper.not_to_be_visible(controller.accordian_page.section2_content)
+            controller.helper.not_to_be_visible(controller.accordian_page.section3_content)
+        with allure.step('Сделать клик по второй вкладке аккордеона'):
+            controller.accordian_page.click(controller.accordian_page.section2_heading)
+        with allure.step('Проверить доступность второй вкладки контента'):
+            controller.helper.not_to_be_visible(controller.accordian_page.section1_content)
+            controller.helper.to_be_visible(controller.accordian_page.section2_content)
+            controller.helper.not_to_be_visible(controller.accordian_page.section3_content)
+        with allure.step('Сделать клик по третьей вкладке аккордеона'):
+            controller.accordian_page.click(controller.accordian_page.section3_heading)
+        with allure.step('Проверить доступность третьей вкладки контента'):
+            controller.helper.not_to_be_visible(controller.accordian_page.section1_content)
+            controller.helper.not_to_be_visible(controller.accordian_page.section2_content)
+            controller.helper.to_be_visible(controller.accordian_page.section3_content)
+
+
+    @pytest.mark.skip
     @allure.feature("Раздел вкладок с информацией")
     @allure.story("Разбиение информации по вкладкам")
     @allure.title("Проверка доступности вкладок")

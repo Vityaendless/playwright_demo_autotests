@@ -1,7 +1,43 @@
 from .base import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.helper import Helper
-from auxiliary.locators import TabsPageLocator as TabsPL
+from auxiliary.locators import TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL
+
+
+class AccordianPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().accordian
+        self.section1_heading = {
+            'title': 'section1_heading',
+            'locator': self.page.locator(AccordianPL.SECTION1_HEADING),
+            'selector': AccordianPL.SECTION1_HEADING
+        }
+        self.section2_heading = {
+            'title': 'section2_heading',
+            'locator': self.page.locator(AccordianPL.SECTION2_HEADING),
+            'selector': AccordianPL.SECTION2_HEADING
+        }
+        self.section3_heading = {
+            'title': 'section3_heading',
+            'locator': self.page.locator(AccordianPL.SECTION3_HEADING),
+            'selector': AccordianPL.SECTION3_HEADING
+        }
+        self.section1_content = {
+            'title': 'section1_content',
+            'locator': self.page.locator(AccordianPL.SECTION1_CONTENT),
+            'selector': AccordianPL.SECTION1_CONTENT
+        }
+        self.section2_content = {
+            'title': 'section2_content',
+            'locator': self.page.locator(AccordianPL.SECTION2_CONTENT),
+            'selector': AccordianPL.SECTION2_CONTENT
+        }
+        self.section3_content = {
+            'title': 'section3_content',
+            'locator': self.page.locator(AccordianPL.SECTION3_CONTENT),
+            'selector': AccordianPL.SECTION3_CONTENT
+        }
 
 
 class TabsPage(BasePage):

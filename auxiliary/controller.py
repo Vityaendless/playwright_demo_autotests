@@ -2,7 +2,7 @@ from playwright.sync_api import Page
 
 from auxiliary.helper import Helper
 from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, LinksPage, BrokenImagesLinksPage,
-                             UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage)
+                             UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage)
 
 
 class Controller:
@@ -20,3 +20,4 @@ class Controller:
         self.dyn_properties_page = DynPropertiesPage(self.page)
         self.web_table_page = WebTablesPage(self.page)
         self.tabs_page = TabsPage(self.page)
+        self.accordian_page = AccordianPage(self.page)

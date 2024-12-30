@@ -1,3 +1,12 @@
+class AccordianPageLocator:
+    SECTION1_HEADING = "#section1Heading"
+    SECTION2_HEADING = "#section2Heading"
+    SECTION3_HEADING = "#section3Heading"
+    SECTION1_CONTENT = "#section1Content"
+    SECTION2_CONTENT = "#section2Content"
+    SECTION3_CONTENT = "#section3Content"
+
+
 class TabsPageLocator:
     WHAT_TAB = "#demo-tab-what"
     ORIGIN_TAB = "#demo-tab-origin"

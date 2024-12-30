@@ -45,5 +45,9 @@ class UrlPaths:
         return self.get_path("webtables")
 
     @property
+    def accordian(self):
+        return self.get_path("accordian")
+
+    @property
     def tabs(self):
         return self.get_path("tabs")
