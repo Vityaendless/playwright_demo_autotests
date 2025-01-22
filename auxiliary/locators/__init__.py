@@ -3,3 +3,4 @@ from .elements_pages import (
     BrokenLinksImagesPageLocator, UploadDownloadPageLocator, DynamicPropertiesPageLocator, WebTablesPageLocator
 )
 from .widgets import TabsPageLocator, AccordianPageLocator
+from .forms import PracticeFormPageLocator

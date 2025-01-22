@@ -51,3 +51,7 @@ class UrlPaths:
     @property
     def tabs(self):
         return self.get_path("tabs")
+
+    @property
+    def practice_form(self):
+        return self.get_path("automation-practice-form")
