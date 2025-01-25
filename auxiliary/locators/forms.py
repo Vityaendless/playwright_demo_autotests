@@ -7,7 +7,7 @@ class PracticeFormPageLocator:
     GENDER_OTHER = "#gender-radio-3"
     PHONE_NUMBER = "#userNumber"
     BIRTH_DATE = "#dateOfBirthInput"
-    SUBJECTS = "#subjectsInput"
+    SUBJECTS = "#subjectsContainer"
     HOBBY_SPORTS = "#hobbies-checkbox-1"
     HOBBY_READING = "#hobbies-checkbox-2"
     HOBBY_MUSIC = "#hobbies-checkbox-3"

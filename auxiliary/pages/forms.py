@@ -1,5 +1,6 @@
 from .base import BasePage
 from auxiliary.url_path import UrlPaths
+from auxiliary.helper import Helper
 from auxiliary.locators import PracticeFormPageLocator as PracticeFormPL
 
 
@@ -92,3 +93,12 @@ class PracticeFormPage(BasePage):
             'locator': self.page.locator(PracticeFormPL.SUBMIT),
             'selector': PracticeFormPL.SUBMIT
         }
+
+    def is_required(self, *args):
+        is_req = {}
+        selector = ""
+        for arg in args:
+            selector += arg
+        is_req['locator'] = self.page.locator(selector)
+        is_req['title'] = 'Required element'
+        Helper.to_be_visible(is_req)
