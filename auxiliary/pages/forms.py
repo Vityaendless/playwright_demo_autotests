@@ -93,6 +93,56 @@ class PracticeFormPage(BasePage):
             'locator': self.page.locator(PracticeFormPL.SUBMIT),
             'selector': PracticeFormPL.SUBMIT
         }
+        self.name_result = {
+            'title': 'name_result',
+            'locator': self.page.locator(PracticeFormPL.NAME_RESULT),
+            'selector': PracticeFormPL.NAME_RESULT
+        }
+        self.email_result = {
+            'title': 'email_result',
+            'locator': self.page.locator(PracticeFormPL.EMAIL_RESULT),
+            'selector': PracticeFormPL.EMAIL_RESULT
+        }
+        self.gender_result = {
+            'title': 'gender_result',
+            'locator': self.page.locator(PracticeFormPL.GENDER_RESULT),
+            'selector': PracticeFormPL.GENDER_RESULT
+        }
+        self.phone_result = {
+            'title': 'phone_result',
+            'locator': self.page.locator(PracticeFormPL.PHONE_RESULT),
+            'selector': PracticeFormPL.PHONE_RESULT
+        }
+        self.birth_date_result = {
+            'title': 'birth_date_result',
+            'locator': self.page.locator(PracticeFormPL.BIRTH_DATE_RESULT),
+            'selector': PracticeFormPL.BIRTH_DATE_RESULT
+        }
+        self.subjects_result = {
+            'title': 'subjects_result',
+            'locator': self.page.locator(PracticeFormPL.SUBJECTS_RESULT),
+            'selector': PracticeFormPL.SUBJECTS_RESULT
+        }
+        self.hobbies_result = {
+            'title': 'hobbies_result',
+            'locator': self.page.locator(PracticeFormPL.HOBBIES_RESULT),
+            'selector': PracticeFormPL.HOBBIES_RESULT
+        }
+        self.picture_result = {
+            'title': 'picture_result',
+            'locator': self.page.locator(PracticeFormPL.PICTURE_RESULT),
+            'selector': PracticeFormPL.PICTURE_RESULT
+        }
+        self.current_address_result = {
+            'title': 'current_address_result',
+            'locator': self.page.locator(PracticeFormPL.CURRENT_ADDRESS_RESULT),
+            'selector': PracticeFormPL.CURRENT_ADDRESS_RESULT
+        }
+        self.state_city_result = {
+            'title': 'state_city_result',
+            'locator': self.page.locator(PracticeFormPL.STATE_CITY_RESULT),
+            'selector': PracticeFormPL.STATE_CITY_RESULT
+        }
 
     def is_required(self, *args):
         is_req = {}

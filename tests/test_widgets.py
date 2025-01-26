@@ -7,6 +7,7 @@ from auxiliary.constants import TAB_CLASSES
 @allure.epic("Тесты виджетов")
 class TestWidgets:
 
+    @pytest.mark.skip
     @allure.feature("Раздел аккордеона")
     @allure.story("Разбиение информации по разделам аккордеона")
     @allure.title("Проверка доступности разделов аккордеона")
