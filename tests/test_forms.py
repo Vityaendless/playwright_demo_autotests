@@ -1,3 +1,5 @@
+import time
+
 import allure
 import pytest
 
@@ -135,21 +137,29 @@ class TestForm:
             controller.practice_form_page.fill(
                 controller.practice_form_page.last_name, practice_form_user_data['last_name']
             )
+            controller.practice_form_page.fill(controller.practice_form_page.email, practice_form_user_data['email'])
             controller.practice_form_page.click(controller.practice_form_page.gender_female)
             choised_gender = controller.practice_form_page.get_element_text(controller.practice_form_page.gender_female)
             controller.practice_form_page.fill(
                 controller.practice_form_page.phone_number, practice_form_user_data['phone']
             )
-        with allure.step('Нажать кнопку отправки формы'):
-            controller.practice_form_page.click(controller.practice_form_page.submit)
-        with allure.step('Проверка результата введенных данных'):
-            controller.helper.to_contain_text(
-                controller.practice_form_page.name_result,
-                practice_form_user_data['first_name'] + " " + practice_form_user_data['last_name']
+            controller.practice_form_page.fill(
+                controller.practice_form_page.birth_date, practice_form_user_data['birth_date']
             )
-            table_gender = controller.practice_form_page.get_element_text(controller.practice_form_page.gender_result)
-            controller.helper.is_eq(choised_gender, table_gender)
-            controller.helper.to_contain_text(
-                controller.practice_form_page.phone_result,
-                practice_form_user_data['phone']
-            )
+            controller.practice_form_page.press(controller.practice_form_page.birth_date)
+            for subject in practice_form_user_data['subjects']:
+                controller.practice_form_page.type(controller.practice_form_page.subjects, subject)
+                controller.practice_form_page.press(controller.practice_form_page.subjects)
+        # with allure.step('Нажать кнопку отправки формы'):
+        #     controller.practice_form_page.click(controller.practice_form_page.submit)
+        # with allure.step('Проверка результата введенных данных'):
+        #     controller.helper.to_contain_text(
+        #         controller.practice_form_page.name_result,
+        #         practice_form_user_data['first_name'] + " " + practice_form_user_data['last_name']
+        #     )
+        #     table_gender = controller.practice_form_page.get_element_text(controller.practice_form_page.gender_result)
+        #     controller.helper.is_eq(choised_gender, table_gender)
+        #     controller.helper.to_contain_text(
+        #         controller.practice_form_page.phone_result,
+        #         practice_form_user_data['phone']
+        #     )

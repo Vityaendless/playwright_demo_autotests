@@ -28,6 +28,12 @@ class BasePage:
     def fill(self, el, text="Default text"):
         self.__dict__[el['title']]['locator'].fill(text)
 
+    def type(self, el, text="Default text"):
+        self.__dict__[el['title']]['locator'].type(text)
+
+    def press(self, el, key="Enter"):
+        self.__dict__[el['title']]['locator'].press(key)
+
     def get_element_text(self, el):
         return self.__dict__[el['title']]['locator'].text_content()
 
