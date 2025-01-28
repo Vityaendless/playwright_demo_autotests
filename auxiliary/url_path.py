@@ -55,3 +55,11 @@ class UrlPaths:
     @property
     def practice_form(self):
         return self.get_path("automation-practice-form")
+
+    @property
+    def browser_windows(self):
+        return self.get_path("browser-windows")
+
+    @property
+    def sample(self):
+        return self.get_path("sample")

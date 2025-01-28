@@ -123,7 +123,7 @@ class TestForm:
                 practice_form_user_data['phone']
             )
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Форма для заполнения данных пользователя")
     @allure.title("Тест отправки формы 2")

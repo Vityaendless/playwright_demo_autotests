@@ -3,3 +3,4 @@ from .elements_pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, L
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage)
 from .widgets import TabsPage, AccordianPage
 from .forms import PracticeFormPage
+from .windows import WindowsPage, SamplePage

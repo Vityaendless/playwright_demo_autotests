@@ -3,7 +3,7 @@ from playwright.sync_api import Page
 from auxiliary.helper import Helper
 from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, LinksPage, BrokenImagesLinksPage,
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage,
-                             PracticeFormPage)
+                             PracticeFormPage, WindowsPage, SamplePage)
 
 
 class Controller:
@@ -23,3 +23,5 @@ class Controller:
         self.tabs_page = TabsPage(self.page)
         self.accordian_page = AccordianPage(self.page)
         self.practice_form_page = PracticeFormPage(self.page)
+        self.windows_page = WindowsPage(self.page)
+        self.sample_page = SamplePage(self.page)

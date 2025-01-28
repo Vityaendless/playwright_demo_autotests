@@ -4,3 +4,4 @@ from .elements_pages import (
 )
 from .widgets import TabsPageLocator, AccordianPageLocator
 from .forms import PracticeFormPageLocator
+from .windows import WindowsPageLocator, SamplePageLocator
