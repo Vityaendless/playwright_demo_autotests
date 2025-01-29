@@ -33,3 +33,8 @@ class SamplePage(BasePage):
             'locator': self.page.locator(SamplePageLocator.HEADING),
             'selector': SamplePageLocator.HEADING
         }
+        self.body = {
+            'title': 'heading',
+            'locator': self.page.locator(SamplePageLocator.BODY),
+            'selector': SamplePageLocator.BODY
+        }

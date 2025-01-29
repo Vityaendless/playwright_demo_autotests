@@ -1,3 +1,5 @@
+import time
+
 import allure
 import pytest
 
@@ -5,7 +7,7 @@ import pytest
 @allure.epic("Тесты окон браузера")
 class TestWindows:
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Работа с окнами браузера")
     @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
     @allure.title("Проверка открытия новой вкладки")
@@ -25,7 +27,7 @@ class TestWindows:
             assert sample_page_text.is_visible()
 
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Работа с окнами браузера")
     @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
     @allure.title("Проверка открытия нового окна")
@@ -42,4 +44,22 @@ class TestWindows:
             sample_page_text = new_wnd.locator(
                 controller.sample_page.heading['selector'], has_text='This is a sample page'
             )
+            assert sample_page_text.is_visible()
+
+    #@pytest.mark.skip
+    @allure.feature("Работа с окнами браузера")
+    @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
+    @allure.title("Проверка открытия нового окна с сообщением")
+    @allure.description("Проверка открытия нового окна браузера с сообщением")
+    @allure.severity(allure.severity_level.MINOR)
+    def test_new_window_message(self, controller):
+        with allure.step('Открыть страницу окон браузера'):
+            controller.windows_page.navigate()
+        with allure.step('Нажать на кнопку открытия нового окна'):
+            with controller.page.context.expect_page() as wnd:
+                controller.windows_page.click(controller.windows_page.msg_new_window_btn)
+        with allure.step('Перейти к новому окну и проверить наличия заголовка на нем'):
+            new_wnd = wnd.value
+            wnd_text = "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization."
+            sample_page_text = new_wnd.locator(controller.sample_page.body['selector'], has_text=wnd_text)
             assert sample_page_text.is_visible()

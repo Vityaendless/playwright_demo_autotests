@@ -6,3 +6,4 @@ class WindowsPageLocator:
 
 class SamplePageLocator:
     HEADING = "#sampleHeading"
+    BODY = "//body"
