@@ -1,5 +1,3 @@
-import time
-
 import allure
 import pytest
 
@@ -46,7 +44,7 @@ class TestWindows:
             )
             assert sample_page_text.is_visible()
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Работа с окнами браузера")
     @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
     @allure.title("Проверка открытия нового окна с сообщением")

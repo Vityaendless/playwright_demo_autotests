@@ -61,5 +61,9 @@ class UrlPaths:
         return self.get_path("browser-windows")
 
     @property
+    def alerts(self):
+        return self.get_path("alerts")
+
+    @property
     def sample(self):
         return self.get_path("sample")
