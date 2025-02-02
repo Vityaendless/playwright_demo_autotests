@@ -3,7 +3,7 @@ from playwright.sync_api import Page
 from auxiliary.helper import Helper
 from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, LinksPage, BrokenImagesLinksPage,
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage,
-                             PracticeFormPage, WindowsPage, SamplePage, AlertsPage)
+                             PracticeFormPage, WindowsPage, SamplePage, AlertsPage, IframesPage, NestedIframesPage)
 
 
 class Controller:
@@ -26,3 +26,5 @@ class Controller:
         self.windows_page = WindowsPage(self.page)
         self.sample_page = SamplePage(self.page)
         self.alerts_page = AlertsPage(self.page)
+        self.iframes_page = IframesPage(self.page)
+        self.nested_iframes_page = NestedIframesPage(self.page)

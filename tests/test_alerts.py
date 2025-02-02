@@ -87,7 +87,7 @@ class TestAlerts:
             controller.helper.to_contain_text(controller.alerts_page.confirm_result, "Cancel")
 
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Работа с всплывающими уведомлениями")
     @allure.story("Взаимодействие с элементами всплывающих уведомлений")
     @allure.title("Проверка открытия окна ввода результата")

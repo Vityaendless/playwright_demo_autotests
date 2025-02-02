@@ -65,5 +65,13 @@ class UrlPaths:
         return self.get_path("alerts")
 
     @property
+    def iframes(self):
+        return self.get_path("frames")
+
+    @property
+    def nested_iframes(self):
+        return self.get_path("nestedframes")
+
+    @property
     def sample(self):
         return self.get_path("sample")

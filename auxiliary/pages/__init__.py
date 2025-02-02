@@ -5,3 +5,4 @@ from .widgets import TabsPage, AccordianPage
 from .forms import PracticeFormPage
 from .windows import WindowsPage, SamplePage
 from .alerts import AlertsPage
+from .iframes import IframesPage, NestedIframesPage
