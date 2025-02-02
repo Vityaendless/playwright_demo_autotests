@@ -22,8 +22,18 @@ class AlertsPage(BasePage):
             'locator': self.page.locator(AlertsPageLocator.CONFIRM_BTN),
             'selector': AlertsPageLocator.CONFIRM_BTN
         }
+        self.confirm_result = {
+            'title': 'confirm_result',
+            'locator': self.page.locator(AlertsPageLocator.CONFIRM_RESULT),
+            'selector': AlertsPageLocator.CONFIRM_RESULT
+        }
         self.prompt_btn = {
             'title': 'prompt_btn',
             'locator': self.page.locator(AlertsPageLocator.PROMPT_BTN),
             'selector': AlertsPageLocator.PROMPT_BTN
+        }
+        self.prompt_result = {
+            'title': 'prompt_result',
+            'locator': self.page.locator(AlertsPageLocator.PROMPT_RESULT),
+            'selector': AlertsPageLocator.PROMPT_RESULT
         }
