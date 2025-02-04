@@ -6,3 +6,4 @@ from .forms import PracticeFormPage
 from .windows import WindowsPage, SamplePage
 from .alerts import AlertsPage
 from .iframes import IframesPage, NestedIframesPage
+from .modal_dialogs import ModalDialogsPage

@@ -73,5 +73,9 @@ class UrlPaths:
         return self.get_path("nestedframes")
 
     @property
+    def modal_dialogs(self):
+        return self.get_path("modal-dialogs")
+
+    @property
     def sample(self):
         return self.get_path("sample")
