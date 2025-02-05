@@ -6,7 +6,6 @@ from auxiliary.constants import TAB_CLASSES
 
 @allure.epic("Тесты виджетов")
 class TestWidgets:
-
     @pytest.mark.skip
     @allure.feature("Раздел аккордеона")
     @allure.story("Разбиение информации по разделам аккордеона")
@@ -45,7 +44,6 @@ class TestWidgets:
             controller.helper.not_to_be_visible(controller.accordian_page.section1_content)
             controller.helper.not_to_be_visible(controller.accordian_page.section2_content)
             controller.helper.to_be_visible(controller.accordian_page.section3_content)
-
 
     @pytest.mark.skip
     @allure.feature("Раздел вкладок с информацией")
@@ -107,3 +105,38 @@ class TestWidgets:
             controller.tabs_page.is_class_contain(controller.tabs_page.more_tab, TAB_CLASSES[2])
             controller.helper.not_to_be_visible(controller.tabs_page.more_content)
             assert controller.tabs_page.is_not_clickable(controller.tabs_page.more_tab), f"[{controller.tabs_page.more_tab['title']}] is clickable"
+
+    #@pytest.mark.skip
+    @allure.feature("Раздел полей авто подбора информации")
+    @allure.story("Ввод информации в поля автоподбора")
+    @allure.title("Проверить ввод информации в поля автоподбора")
+    @allure.description("Проверить ввод информации в поля автоподбора")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_auto_complete(self, controller, colors_data):
+        with allure.step('Открыть страницу полей автоподбора'):
+            controller.auto_complete_page.navigate()
+        with allure.step('Ввод информации в поля множественного ввода данных'):
+            for color in colors_data:
+                controller.auto_complete_page.type(controller.auto_complete_page.multiple_input, color)
+                controller.auto_complete_page.press(controller.auto_complete_page.multiple_input)
+        with allure.step('Сравнить кол-во введенных элементов'):
+            controller.helper.is_eq(
+                controller.auto_complete_page.count(controller.auto_complete_page.colors), len(colors_data)
+            )
+        with allure.step('Удалить последний выбранный элемент'):
+            last_color = controller.auto_complete_page.last(controller.auto_complete_page.remove_color_btn)
+            last_color.click()
+        with allure.step('Сравнить кол-во введенных элементов'):
+            controller.helper.is_eq(
+                controller.auto_complete_page.count(controller.auto_complete_page.colors), len(colors_data) - 1
+            )
+        with allure.step('Очистить поле'):
+            controller.auto_complete_page.click(controller.auto_complete_page.clear_btn)
+        with allure.step('Сравнить кол-во введенных элементов'):
+            controller.helper.is_eq(controller.auto_complete_page.count(controller.auto_complete_page.colors), 0)
+        with allure.step('Ввод информации в поле одиночного ввода данных'):
+            black = "Black"
+            controller.auto_complete_page.type(controller.auto_complete_page.single_input, black)
+            controller.auto_complete_page.press(controller.auto_complete_page.single_input)
+        with allure.step('Проверить эквивалентность введенного значения'):
+            controller.helper.to_contain_text(controller.auto_complete_page.single_input_value, black)

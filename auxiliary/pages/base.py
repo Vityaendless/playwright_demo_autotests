@@ -42,3 +42,9 @@ class BasePage:
 
     def all_els(self, els):
         return self.__dict__[els['title']]['locator'].all()
+
+    def count(self, els):
+        return self.__dict__[els['title']]['locator'].count()
+
+    def last(self, els):
+        return self.__dict__[els['title']]['locator'].last

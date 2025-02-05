@@ -1,6 +1,13 @@
 import pytest
 
 from auxiliary.controller import Controller
+from auxiliary.constants import COLORS
+
+
+@pytest.fixture(scope="function")
+def colors_data():
+    colors = COLORS
+    yield colors
 
 
 @pytest.fixture(scope="function")

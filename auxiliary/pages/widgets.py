@@ -1,7 +1,8 @@
 from .base import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.helper import Helper
-from auxiliary.locators import TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL
+from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
+                                AutoCompletePageLocator as AutoCompletePL)
 
 
 class AccordianPage(BasePage):
@@ -37,6 +38,42 @@ class AccordianPage(BasePage):
             'title': 'section3_content',
             'locator': self.page.locator(AccordianPL.SECTION3_CONTENT),
             'selector': AccordianPL.SECTION3_CONTENT
+        }
+
+
+class AutoCompletePage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().auto_complete
+        self.single_input = {
+            'title': 'single_input',
+            'locator': self.page.locator(AutoCompletePL.SINGLE_INPUT),
+            'selector': AutoCompletePL.SINGLE_INPUT
+        }
+        self.multiple_input = {
+            'title': 'multiple_input',
+            'locator': self.page.locator(AutoCompletePL.MULTIPLE_INPUT),
+            'selector': AutoCompletePL.MULTIPLE_INPUT
+        }
+        self.colors = {
+            'title': 'colors',
+            'locator': self.page.locator(AutoCompletePL.COLORS),
+            'selector': AutoCompletePL.COLORS
+        }
+        self.remove_color_btn = {
+            'title': 'remove_color_btn',
+            'locator': self.page.locator(AutoCompletePL.REMOVE_COLOR_BTN),
+            'selector': AutoCompletePL.REMOVE_COLOR_BTN
+        }
+        self.clear_btn = {
+            'title': 'clear_btn',
+            'locator': self.page.locator(AutoCompletePL.CLEAR_BTN),
+            'selector': AutoCompletePL.CLEAR_BTN
+        }
+        self.single_input_value = {
+            'title': 'single_input_value',
+            'locator': self.page.locator(AutoCompletePL.SINGLE_INPUT_VALUE),
+            'selector': AutoCompletePL.SINGLE_INPUT_VALUE
         }
 
 

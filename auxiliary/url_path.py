@@ -77,5 +77,9 @@ class UrlPaths:
         return self.get_path("modal-dialogs")
 
     @property
+    def auto_complete(self):
+        return self.get_path("auto-complete")
+
+    @property
     def sample(self):
         return self.get_path("sample")

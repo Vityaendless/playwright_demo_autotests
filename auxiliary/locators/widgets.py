@@ -7,6 +7,15 @@ class AccordianPageLocator:
     SECTION3_CONTENT = "#section3Content"
 
 
+class AutoCompletePageLocator:
+    MULTIPLE_INPUT = "#autoCompleteMultipleInput"
+    SINGLE_INPUT = "#autoCompleteSingleInput"
+    COLORS = ".auto-complete__multi-value__label"
+    REMOVE_COLOR_BTN = ".auto-complete__multi-value__remove"
+    CLEAR_BTN = ".auto-complete__clear-indicator"
+    SINGLE_INPUT_VALUE = ".auto-complete__single-value"
+
+
 class TabsPageLocator:
     WHAT_TAB = "#demo-tab-what"
     ORIGIN_TAB = "#demo-tab-origin"

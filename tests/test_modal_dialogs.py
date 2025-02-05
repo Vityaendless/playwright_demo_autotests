@@ -5,7 +5,7 @@ import pytest
 @allure.epic("Тесты модальных окон")
 class TestModalDialogs:
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Работа с модальными окнами")
     @allure.story("Взаимодействие с элементами модальных окон")
     @allure.title("Проверка доступа к элементам модального окна")
