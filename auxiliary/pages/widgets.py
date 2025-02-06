@@ -2,7 +2,7 @@ from .base import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.helper import Helper
 from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
-                                AutoCompletePageLocator as AutoCompletePL)
+                                AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL)
 
 
 class AccordianPage(BasePage):
@@ -74,6 +74,27 @@ class AutoCompletePage(BasePage):
             'title': 'single_input_value',
             'locator': self.page.locator(AutoCompletePL.SINGLE_INPUT_VALUE),
             'selector': AutoCompletePL.SINGLE_INPUT_VALUE
+        }
+
+
+class DatePickerPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().date_picker
+        self.select_date = {
+            'title': 'select_date',
+            'locator': self.page.locator(DatePickerPL.SELECT_DATE),
+            'selector': DatePickerPL.SELECT_DATE
+        }
+        self.select_time_date = {
+            'title': 'select_time_date',
+            'locator': self.page.locator(DatePickerPL.SELECT_TIME_DATE),
+            'selector': DatePickerPL.SELECT_TIME_DATE
+        }
+        self.select_month = {
+            'title': 'select_month',
+            'locator': self.page.locator(DatePickerPL.SELECT_MONTH),
+            'selector': DatePickerPL.SELECT_MONTH
         }
 
 

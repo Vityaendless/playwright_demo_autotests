@@ -16,6 +16,12 @@ class AutoCompletePageLocator:
     SINGLE_INPUT_VALUE = ".auto-complete__single-value"
 
 
+class DatePickerPageLocator:
+    SELECT_DATE = "#datePickerMonthYearInput"
+    SELECT_TIME_DATE = "#dateAndTimePickerInput"
+    SELECT_MONTH = ".react-datepicker__month-select"
+
+
 class TabsPageLocator:
     WHAT_TAB = "#demo-tab-what"
     ORIGIN_TAB = "#demo-tab-origin"

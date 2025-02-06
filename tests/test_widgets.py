@@ -1,3 +1,5 @@
+import time
+
 import allure
 import pytest
 
@@ -106,7 +108,7 @@ class TestWidgets:
             controller.helper.not_to_be_visible(controller.tabs_page.more_content)
             assert controller.tabs_page.is_not_clickable(controller.tabs_page.more_tab), f"[{controller.tabs_page.more_tab['title']}] is clickable"
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Раздел полей авто подбора информации")
     @allure.story("Ввод информации в поля автоподбора")
     @allure.title("Проверить ввод информации в поля автоподбора")
@@ -140,3 +142,20 @@ class TestWidgets:
             controller.auto_complete_page.press(controller.auto_complete_page.single_input)
         with allure.step('Проверить эквивалентность введенного значения'):
             controller.helper.to_contain_text(controller.auto_complete_page.single_input_value, black)
+
+    #@pytest.mark.skip
+    @allure.feature("Раздел полей выбора дат, времени")
+    @allure.story("Ввод информации в поля дат, времени")
+    @allure.title("Проверить ввод информации в поля дат, времени")
+    @allure.description("Проверить ввод информации в поля дат, времени")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_date_picker(self, controller):
+        with allure.step('Открыть страницу полей дат, времени'):
+            controller.date_picker_page.navigate()
+        with allure.step('Ввод информации в поле выбора даты'):
+            controller.date_picker_page.click(controller.date_picker_page.select_date)
+            controller.date_picker_page.click(controller.date_picker_page.select_month)
+            l = controller.date_picker_page.page.locator("//*[@value='4']")
+            l.click()
+            print(l)
+            time.sleep(5)

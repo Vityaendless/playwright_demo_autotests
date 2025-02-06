@@ -81,5 +81,9 @@ class UrlPaths:
         return self.get_path("auto-complete")
 
     @property
+    def date_picker(self):
+        return self.get_path("date-picker")
+
+    @property
     def sample(self):
         return self.get_path("sample")
