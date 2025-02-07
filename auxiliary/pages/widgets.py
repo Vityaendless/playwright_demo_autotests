@@ -96,6 +96,26 @@ class DatePickerPage(BasePage):
             'locator': self.page.locator(DatePickerPL.SELECT_MONTH),
             'selector': DatePickerPL.SELECT_MONTH
         }
+        self.select_year = {
+            'title': 'select_year',
+            'locator': self.page.locator(DatePickerPL.SELECT_YEAR),
+            'selector': DatePickerPL.SELECT_YEAR
+        }
+        self.day_14 = {
+            'title': 'day_14',
+            'locator': self.page.locator(DatePickerPL.DAY_14),
+            'selector': DatePickerPL.DAY_14
+        }
+        self.select_month_dt = {
+            'title': 'select_month_dt',
+            'locator': self.page.locator(DatePickerPL.SELECT_MONTH_DT),
+            'selector': DatePickerPL.SELECT_MONTH_DT
+        }
+        self.select_year_dt = {
+            'title': 'select_year_dt',
+            'locator': self.page.locator(DatePickerPL.SELECT_YEAR_DT),
+            'selector': DatePickerPL.SELECT_YEAR_DT
+        }
 
 
 class TabsPage(BasePage):

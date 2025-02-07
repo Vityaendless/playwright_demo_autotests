@@ -3,7 +3,7 @@ import time
 import allure
 import pytest
 
-from auxiliary.constants import TAB_CLASSES
+from auxiliary.constants import TAB_CLASSES, HTMLAttr
 
 
 @allure.epic("Тесты виджетов")
@@ -143,7 +143,7 @@ class TestWidgets:
         with allure.step('Проверить эквивалентность введенного значения'):
             controller.helper.to_contain_text(controller.auto_complete_page.single_input_value, black)
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Раздел полей выбора дат, времени")
     @allure.story("Ввод информации в поля дат, времени")
     @allure.title("Проверить ввод информации в поля дат, времени")
@@ -154,8 +154,20 @@ class TestWidgets:
             controller.date_picker_page.navigate()
         with allure.step('Ввод информации в поле выбора даты'):
             controller.date_picker_page.click(controller.date_picker_page.select_date)
-            controller.date_picker_page.click(controller.date_picker_page.select_month)
-            l = controller.date_picker_page.page.locator("//*[@value='4']")
-            l.click()
-            print(l)
-            time.sleep(5)
+            controller.date_picker_page.select_option(controller.date_picker_page.select_month, "4")
+            controller.date_picker_page.select_option(controller.date_picker_page.select_year, "2027")
+            controller.date_picker_page.click(controller.date_picker_page.day_14)
+        with allure.step('Сравнить выбранную дату с требуемой'):
+            controller.helper.to_have_attribute(controller.date_picker_page.select_date, HTMLAttr.VALUE, "05/14/2027")
+        with allure.step('Ввод информации в поле выбора даты и времени'):
+            controller.date_picker_page.click(controller.date_picker_page.select_time_date)
+            controller.date_picker_page.click(controller.date_picker_page.select_month_dt)
+            controller.date_picker_page.page.get_by_text("May").click()
+            controller.date_picker_page.click(controller.date_picker_page.select_year_dt)
+            controller.date_picker_page.page.get_by_text("2027").click()
+            controller.date_picker_page.click(controller.date_picker_page.day_14)
+            controller.date_picker_page.page.get_by_text("16:45").click()
+        with allure.step('Сравнить выбранную дату с требуемой'):
+            controller.helper.to_have_attribute(
+                controller.date_picker_page.select_time_date, HTMLAttr.VALUE, "May 14, 2027 4:45 PM"
+            )

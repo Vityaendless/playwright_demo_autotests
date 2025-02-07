@@ -20,6 +20,12 @@ class DatePickerPageLocator:
     SELECT_DATE = "#datePickerMonthYearInput"
     SELECT_TIME_DATE = "#dateAndTimePickerInput"
     SELECT_MONTH = ".react-datepicker__month-select"
+    SELECT_YEAR = ".react-datepicker__year-select"
+    DAY_14 = ".react-datepicker__day--014"
+    SELECT_MONTH_DT = ".react-datepicker__month-read-view"
+    # MONTH_MAT_OPTION_DT = "(//*[@class='react-datepicker__month-option'])[4]"
+    SELECT_YEAR_DT = ".react-datepicker__year-read-view--selected-year"
+    # YEAR_2027_DT = ""
 
 
 class TabsPageLocator:

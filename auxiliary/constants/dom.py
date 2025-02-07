@@ -12,6 +12,7 @@ class HTMLAttr:
     TARGET = "target"
     HREF = "href"
     SRC = "src"
+    VALUE = "value"
 
 
 class HTMLValue:

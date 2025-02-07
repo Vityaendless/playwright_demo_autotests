@@ -34,6 +34,9 @@ class BasePage:
     def press(self, el, key="Enter"):
         self.__dict__[el['title']]['locator'].press(key)
 
+    def select_option(self, el, value):
+        self.page.select_option(el["selector"], value=value)
+
     def get_element_text(self, el):
         return self.__dict__[el['title']]['locator'].text_content()
 
