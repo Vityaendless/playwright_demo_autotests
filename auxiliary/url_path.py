@@ -85,5 +85,9 @@ class UrlPaths:
         return self.get_path("date-picker")
 
     @property
+    def slider(self):
+        return self.get_path("slider")
+
+    @property
     def sample(self):
         return self.get_path("sample")

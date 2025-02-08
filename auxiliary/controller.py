@@ -4,7 +4,7 @@ from auxiliary.helper import Helper
 from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, LinksPage, BrokenImagesLinksPage,
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage,
                              PracticeFormPage, WindowsPage, SamplePage, AlertsPage, IframesPage, NestedIframesPage,
-                             ModalDialogsPage, AutoCompletePage, DatePickerPage)
+                             ModalDialogsPage, AutoCompletePage, DatePickerPage, SliderPage)
 
 
 class Controller:
@@ -32,3 +32,4 @@ class Controller:
         self.modal_dialogs_page = ModalDialogsPage(self.page)
         self.auto_complete_page = AutoCompletePage(self.page)
         self.date_picker_page = DatePickerPage(self.page)
+        self.slider_page = SliderPage(self.page)

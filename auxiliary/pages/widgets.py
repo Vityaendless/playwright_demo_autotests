@@ -2,7 +2,8 @@ from .base import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.helper import Helper
 from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
-                                AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL)
+                                AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL,
+                                SliderPageLocator as SliderPL)
 
 
 class AccordianPage(BasePage):
@@ -115,6 +116,22 @@ class DatePickerPage(BasePage):
             'title': 'select_year_dt',
             'locator': self.page.locator(DatePickerPL.SELECT_YEAR_DT),
             'selector': DatePickerPL.SELECT_YEAR_DT
+        }
+
+
+class SliderPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().slider
+        self.slider = {
+            'title': 'slider',
+            'locator': self.page.locator(SliderPL.SLIDER),
+            'selector': SliderPL.SLIDER
+        }
+        self.slider_value = {
+            'title': 'slider_value',
+            'locator': self.page.locator(SliderPL.SLIDER_VALUE),
+            'selector': SliderPL.SLIDER_VALUE
         }
 
 

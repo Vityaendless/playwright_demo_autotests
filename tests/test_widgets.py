@@ -171,3 +171,20 @@ class TestWidgets:
             controller.helper.to_have_attribute(
                 controller.date_picker_page.select_time_date, HTMLAttr.VALUE, "May 14, 2027 4:45 PM"
             )
+
+    @pytest.mark.skip
+    @allure.feature("Раздел слайдера")
+    @allure.story("Взаимодействие со слайдером")
+    @allure.title("Проверить отображение изменения значения при взаимодействии со слайдером")
+    @allure.description("Проверить отображение изменения значения при взаимодействии со слайдером")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_slider(self, controller):
+        slider_amount = "58"
+        with allure.step('Открыть страницу слайдера'):
+            controller.slider_page.navigate()
+        with allure.step('Проверка значения слайдера по умолчанию'):
+            controller.helper.to_have_attribute(controller.slider_page.slider_value, HTMLAttr.VALUE, "25")
+        with allure.step('Изменить значение слайдера'):
+            controller.slider_page.click(controller.slider_page.slider, position={"x": 250, "y": 0})
+        with allure.step('Проверка изменение значения после взаимодействия со слайдером'):
+            controller.helper.to_have_attribute(controller.slider_page.slider_value, HTMLAttr.VALUE, slider_amount)

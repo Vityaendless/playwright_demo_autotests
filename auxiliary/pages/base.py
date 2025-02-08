@@ -9,8 +9,12 @@ class BasePage:
     def navigate(self):
         self.page.goto(self.url)
 
-    def click(self, el, button='left'):
-        self.__dict__[el['title']]['locator'].click(button=button)
+    def click(self, el, button='left', position=None):
+        if position:
+            print(position)
+            self.__dict__[el['title']]['locator'].click(button=button, position=position)
+        else:
+            self.__dict__[el['title']]['locator'].click(button=button)
 
     def is_not_clickable(self, el):
         try:
