@@ -3,7 +3,8 @@ from auxiliary.url_path import UrlPaths
 from auxiliary.helper import Helper
 from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
                                 AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL,
-                                SliderPageLocator as SliderPL, ProgressBarPageLocator as ProgressBarPL)
+                                SliderPageLocator as SliderPL, ProgressBarPageLocator as ProgressBarPL,
+                                ToolTipsPageLocator as ToolTipPL)
 
 
 class AccordianPage(BasePage):
@@ -213,3 +214,54 @@ class TabsPage(BasePage):
     def is_not_class_contain(self, el, cls):
         cls_text = self.get_attr(el, "class")
         Helper.is_not_in(cls, cls_text)
+
+
+class ToolTipPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().tool_tips
+        self.btn = {
+            'title': 'btn',
+            'locator': self.page.locator(ToolTipPL.BTN),
+            'selector': ToolTipPL.BTN
+        }
+        self.btn_tt = {
+            'title': 'btn_tt',
+            'locator': self.page.locator(ToolTipPL.BTN_TOOL_TIP),
+            'selector': ToolTipPL.BTN_TOOL_TIP
+        }
+        self.field = {
+            'title': 'field',
+            'locator': self.page.locator(ToolTipPL.FIELD),
+            'selector': ToolTipPL.FIELD
+        }
+        self.field_tt = {
+            'title': 'field_tt',
+            'locator': self.page.locator(ToolTipPL.FIELD_TOOL_TIP),
+            'selector': ToolTipPL.FIELD_TOOL_TIP
+        }
+        self.first_link = {
+            'title': 'first_link',
+            'locator': self.page.locator(ToolTipPL.FIRST_LINK),
+            'selector': ToolTipPL.FIRST_LINK
+        }
+        self.first_link_tt = {
+            'title': 'first_link_tt',
+            'locator': self.page.locator(ToolTipPL.FIRST_LINK_TOOL_TIP),
+            'selector': ToolTipPL.FIRST_LINK_TOOL_TIP
+        }
+        self.second_link = {
+            'title': 'second_link',
+            'locator': self.page.locator(ToolTipPL.SECOND_LINK),
+            'selector': ToolTipPL.SECOND_LINK
+        }
+        self.second_link_tt = {
+            'title': 'second_link_tt',
+            'locator': self.page.locator(ToolTipPL.SECOND_LINK_TOOL_TIP),
+            'selector': ToolTipPL.SECOND_LINK_TOOL_TIP
+        }
+
+    def check_tool_tip(self, hover_on_el, hover_el, text):
+        self.hover(hover_on_el)
+        Helper.to_be_visible(hover_el)
+        Helper.to_contain_text(hover_el, text)

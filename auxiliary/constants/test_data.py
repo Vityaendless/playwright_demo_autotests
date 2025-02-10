@@ -3,3 +3,8 @@ TABLE_ROW = ["EditedFirstName", "EditedLastName", "99", "Edited@test.com", "9999
 TAB_CLASSES = ["active", "show", "disabled"]
 
 COLORS = ["Magenta", "Green", "White"]
+
+TOOL_TIPS_TEXTS = [
+    "You hovered over the Button", "You hovered over the text field",
+    "You hovered over the Contrary", "You hovered over the 1.10.32"
+]

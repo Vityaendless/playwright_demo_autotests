@@ -36,6 +36,16 @@ class ProgressBarPageLocator:
     RESET_BTN = "#resetButton"
     PROGRESS_BAR = "#progressBar"
 
+class ToolTipsPageLocator:
+    BTN = "#toolTipButton"
+    BTN_TOOL_TIP = "#buttonToolTip"
+    FIELD = "#texFieldToolTopContainer"
+    FIELD_TOOL_TIP = "#textFieldToolTip"
+    FIRST_LINK = "#texToolTopContainer a:first-child"
+    FIRST_LINK_TOOL_TIP = "#contraryTexToolTip"
+    SECOND_LINK = "#texToolTopContainer a:last-child"
+    SECOND_LINK_TOOL_TIP = "#sectionToolTip"
+
 
 class TabsPageLocator:
     WHAT_TAB = "#demo-tab-what"

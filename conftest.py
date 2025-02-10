@@ -1,13 +1,17 @@
 import pytest
 
 from auxiliary.controller import Controller
-from auxiliary.constants import COLORS
+from auxiliary.constants import COLORS, TOOL_TIPS_TEXTS
 
 
 @pytest.fixture(scope="function")
 def colors_data():
-    colors = COLORS
-    yield colors
+    yield COLORS
+
+
+@pytest.fixture(scope="function")
+def tool_tips_data():
+    yield TOOL_TIPS_TEXTS
 
 
 @pytest.fixture(scope="function")

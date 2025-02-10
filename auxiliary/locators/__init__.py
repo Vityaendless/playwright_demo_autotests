@@ -3,7 +3,7 @@ from .elements_pages import (
     BrokenLinksImagesPageLocator, UploadDownloadPageLocator, DynamicPropertiesPageLocator, WebTablesPageLocator
 )
 from .widgets import (TabsPageLocator, AccordianPageLocator, AutoCompletePageLocator, DatePickerPageLocator,
-                      SliderPageLocator, ProgressBarPageLocator)
+                      SliderPageLocator, ProgressBarPageLocator, ToolTipsPageLocator)
 from .forms import PracticeFormPageLocator
 from .windows import WindowsPageLocator, SamplePageLocator
 from .alerts import AlertsPageLocator

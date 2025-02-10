@@ -93,5 +93,9 @@ class UrlPaths:
         return self.get_path("progress-bar")
 
     @property
+    def tool_tips(self):
+        return self.get_path("tool-tips")
+
+    @property
     def sample(self):
         return self.get_path("sample")

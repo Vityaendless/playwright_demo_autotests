@@ -4,7 +4,8 @@ from auxiliary.helper import Helper
 from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, LinksPage, BrokenImagesLinksPage,
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage,
                              PracticeFormPage, WindowsPage, SamplePage, AlertsPage, IframesPage, NestedIframesPage,
-                             ModalDialogsPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage)
+                             ModalDialogsPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage,
+                             ToolTipPage)
 
 
 class Controller:
@@ -34,3 +35,4 @@ class Controller:
         self.date_picker_page = DatePickerPage(self.page)
         self.slider_page = SliderPage(self.page)
         self.progress_bar = ProgressBarPage(self.page)
+        self.tool_tip_page = ToolTipPage(self.page)

@@ -189,7 +189,6 @@ class TestWidgets:
         with allure.step('Проверка изменение значения после взаимодействия со слайдером'):
             controller.helper.to_have_attribute(controller.slider_page.slider_value, HTMLAttr.VALUE, slider_amount)
 
-
     @pytest.mark.skip
     @allure.feature("Раздел прогресс-бара")
     @allure.story("Взаимодействие с элементами прогресс-бара")
@@ -209,3 +208,36 @@ class TestWidgets:
         with allure.step('Нажать кнопку Reset и проверить сброс прогресс-бара'):
             controller.progress_bar.click(controller.progress_bar.reset_btn)
             controller.progress_bar.check_default_state()
+
+    #@pytest.mark.skip
+    @allure.feature("Раздел тул-типов")
+    @allure.story("Взаимодействие с элементами тул-типов")
+    @allure.title("Проверить взаимодействие с туд-типами")
+    @allure.description(
+        "Проверить отображение изменения значения при взаимодействием с элементами связанными с тул-типом"
+    )
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_tool_tip(self, controller, tool_tips_data):
+        with allure.step('Открыть страницу тул-типов'):
+            controller.tool_tip_page.navigate()
+        with allure.step('Проверка, что изначально тул-тип не отображается'):
+            controller.helper.not_to_be_visible(controller.tool_tip_page.btn_tt)
+            controller.helper.not_to_be_visible(controller.tool_tip_page.field_tt)
+            controller.helper.not_to_be_visible(controller.tool_tip_page.first_link_tt)
+            controller.helper.not_to_be_visible(controller.tool_tip_page.second_link_tt)
+        with allure.step('Навести курсор на кнопку и проверить наличие тул-типа и информации в нем'):
+            controller.tool_tip_page.check_tool_tip(
+                controller.tool_tip_page.btn, controller.tool_tip_page.btn_tt, tool_tips_data[0]
+            )
+        with allure.step('Навести курсор на поле ввода и проверить наличие тул-типа и информации в нем'):
+            controller.tool_tip_page.check_tool_tip(
+                controller.tool_tip_page.field, controller.tool_tip_page.field_tt, tool_tips_data[1]
+            )
+        with allure.step('Навести курсор на ссылку и проверить наличие тул-типа и информации в нем'):
+            controller.tool_tip_page.check_tool_tip(
+                controller.tool_tip_page.first_link, controller.tool_tip_page.first_link_tt, tool_tips_data[2]
+            )
+        with allure.step('Навести курсор на кнопку и проверить наличие тул-типа и информации в нем'):
+            controller.tool_tip_page.check_tool_tip(
+                controller.tool_tip_page.second_link, controller.tool_tip_page.second_link_tt, tool_tips_data[3]
+            )
