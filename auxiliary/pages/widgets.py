@@ -3,7 +3,7 @@ from auxiliary.url_path import UrlPaths
 from auxiliary.helper import Helper
 from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
                                 AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL,
-                                SliderPageLocator as SliderPL)
+                                SliderPageLocator as SliderPL, ProgressBarPageLocator as ProgressBarPL)
 
 
 class AccordianPage(BasePage):
@@ -133,6 +133,32 @@ class SliderPage(BasePage):
             'locator': self.page.locator(SliderPL.SLIDER_VALUE),
             'selector': SliderPL.SLIDER_VALUE
         }
+
+
+class ProgressBarPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().progress_bar
+        self.start_btn = {
+            'title': 'start_btn',
+            'locator': self.page.locator(ProgressBarPL.BTN),
+            'selector': ProgressBarPL.BTN
+        }
+        self.reset_btn = {
+            'title': 'reset_btn',
+            'locator': self.page.locator(ProgressBarPL.RESET_BTN),
+            'selector': ProgressBarPL.RESET_BTN
+        }
+        self.progress_bar = {
+            'title': 'progress_bar',
+            'locator': self.page.locator(ProgressBarPL.PROGRESS_BAR),
+            'selector': ProgressBarPL.PROGRESS_BAR
+        }
+
+    def check_default_state(self):
+        Helper.to_contain_text(self.start_btn, "Start")
+        Helper.to_contain_text(self.progress_bar, "0%")
+        Helper.not_to_be_visible(self.reset_btn)
 
 
 class TabsPage(BasePage):

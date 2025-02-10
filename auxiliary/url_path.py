@@ -89,5 +89,9 @@ class UrlPaths:
         return self.get_path("slider")
 
     @property
+    def progress_bar(self):
+        return self.get_path("progress-bar")
+
+    @property
     def sample(self):
         return self.get_path("sample")

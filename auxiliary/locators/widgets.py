@@ -31,6 +31,12 @@ class SliderPageLocator:
     SLIDER_VALUE = "#sliderValue"
 
 
+class ProgressBarPageLocator:
+    BTN = "#startStopButton"
+    RESET_BTN = "#resetButton"
+    PROGRESS_BAR = "#progressBar"
+
+
 class TabsPageLocator:
     WHAT_TAB = "#demo-tab-what"
     ORIGIN_TAB = "#demo-tab-origin"

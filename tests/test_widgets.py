@@ -188,3 +188,24 @@ class TestWidgets:
             controller.slider_page.click(controller.slider_page.slider, position={"x": 250, "y": 0})
         with allure.step('Проверка изменение значения после взаимодействия со слайдером'):
             controller.helper.to_have_attribute(controller.slider_page.slider_value, HTMLAttr.VALUE, slider_amount)
+
+
+    @pytest.mark.skip
+    @allure.feature("Раздел прогресс-бара")
+    @allure.story("Взаимодействие с элементами прогресс-бара")
+    @allure.title("Проверить взаимодействие с прогресс-баром")
+    @allure.description("Проверить отображение изменения значения при взаимодействием с прогресс-баром")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_progress_bar(self, controller):
+        with allure.step('Открыть страницу прогресс-бара'):
+            controller.progress_bar.navigate()
+        with allure.step('Проверка начальных значений элементов'):
+            controller.progress_bar.check_default_state()
+        with allure.step('Нажать кнопку Start и ожидаем заполнение прогресс-бара'):
+            controller.progress_bar.click(controller.progress_bar.start_btn)
+            controller.helper.to_contain_text(controller.progress_bar.progress_bar, "100%", timeout=10000)
+            controller.helper.to_contain_text(controller.progress_bar.reset_btn, "Reset", timeout=10000)
+            controller.helper.not_to_be_visible(controller.progress_bar.start_btn, timeout=10000)
+        with allure.step('Нажать кнопку Reset и проверить сброс прогресс-бара'):
+            controller.progress_bar.click(controller.progress_bar.reset_btn)
+            controller.progress_bar.check_default_state()
