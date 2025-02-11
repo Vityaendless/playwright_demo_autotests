@@ -286,3 +286,16 @@ class MenuPage(BasePage):
             'locator': self.page.locator(MenuPL.SUB_SUB_ITEMS),
             'selector': MenuPL.SUB_SUB_ITEMS
         }
+
+    @staticmethod
+    def menu_check(els, state):
+        for item in els:
+            assert item.is_visible(), state.NOT_VISIBLE
+            item.hover()
+
+    @staticmethod
+    def check_with_sub_menu(els, sub_els, index, state):
+        for item in sub_els:
+            assert not item.is_visible(), state.VISIBLE
+        els[index].hover()
+        MenuPage.menu_check(sub_els, state)

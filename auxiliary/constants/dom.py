@@ -17,3 +17,8 @@ class HTMLAttr:
 
 class HTMLValue:
     BLANK = "_blank"
+
+
+class VisibilityState:
+    VISIBLE = "Элемент виден"
+    NOT_VISIBLE = "Элемент не виден"

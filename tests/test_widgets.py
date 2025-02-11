@@ -248,19 +248,19 @@ class TestWidgets:
     @allure.title("Проверить взаимодействие с меню")
     @allure.description("Проверить отображение меню и возможности взаимодействия с ним")
     @allure.severity(allure.severity_level.NORMAL)
-    def test_menu(self, controller):
+    def test_menu(self, controller, visibility_data):
         with allure.step('Открыть страницу меню'):
             controller.menu_page.navigate()
         with allure.step('Проверка наличия верхних разделов меню'):
             menu_items = controller.menu_page.all_els(controller.menu_page.menu_items)
-            for item in menu_items:
-                assert item.is_visible(), "Элемент не виден"
-                item.hover()
+            controller.menu_page.menu_check(menu_items, visibility_data)
+            controller.helper.is_eq(controller.menu_page.count(controller.menu_page.menu_items), 3)
         with allure.step('Проверка наличия субразделов меню'):
             sub_items = controller.menu_page.all_els(controller.menu_page.sub_items)
-            for item in sub_items:
-                assert not item.is_visible(), "Элемент виден"
+            controller.menu_page.check_with_sub_menu(menu_items, sub_items, 1, visibility_data)
+            controller.helper.is_eq(controller.menu_page.count(controller.menu_page.sub_items), 3)
             menu_items[1].hover()
-            for item in sub_items:
-                assert item.is_visible(), "Элемент не виден"
-                item.hover()
+        with allure.step('Проверка наличия суб-субразделов меню'):
+            sub_sub_items = controller.menu_page.all_els(controller.menu_page.sub_sub_items)
+            controller.menu_page.check_with_sub_menu(sub_items, sub_sub_items, 2, visibility_data)
+            controller.helper.is_eq(controller.menu_page.count(controller.menu_page.sub_sub_items), 2)
