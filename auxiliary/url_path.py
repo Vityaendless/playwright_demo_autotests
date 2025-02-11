@@ -97,5 +97,9 @@ class UrlPaths:
         return self.get_path("tool-tips")
 
     @property
+    def menu(self):
+        return self.get_path("menu")
+
+    @property
     def sample(self):
         return self.get_path("sample")

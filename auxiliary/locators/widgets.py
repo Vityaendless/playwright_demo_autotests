@@ -36,6 +36,7 @@ class ProgressBarPageLocator:
     RESET_BTN = "#resetButton"
     PROGRESS_BAR = "#progressBar"
 
+
 class ToolTipsPageLocator:
     BTN = "#toolTipButton"
     BTN_TOOL_TIP = "#buttonToolTip"
@@ -56,3 +57,9 @@ class TabsPageLocator:
     ORIGIN_CONTENT = "#demo-tabpane-origin"
     USE_CONTENT = "#demo-tabpane-use"
     MORE_CONTENT = "#demo-tabpane-more"
+
+
+class MenuPageLocator:
+    MAIN_ITEMS = "#nav > li > a"
+    SUB_ITEMS = "#nav > li:nth-child(2) > ul > li > a"
+    SUB_SUB_ITEMS = "#nav > li:nth-child(2) > ul > li:last-child > ul a"

@@ -209,7 +209,7 @@ class TestWidgets:
             controller.progress_bar.click(controller.progress_bar.reset_btn)
             controller.progress_bar.check_default_state()
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Раздел тул-типов")
     @allure.story("Взаимодействие с элементами тул-типов")
     @allure.title("Проверить взаимодействие с туд-типами")
@@ -241,3 +241,26 @@ class TestWidgets:
             controller.tool_tip_page.check_tool_tip(
                 controller.tool_tip_page.second_link, controller.tool_tip_page.second_link_tt, tool_tips_data[3]
             )
+
+    #@pytest.mark.skip
+    @allure.feature("Раздел меню")
+    @allure.story("Взаимодействие с элементами раздела меню")
+    @allure.title("Проверить взаимодействие с меню")
+    @allure.description("Проверить отображение меню и возможности взаимодействия с ним")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_menu(self, controller):
+        with allure.step('Открыть страницу меню'):
+            controller.menu_page.navigate()
+        with allure.step('Проверка наличия верхних разделов меню'):
+            menu_items = controller.menu_page.all_els(controller.menu_page.menu_items)
+            for item in menu_items:
+                assert item.is_visible(), "Элемент не виден"
+                item.hover()
+        with allure.step('Проверка наличия субразделов меню'):
+            sub_items = controller.menu_page.all_els(controller.menu_page.sub_items)
+            for item in sub_items:
+                assert not item.is_visible(), "Элемент виден"
+            menu_items[1].hover()
+            for item in sub_items:
+                assert item.is_visible(), "Элемент не виден"
+                item.hover()

@@ -4,7 +4,7 @@ from auxiliary.helper import Helper
 from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
                                 AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL,
                                 SliderPageLocator as SliderPL, ProgressBarPageLocator as ProgressBarPL,
-                                ToolTipsPageLocator as ToolTipPL)
+                                ToolTipsPageLocator as ToolTipPL, MenuPageLocator as MenuPL)
 
 
 class AccordianPage(BasePage):
@@ -265,3 +265,24 @@ class ToolTipPage(BasePage):
         self.hover(hover_on_el)
         Helper.to_be_visible(hover_el)
         Helper.to_contain_text(hover_el, text)
+
+
+class MenuPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().menu
+        self.menu_items = {
+            'title': 'menu_items',
+            'locator': self.page.locator(MenuPL.MAIN_ITEMS),
+            'selector': MenuPL.MAIN_ITEMS
+        }
+        self.sub_items = {
+            'title': 'sub_items',
+            'locator': self.page.locator(MenuPL.SUB_ITEMS),
+            'selector': MenuPL.SUB_ITEMS
+        }
+        self.sub_sub_items = {
+            'title': 'sub_sub_items',
+            'locator': self.page.locator(MenuPL.SUB_SUB_ITEMS),
+            'selector': MenuPL.SUB_SUB_ITEMS
+        }
