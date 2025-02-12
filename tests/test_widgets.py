@@ -242,7 +242,7 @@ class TestWidgets:
                 controller.tool_tip_page.second_link, controller.tool_tip_page.second_link_tt, tool_tips_data[3]
             )
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Раздел меню")
     @allure.story("Взаимодействие с элементами раздела меню")
     @allure.title("Проверить взаимодействие с меню")
@@ -264,3 +264,15 @@ class TestWidgets:
             sub_sub_items = controller.menu_page.all_els(controller.menu_page.sub_sub_items)
             controller.menu_page.check_with_sub_menu(sub_items, sub_sub_items, 2, visibility_data)
             controller.helper.is_eq(controller.menu_page.count(controller.menu_page.sub_sub_items), 2)
+
+    #@pytest.mark.skip
+    @allure.feature("Раздел селектов")
+    @allure.story("Взаимодействие с селектами")
+    @allure.title("Проверить взаимодействие с селектами")
+    @allure.description("Проверить отображение селектов и возможности взаимодействия с ними")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_select_menu(self, controller):
+        with allure.step('Открыть страницу селектов'):
+            controller.select_menu.navigate()
+        with allure.step('Проверка работы селекта с опциями'):
+            pass

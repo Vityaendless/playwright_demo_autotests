@@ -5,7 +5,7 @@ from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, L
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage,
                              PracticeFormPage, WindowsPage, SamplePage, AlertsPage, IframesPage, NestedIframesPage,
                              ModalDialogsPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage,
-                             ToolTipPage, MenuPage)
+                             ToolTipPage, MenuPage, SelectMenuPage)
 
 
 class Controller:
@@ -37,3 +37,4 @@ class Controller:
         self.progress_bar = ProgressBarPage(self.page)
         self.tool_tip_page = ToolTipPage(self.page)
         self.menu_page = MenuPage(self.page)
+        self.select_menu = SelectMenuPage(self.page)

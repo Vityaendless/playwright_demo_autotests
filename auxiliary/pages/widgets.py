@@ -4,7 +4,8 @@ from auxiliary.helper import Helper
 from auxiliary.locators import (TabsPageLocator as TabsPL, AccordianPageLocator as AccordianPL,
                                 AutoCompletePageLocator as AutoCompletePL, DatePickerPageLocator as DatePickerPL,
                                 SliderPageLocator as SliderPL, ProgressBarPageLocator as ProgressBarPL,
-                                ToolTipsPageLocator as ToolTipPL, MenuPageLocator as MenuPL)
+                                ToolTipsPageLocator as ToolTipPL, MenuPageLocator as MenuPL,
+                                SelectMenuPageLocator as SelectMenuPL)
 
 
 class AccordianPage(BasePage):
@@ -299,3 +300,34 @@ class MenuPage(BasePage):
             assert not item.is_visible(), state.VISIBLE
         els[index].hover()
         MenuPage.menu_check(sub_els, state)
+
+
+class SelectMenuPage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().select_menu
+        self.option_selector = {
+            'title': 'option_selector',
+            'locator': self.page.locator(SelectMenuPL.OPTION_SELECTOR),
+            'selector': SelectMenuPL.OPTION_SELECTOR
+        }
+        self.select_one = {
+            'title': 'select_one',
+            'locator': self.page.locator(SelectMenuPL.SELECT_ONE),
+            'selector': SelectMenuPL.SELECT_ONE
+        }
+        self.old_selector = {
+            'title': 'old_selector',
+            'locator': self.page.locator(SelectMenuPL.OLD_SELECTOR),
+            'selector': SelectMenuPL.OLD_SELECTOR
+        }
+        self.multi_select = {
+            'title': 'multi_select',
+            'locator': self.page.locator(SelectMenuPL.MULTI_SELECT),
+            'selector': SelectMenuPL.MULTI_SELECT
+        }
+        self.old_multi_select = {
+            'title': 'old_multi_select',
+            'locator': self.page.locator(SelectMenuPL.OLD_MULTI_SELECT),
+            'selector': SelectMenuPL.OLD_MULTI_SELECT
+        }

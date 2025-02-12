@@ -63,3 +63,11 @@ class MenuPageLocator:
     MAIN_ITEMS = "#nav > li > a"
     SUB_ITEMS = "#nav > li:nth-child(2) > ul > li > a"
     SUB_SUB_ITEMS = "#nav > li:nth-child(2) > ul > li:last-child > ul a"
+
+
+class SelectMenuPageLocator:
+    OPTION_SELECTOR = "#withOptGroup"
+    SELECT_ONE = "#selectOne"
+    OLD_SELECTOR = "#oldSelectMenu"
+    MULTI_SELECT = "(//div[@class=' css-yk16xz-control'])[3]"
+    OLD_MULTI_SELECT = "#cars"

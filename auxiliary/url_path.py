@@ -101,5 +101,9 @@ class UrlPaths:
         return self.get_path("menu")
 
     @property
+    def select_menu(self):
+        return self.get_path("select-menu")
+
+    @property
     def sample(self):
         return self.get_path("sample")
