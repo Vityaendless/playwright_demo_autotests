@@ -67,7 +67,10 @@ class MenuPageLocator:
 
 class SelectMenuPageLocator:
     OPTION_SELECTOR = "#withOptGroup"
+    OPTION_INPUT = "#withOptGroup input"
     SELECT_ONE = "#selectOne"
+    SELECT_ONE_INPUT = "#selectOne input"
     OLD_SELECTOR = "#oldSelectMenu"
-    MULTI_SELECT = "(//div[@class=' css-yk16xz-control'])[3]"
+    MULTI_SELECT = "(//p/b[text()='Multiselect drop down']/following::div)[1]"
+    MULTI_SELECT_INPUT = "//p/b[text()='Multiselect drop down']/following::div//input"
     OLD_MULTI_SELECT = "#cars"

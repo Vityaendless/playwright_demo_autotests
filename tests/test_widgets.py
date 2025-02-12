@@ -265,7 +265,7 @@ class TestWidgets:
             controller.menu_page.check_with_sub_menu(sub_items, sub_sub_items, 2, visibility_data)
             controller.helper.is_eq(controller.menu_page.count(controller.menu_page.sub_sub_items), 2)
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Раздел селектов")
     @allure.story("Взаимодействие с селектами")
     @allure.title("Проверить взаимодействие с селектами")
@@ -275,4 +275,22 @@ class TestWidgets:
         with allure.step('Открыть страницу селектов'):
             controller.select_menu.navigate()
         with allure.step('Проверка работы селекта с опциями'):
-            pass
+            controller.select_menu.type(controller.select_menu.option_input, "A root")
+            controller.select_menu.press(controller.select_menu.option_input)
+            ch_text = controller.select_menu.get_element_text(controller.select_menu.option_selector)
+            controller.helper.is_in("A root", ch_text)
+        with allure.step('Проверка работы селекта с одним выбором'):
+            controller.select_menu.type(controller.select_menu.select_one_input, "Oth")
+            controller.select_menu.press(controller.select_menu.select_one_input)
+            ch_text = controller.select_menu.get_element_text(controller.select_menu.select_one)
+            controller.helper.is_in("Oth", ch_text)
+        with allure.step('Проверка работы стандартного селекта '):
+            controller.select_menu.select_option(controller.select_menu.old_selector, "3")
+            controller.helper.to_contain_text(controller.select_menu.old_selector, "Yellow")
+        with allure.step('Проверка работы мультиселекта'):
+            for colour in ['gree', 'bla']:
+                controller.select_menu.type(controller.select_menu.multi_select_input, colour)
+                controller.select_menu.press(controller.select_menu.multi_select_input)
+            print(controller.select_menu.get_element_text(controller.select_menu.multi_select))
+        with allure.step('Проверка работы стандартного мультиселекта'):
+            controller.select_menu.select_option(controller.select_menu.old_multi_select, ["volvo", "saab"])

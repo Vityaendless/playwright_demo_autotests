@@ -311,10 +311,20 @@ class SelectMenuPage(BasePage):
             'locator': self.page.locator(SelectMenuPL.OPTION_SELECTOR),
             'selector': SelectMenuPL.OPTION_SELECTOR
         }
+        self.option_input = {
+            'title': 'option_input',
+            'locator': self.page.locator(SelectMenuPL.OPTION_INPUT),
+            'selector': SelectMenuPL.OPTION_INPUT
+        }
         self.select_one = {
             'title': 'select_one',
             'locator': self.page.locator(SelectMenuPL.SELECT_ONE),
             'selector': SelectMenuPL.SELECT_ONE
+        }
+        self.select_one_input = {
+            'title': 'select_one_input',
+            'locator': self.page.locator(SelectMenuPL.SELECT_ONE_INPUT),
+            'selector': SelectMenuPL.SELECT_ONE_INPUT
         }
         self.old_selector = {
             'title': 'old_selector',
@@ -325,6 +335,11 @@ class SelectMenuPage(BasePage):
             'title': 'multi_select',
             'locator': self.page.locator(SelectMenuPL.MULTI_SELECT),
             'selector': SelectMenuPL.MULTI_SELECT
+        }
+        self.multi_select_input = {
+            'title': 'multi_select_input',
+            'locator': self.page.locator(SelectMenuPL.MULTI_SELECT_INPUT),
+            'selector': SelectMenuPL.MULTI_SELECT_INPUT
         }
         self.old_multi_select = {
             'title': 'old_multi_select',
