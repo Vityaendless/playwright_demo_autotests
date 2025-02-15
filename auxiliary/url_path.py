@@ -107,3 +107,11 @@ class UrlPaths:
     @property
     def sample(self):
         return self.get_path("sample")
+
+    @property
+    def sortable(self):
+        return self.get_path("sortable")
+
+    @property
+    def selectable(self):
+        return self.get_path("selectable")

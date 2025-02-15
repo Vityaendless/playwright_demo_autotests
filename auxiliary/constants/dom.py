@@ -13,10 +13,12 @@ class HTMLAttr:
     HREF = "href"
     SRC = "src"
     VALUE = "value"
+    CLASS = "class"
 
 
 class HTMLValue:
     BLANK = "_blank"
+    ACTIVE = "active"
 
 
 class VisibilityState:

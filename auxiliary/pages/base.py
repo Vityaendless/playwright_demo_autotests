@@ -47,6 +47,9 @@ class BasePage:
     def select_option(self, el, value):
         self.page.select_option(el["selector"], value=value)
 
+    def drag_drop(self, first_el, second_el):
+        self.page.locator(first_el['selector']).drag_to(second_el['locator'])
+
     def get_element_text(self, el):
         return self.__dict__[el['title']]['locator'].text_content()
 
