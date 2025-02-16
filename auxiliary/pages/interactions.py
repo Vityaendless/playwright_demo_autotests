@@ -2,7 +2,8 @@ from .base import BasePage
 from auxiliary.url_path import UrlPaths
 from auxiliary.constants import HTMLAttr, HTMLValue
 from auxiliary.helper import Helper
-from auxiliary.locators import SortablePageLocator as SortablePL, SelectablePageLocator as SelectPL
+from auxiliary.locators import (SortablePageLocator as SortablePL, SelectablePageLocator as SelectPL,
+                                ResizablePageLocator as ResizablePL)
 
 
 class SortablePage(BasePage):
@@ -70,3 +71,14 @@ class SelectablePage(BasePage):
             if el_amount == i:
                 cls = el.get_attribute(HTMLAttr.CLASS)
                 Helper.is_in(HTMLValue.ACTIVE, cls)
+
+
+class ResizablePage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().resizable
+        self.resizable_box = {
+            'title': 'resizable_box',
+            'locator': self.page.locator(ResizablePL.RESIZABLE_BOX),
+            'selector': ResizablePL.RESIZABLE_BOX
+        }

@@ -41,7 +41,7 @@ class TestInteractions:
             last_el_new_text = controller.sortable_page.get_element_text(controller.sortable_page.second_el_grid)
             controller.helper.is_eq(first_el_text, last_el_new_text)
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Выбор элементов в списке")
@@ -61,7 +61,7 @@ class TestInteractions:
             controller.selectable_page.check_active(list_els, random_number)
 
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Выбор элементов в гриде")
@@ -81,3 +81,36 @@ class TestInteractions:
             controller.selectable_page.check_not_active(grid_els, random_number)
         with allure.step('Проверить, что рандомный элемент выбран'):
             controller.selectable_page.check_active(grid_els, random_number)
+
+    #@pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Изменение размера элементов")
+    @allure.description("Изменение размера элементов")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_resizable(self, controller):
+        with allure.step('Открыть страницу изменения размера элементов'):
+            controller.resizable_page.navigate()
+        with allure.step('Изменить размер элемента'):
+            height = controller.resizable_page.resizable_box['locator'].evaluate(
+                '(event) => parseFloat(event.style.height)'
+            )
+            width = controller.resizable_page.resizable_box['locator'].evaluate(
+                '(event) => parseFloat(event.style.width)'
+            )
+            box = controller.resizable_page.resizable_box['locator'].bounding_box()
+            print(height, width)
+            print(box)
+            bottomRightX = box['x'] + box['width']
+            bottomRightY = box['y'] + box['height']
+            print(type(bottomRightY), type(bottomRightY))
+            print(bottomRightX, bottomRightY)
+            controller.resizable_page.page.mouse.move(bottomRightX-5, bottomRightY-5)
+            # controller.resizable_page.hover(controller.resizable_page.resizable_box, {'x': box['width'], 'y': box['height']})
+            controller.resizable_page.page.mouse.down()
+            # controller.resizable_page.page.mouse.up()
+            # controller.resizable_page.page.mouse.down()
+            controller.resizable_page.page.mouse.move(box['width'] + 50, box['height'] + 50)
+            controller.resizable_page.page.mouse.up()
+            x = controller.resizable_page.get_attr(controller.resizable_page.resizable_box, "style")
+            print(x)

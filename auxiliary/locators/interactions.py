@@ -10,3 +10,7 @@ class SelectablePageLocator:
     LIST_ELS = "#verticalListContainer .list-group-item"
     TO_GRID = SortablePageLocator.TO_GRID
     GRID_ELS = "#gridContainer .list-group-item"
+
+
+class ResizablePageLocator:
+    RESIZABLE_BOX = "#resizableBoxWithRestriction"

@@ -19,8 +19,12 @@ class BasePage:
     def focus(self, el):
         self.__dict__[el['title']]['locator'].focus()
 
-    def hover(self, el):
-        self.__dict__[el['title']]['locator'].hover()
+    def hover(self, el, position=None):
+        if position:
+            print(position)
+            self.__dict__[el['title']]['locator'].hover(position=position)
+        else:
+            self.__dict__[el['title']]['locator'].hover()
 
     def is_not_clickable(self, el):
         try:

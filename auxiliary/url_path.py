@@ -115,3 +115,7 @@ class UrlPaths:
     @property
     def selectable(self):
         return self.get_path("selectable")
+
+    @property
+    def resizable(self):
+        return self.get_path("resizable")

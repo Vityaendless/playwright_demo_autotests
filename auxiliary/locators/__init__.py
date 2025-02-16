@@ -10,4 +10,4 @@ from .windows import WindowsPageLocator, SamplePageLocator
 from .alerts import AlertsPageLocator
 from .iframes import IframePageLocator, NestedIframePageLocator
 from .modal_dialogs import ModalDialogsPageLocator
-from .interactions import SortablePageLocator, SelectablePageLocator
+from .interactions import SortablePageLocator, SelectablePageLocator, ResizablePageLocator
