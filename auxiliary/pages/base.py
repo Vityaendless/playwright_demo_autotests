@@ -7,7 +7,7 @@ class BasePage:
         self.url = None
 
     def navigate(self):
-        self.page.goto(self.url)
+        self.page.goto(self.url, timeout=120000)
 
     def click(self, el, button='left', position=None):
         if position:
@@ -68,3 +68,15 @@ class BasePage:
 
     def last(self, els):
         return self.__dict__[els['title']]['locator'].last
+
+    def bounding_box(self, el):
+        return self.__dict__[el['title']]['locator'].bounding_box()
+
+    def move(self, x, y):
+        self.page.mouse.move(x, y)
+
+    def down(self):
+        self.page.mouse.down()
+
+    def up(self):
+        self.page.mouse.up()

@@ -14,3 +14,5 @@ class SelectablePageLocator:
 
 class ResizablePageLocator:
     RESIZABLE_BOX = "#resizableBoxWithRestriction"
+    CONTAINER = ".constraint-area"
+    RESIZABLE = "#resizable"

@@ -82,3 +82,13 @@ class ResizablePage(BasePage):
             'locator': self.page.locator(ResizablePL.RESIZABLE_BOX),
             'selector': ResizablePL.RESIZABLE_BOX
         }
+        self.container = {
+            'title': 'container',
+            'locator': self.page.locator(ResizablePL.CONTAINER),
+            'selector': ResizablePL.CONTAINER
+        }
+        self.resizable = {
+            'title': 'resizable',
+            'locator': self.page.locator(ResizablePL.RESIZABLE),
+            'selector': ResizablePL.RESIZABLE
+        }
