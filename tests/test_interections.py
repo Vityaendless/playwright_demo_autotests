@@ -119,3 +119,19 @@ class TestInteractions:
             controller.resizable_page.up()
             style = controller.resizable_page.get_attr(controller.resizable_page.resizable_box, "style")
             print(style)
+
+    #@pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Простой Drag'n'drop")
+    @allure.description("Простой Drag'n'drop")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_resizable(self, controller):
+        with allure.step('Открыть страницу Drag\'n\'drop'):
+            controller.droppable_page.navigate()
+        with allure.step('Изменить размер элемента'):
+            controller.helper.to_contain_text(controller.droppable_page.simple_droppable, "Drop here")
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.simple_draggable, controller.droppable_page.simple_droppable
+            )
+            controller.helper.to_contain_text(controller.droppable_page.simple_droppable, "Dropped!")

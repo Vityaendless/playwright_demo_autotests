@@ -16,3 +16,8 @@ class ResizablePageLocator:
     RESIZABLE_BOX = "#resizableBoxWithRestriction"
     CONTAINER = ".constraint-area"
     RESIZABLE = "#resizable"
+
+
+class DropPageLocator:
+    SIMPLE_DRAGGABLE = "#droppableExample-tabpane-simple #draggable"
+    SIMPLE_DROPPABLE = "#droppableExample-tabpane-simple #droppable"

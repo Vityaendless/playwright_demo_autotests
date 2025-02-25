@@ -5,7 +5,8 @@ from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, L
                              UploadDownloadPage, DynPropertiesPage, WebTablesPage, TabsPage, AccordianPage,
                              PracticeFormPage, WindowsPage, SamplePage, AlertsPage, IframesPage, NestedIframesPage,
                              ModalDialogsPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage,
-                             ToolTipPage, MenuPage, SelectMenuPage, SortablePage, SelectablePage, ResizablePage)
+                             ToolTipPage, MenuPage, SelectMenuPage, SortablePage, SelectablePage, ResizablePage,
+                             DroppablePage)
 
 
 class Controller:
@@ -41,3 +42,4 @@ class Controller:
         self.sortable_page = SortablePage(self.page)
         self.selectable_page = SelectablePage(self.page)
         self.resizable_page = ResizablePage(self.page)
+        self.droppable_page = DroppablePage(self.page)

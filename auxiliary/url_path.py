@@ -119,3 +119,7 @@ class UrlPaths:
     @property
     def resizable(self):
         return self.get_path("resizable")
+
+    @property
+    def droppable(self):
+        return self.get_path("droppable")

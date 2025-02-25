@@ -80,3 +80,6 @@ class BasePage:
 
     def up(self):
         self.page.mouse.up()
+
+    def drag_n_drop(self, drag, drop):
+        self.page.drag_and_drop(drag['selector'], drop['selector'])

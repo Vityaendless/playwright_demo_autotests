@@ -3,7 +3,7 @@ from auxiliary.url_path import UrlPaths
 from auxiliary.constants import HTMLAttr, HTMLValue
 from auxiliary.helper import Helper
 from auxiliary.locators import (SortablePageLocator as SortablePL, SelectablePageLocator as SelectPL,
-                                ResizablePageLocator as ResizablePL)
+                                ResizablePageLocator as ResizablePL, DropPageLocator as DropPL)
 
 
 class SortablePage(BasePage):
@@ -91,4 +91,20 @@ class ResizablePage(BasePage):
             'title': 'resizable',
             'locator': self.page.locator(ResizablePL.RESIZABLE),
             'selector': ResizablePL.RESIZABLE
+        }
+
+
+class DroppablePage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().droppable
+        self.simple_draggable = {
+            'title': 'simple_draggable',
+            'locator': self.page.locator(DropPL.SIMPLE_DRAGGABLE),
+            'selector': DropPL.SIMPLE_DRAGGABLE
+        }
+        self.simple_droppable = {
+            'title': 'simple_droppable',
+            'locator': self.page.locator(DropPL.SIMPLE_DROPPABLE),
+            'selector': DropPL.SIMPLE_DROPPABLE
         }

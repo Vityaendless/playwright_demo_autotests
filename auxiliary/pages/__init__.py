@@ -8,4 +8,4 @@ from .windows import WindowsPage, SamplePage
 from .alerts import AlertsPage
 from .iframes import IframesPage, NestedIframesPage
 from .modal_dialogs import ModalDialogsPage
-from .interactions import SortablePage, SelectablePage, ResizablePage
+from .interactions import SortablePage, SelectablePage, ResizablePage, DroppablePage
