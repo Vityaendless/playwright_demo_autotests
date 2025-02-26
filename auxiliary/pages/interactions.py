@@ -108,3 +108,23 @@ class DroppablePage(BasePage):
             'locator': self.page.locator(DropPL.SIMPLE_DROPPABLE),
             'selector': DropPL.SIMPLE_DROPPABLE
         }
+        self.accept_tab = {
+            'title': 'accept_tab',
+            'locator': self.page.locator(DropPL.ACCEPT_TAB),
+            'selector': DropPL.ACCEPT_TAB
+        }
+        self.acceptable = {
+            'title': 'acceptable',
+            'locator': self.page.locator(DropPL.ACCEPTABLE),
+            'selector': DropPL.ACCEPTABLE
+        }
+        self.not_acceptable = {
+            'title': 'not_acceptable',
+            'locator': self.page.locator(DropPL.NOT_ACCEPTABLE),
+            'selector': DropPL.NOT_ACCEPTABLE
+        }
+        self.accept_droppable = {
+            'title': 'accept_droppable',
+            'locator': self.page.locator(DropPL.ACCEPT_DROPPABLE),
+            'selector': DropPL.ACCEPT_DROPPABLE
+        }

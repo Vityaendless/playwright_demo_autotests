@@ -93,12 +93,8 @@ class TestInteractions:
         with allure.step('Открыть страницу изменения размера элементов'):
             controller.resizable_page.navigate()
         with allure.step('Изменить размер элемента'):
-            height = controller.resizable_page.resizable_box['locator'].evaluate(
-                '(event) => parseFloat(event.style.height)'
-            )
-            width = controller.resizable_page.resizable_box['locator'].evaluate(
-                '(event) => parseFloat(event.style.width)'
-            )
+            height = controller.resizable_page.get_el_height(controller.resizable_page.resizable_box)
+            width = controller.resizable_page.get_el_height(controller.resizable_page.resizable_box)
             print(height, width)
             controller.resizable_page.hover(
                 controller.resizable_page.container, position={"x": width+50, "y": height+50}
@@ -120,18 +116,50 @@ class TestInteractions:
             style = controller.resizable_page.get_attr(controller.resizable_page.resizable_box, "style")
             print(style)
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Простой Drag'n'drop")
     @allure.description("Простой Drag'n'drop")
     @allure.severity(allure.severity_level.NORMAL)
-    def test_resizable(self, controller):
+    def test_simple_drag_n_drop(self, controller):
         with allure.step('Открыть страницу Drag\'n\'drop'):
             controller.droppable_page.navigate()
-        with allure.step('Изменить размер элемента'):
+        with allure.step('Сделать drag n drop и проверить что он произошел'):
             controller.helper.to_contain_text(controller.droppable_page.simple_droppable, "Drop here")
             controller.droppable_page.drag_n_drop(
                 controller.droppable_page.simple_draggable, controller.droppable_page.simple_droppable
             )
             controller.helper.to_contain_text(controller.droppable_page.simple_droppable, "Dropped!")
+
+    #@pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Drag'n'drop с подтверждением")
+    @allure.description("Drag'n'drop с подтверждением")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_accept_drag_n_drop(self, controller):
+        with allure.step('Открыть страницу Drag\'n\'drop'):
+            controller.droppable_page.navigate()
+        with allure.step('Перейти на вкладку Accept Drag\'n\'drop'):
+            controller.droppable_page.click(controller.droppable_page.accept_tab)
+        with allure.step('Сделать not acceptable drag n drop и проверить что он НЕ произошел'):
+            controller.helper.to_contain_text(controller.droppable_page.accept_droppable, "Drop here")
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.not_acceptable,
+                controller.droppable_page.accept_droppable,
+                target_position={"x": 30, "y": 30}
+            )
+            controller.helper.to_contain_text(controller.droppable_page.accept_droppable, "Drop here")
+        with allure.step('Получить размеры droppable элемента'):
+            width = controller.droppable_page.get_el_width(controller.droppable_page.accept_droppable)
+            height = controller.droppable_page.get_el_height(controller.droppable_page.accept_droppable)
+            print(width, height)
+        with allure.step('Сделать acceptable drag n drop и проверить что он произошел'):
+            controller.helper.to_contain_text(controller.droppable_page.accept_droppable, "Drop here")
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.acceptable,
+                controller.droppable_page.accept_droppable,
+                target_position={"x": int(width) - 30, "y": int(height) - 30}
+            )
+            controller.helper.to_contain_text(controller.droppable_page.accept_droppable, "Dropped!")

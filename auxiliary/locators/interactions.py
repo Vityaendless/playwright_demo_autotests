@@ -21,3 +21,7 @@ class ResizablePageLocator:
 class DropPageLocator:
     SIMPLE_DRAGGABLE = "#droppableExample-tabpane-simple #draggable"
     SIMPLE_DROPPABLE = "#droppableExample-tabpane-simple #droppable"
+    ACCEPT_TAB = "#droppableExample-tab-accept"
+    ACCEPTABLE = "#acceptable"
+    NOT_ACCEPTABLE = "#notAcceptable"
+    ACCEPT_DROPPABLE = "#droppableExample-tabpane-accept #droppable"
