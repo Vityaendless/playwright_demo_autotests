@@ -1,7 +1,7 @@
 import pytest
 
 from auxiliary.controller import Controller
-from auxiliary.constants import COLORS, TOOL_TIPS_TEXTS, VisibilityState
+from auxiliary.constants import COLORS, TOOL_TIPS_TEXTS, DRAG_N_DROP_INFO, VisibilityState
 
 
 @pytest.fixture(scope="function")
@@ -17,6 +17,10 @@ def tool_tips_data():
 @pytest.fixture(scope="function")
 def visibility_data():
     yield VisibilityState
+
+@pytest.fixture(scope="function")
+def drag_n_drop_info():
+    yield DRAG_N_DROP_INFO
 
 
 @pytest.fixture(scope="function")

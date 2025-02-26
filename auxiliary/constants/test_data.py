@@ -8,3 +8,5 @@ TOOL_TIPS_TEXTS = [
     "You hovered over the Button", "You hovered over the text field",
     "You hovered over the Contrary", "You hovered over the 1.10.32"
 ]
+
+DRAG_N_DROP_INFO = ["Drop here", "Dropped!"]
