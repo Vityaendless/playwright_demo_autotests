@@ -132,7 +132,7 @@ class TestInteractions:
             )
             controller.helper.to_contain_text(controller.droppable_page.simple_droppable, drag_n_drop_info[1])
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Drag'n'drop с подтверждением")
@@ -162,3 +162,37 @@ class TestInteractions:
                 target_position={"x": int(el_params['width']) - 30, "y": int(el_params['height']) - 30}
             )
             controller.helper.to_contain_text(controller.droppable_page.accept_droppable, drag_n_drop_info[1])
+
+    #@pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Drag'n'drop с вложенностью элементов")
+    @allure.description("Drag'n'drop с вложенностью элементов")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_prevent_propogation_drag_n_drop(self, controller, drag_n_drop_info):
+        with allure.step('Открыть страницу Drag\'n\'drop'):
+            controller.droppable_page.navigate()
+        with allure.step('Перейти на вкладку Prevent Propogation Drag\'n\'drop'):
+            controller.droppable_page.click(controller.droppable_page.pr_pr_tab)
+        with allure.step('Сделать not greedy drag n drop и проверить что он отработал для родителя'):
+            controller.helper.to_contain_text(controller.droppable_page.not_greedy_out_drop, drag_n_drop_info[2])
+            controller.helper.to_contain_text(
+                controller.droppable_page.not_greedy_inner_drop, "Inner droppable (not greedy)"
+            )
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.pr_pr_draggable,
+                controller.droppable_page.not_greedy_inner_drop
+            )
+            controller.helper.to_contain_text(controller.droppable_page.not_greedy_out_drop, drag_n_drop_info[1])
+            controller.helper.to_contain_text(controller.droppable_page.not_greedy_inner_drop, drag_n_drop_info[1])
+        with allure.step('Сделать greedy drag n drop и проверить что он НЕ отработал для родителя'):
+            controller.helper.to_contain_text(controller.droppable_page.greedy_out_drop, drag_n_drop_info[2])
+            controller.helper.to_contain_text(
+                controller.droppable_page.greedy_inner_drop, "Inner droppable (greedy)"
+            )
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.pr_pr_draggable,
+                controller.droppable_page.greedy_inner_drop
+            )
+            controller.helper.to_contain_text(controller.droppable_page.greedy_out_drop, drag_n_drop_info[2])
+            controller.helper.to_contain_text(controller.droppable_page.greedy_inner_drop, drag_n_drop_info[1])

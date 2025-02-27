@@ -128,3 +128,33 @@ class DroppablePage(BasePage):
             'locator': self.page.locator(DropPL.ACCEPT_DROPPABLE),
             'selector': DropPL.ACCEPT_DROPPABLE
         }
+        self.pr_pr_tab = {
+            'title': 'pr_pr_tab',
+            'locator': self.page.locator(DropPL.PREVENT_PROPOGATION_TAB),
+            'selector': DropPL.PREVENT_PROPOGATION_TAB
+        }
+        self.pr_pr_draggable = {
+            'title': 'pr_pr_draggable',
+            'locator': self.page.locator(DropPL.PR_PR_DRAGGABLE),
+            'selector': DropPL.PR_PR_DRAGGABLE
+        }
+        self.not_greedy_out_drop = {
+            'title': 'not_greedy_out_drop',
+            'locator': self.page.locator(DropPL.NOT_GREEDY_OUT_DROP),
+            'selector': DropPL.NOT_GREEDY_OUT_DROP
+        }
+        self.not_greedy_inner_drop = {
+            'title': 'not_greedy_inner_drop',
+            'locator': self.page.locator(DropPL.NOT_GREEDY_INNER_DROP),
+            'selector': DropPL.NOT_GREEDY_INNER_DROP
+        }
+        self.greedy_out_drop = {
+            'title': 'greedy_out_drop',
+            'locator': self.page.locator(DropPL.GREEDY_OUT_DROP),
+            'selector': DropPL.GREEDY_OUT_DROP
+        }
+        self.greedy_inner_drop = {
+            'title': 'greedy_inner_drop',
+            'locator': self.page.locator(DropPL.GREEDY_INNER_DROP),
+            'selector': DropPL.GREEDY_INNER_DROP
+        }
