@@ -31,3 +31,7 @@ class DropPageLocator:
     NOT_GREEDY_INNER_DROP = "#notGreedyInnerDropBox"
     GREEDY_OUT_DROP = "#greedyDropBox"
     GREEDY_INNER_DROP = "#greedyDropBoxInner"
+    REVERT_TAB = "#droppableExample-tab-revertable"
+    REVERTABLE = "#revertable"
+    NOT_REVERTABLE = "#notRevertable"
+    REVERT_DROPPABLE = "#droppableExample-tabpane-revertable #droppable"

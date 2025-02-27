@@ -82,10 +82,6 @@ class BasePage:
         self.page.mouse.up()
 
     def drag_n_drop(self, drag, drop, target_position=None):
-        #source_position={"x": 34, "y": 7}, {"x": 10, "y": 20}
-        # if target_position is None:
-        #     self.page.drag_and_drop(drag['selector'], drop['selector'])
-        # else:
         self.page.drag_and_drop(drag['selector'], drop['selector'], target_position=target_position)
 
     @staticmethod

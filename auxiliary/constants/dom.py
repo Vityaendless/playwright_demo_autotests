@@ -14,6 +14,7 @@ class HTMLAttr:
     SRC = "src"
     VALUE = "value"
     CLASS = "class"
+    STYLE = "style"
 
 
 class HTMLValue:

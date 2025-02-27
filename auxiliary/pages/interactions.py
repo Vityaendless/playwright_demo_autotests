@@ -158,3 +158,23 @@ class DroppablePage(BasePage):
             'locator': self.page.locator(DropPL.GREEDY_INNER_DROP),
             'selector': DropPL.GREEDY_INNER_DROP
         }
+        self.revert_tab = {
+            'title': 'revert_tab',
+            'locator': self.page.locator(DropPL.REVERT_TAB),
+            'selector': DropPL.REVERT_TAB
+        }
+        self.revertable = {
+            'title': 'revertable',
+            'locator': self.page.locator(DropPL.REVERTABLE),
+            'selector': DropPL.REVERTABLE
+        }
+        self.not_revertable = {
+            'title': 'not_revertable',
+            'locator': self.page.locator(DropPL.NOT_REVERTABLE),
+            'selector': DropPL.NOT_REVERTABLE
+        }
+        self.revert_droppable = {
+            'title': 'revert_droppable',
+            'locator': self.page.locator(DropPL.REVERT_DROPPABLE),
+            'selector': DropPL.REVERT_DROPPABLE
+        }

@@ -3,6 +3,8 @@ import time
 import allure
 import pytest
 
+from auxiliary.constants import HTMLAttr
+
 
 @allure.epic("Тесты взаимодейстий между элементами")
 class TestInteractions:
@@ -163,7 +165,7 @@ class TestInteractions:
             )
             controller.helper.to_contain_text(controller.droppable_page.accept_droppable, drag_n_drop_info[1])
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Drag'n'drop с вложенностью элементов")
@@ -196,3 +198,40 @@ class TestInteractions:
             )
             controller.helper.to_contain_text(controller.droppable_page.greedy_out_drop, drag_n_drop_info[2])
             controller.helper.to_contain_text(controller.droppable_page.greedy_inner_drop, drag_n_drop_info[1])
+
+    @pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Drag'n'drop с отменой действия")
+    @allure.description("Drag'n'drop с отменой действия")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_revert_drag_n_drop(self, controller, drag_n_drop_info):
+        DEFAULT_POSITION = "position: relative; left: 0px; top: 0px;"
+        with allure.step('Открыть страницу Drag\'n\'drop'):
+            controller.droppable_page.navigate()
+        with allure.step('Перейти на вкладку Revert Drag\'n\'drop'):
+            controller.droppable_page.click(controller.droppable_page.revert_tab)
+        with allure.step('Сделать drag n drop и проверить что он отработал с отменой'):
+            controller.helper.to_contain_text(controller.droppable_page.revert_droppable, drag_n_drop_info[0])
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.revertable,
+                controller.droppable_page.revert_droppable
+            )
+            controller.helper.to_contain_text(controller.droppable_page.revert_droppable, drag_n_drop_info[1])
+            time.sleep(1)
+            style = controller.droppable_page.get_attr(controller.droppable_page.revertable, HTMLAttr.STYLE)
+            controller.helper.is_eq(style, DEFAULT_POSITION)
+        with allure.step('Перезагрузить страницу и перейти на вкладку Revert Drag\'n\'drop'):
+            controller.droppable_page.page.reload()
+            controller.droppable_page.click(controller.droppable_page.revert_tab)
+            time.sleep(1)
+        with allure.step('Сделать drag n drop и проверить что он отработал без отменой'):
+            controller.helper.to_contain_text(controller.droppable_page.revert_droppable, drag_n_drop_info[0])
+            controller.droppable_page.drag_n_drop(
+                controller.droppable_page.not_revertable,
+                controller.droppable_page.revert_droppable
+            )
+            controller.helper.to_contain_text(controller.droppable_page.revert_droppable, drag_n_drop_info[1])
+            time.sleep(1)
+            style = controller.droppable_page.get_attr(controller.droppable_page.not_revertable, HTMLAttr.STYLE)
+            controller.helper.is_not_eq(style, DEFAULT_POSITION)
