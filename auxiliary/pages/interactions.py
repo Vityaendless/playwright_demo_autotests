@@ -3,7 +3,8 @@ from auxiliary.url_path import UrlPaths
 from auxiliary.constants import HTMLAttr, HTMLValue
 from auxiliary.helper import Helper
 from auxiliary.locators import (SortablePageLocator as SortablePL, SelectablePageLocator as SelectPL,
-                                ResizablePageLocator as ResizablePL, DropPageLocator as DropPL)
+                                ResizablePageLocator as ResizablePL, DropPageLocator as DropPL,
+                                DraggablePageLocator as DragPL)
 
 
 class SortablePage(BasePage):
@@ -177,4 +178,75 @@ class DroppablePage(BasePage):
             'title': 'revert_droppable',
             'locator': self.page.locator(DropPL.REVERT_DROPPABLE),
             'selector': DropPL.REVERT_DROPPABLE
+        }
+
+
+class DraggablePage(BasePage):
+    def __init__(self, page):
+        super().__init__(page)
+        self.url = UrlPaths().dragabble
+        self.simple_drag_box = {
+            'title': 'simple_drag_box',
+            'locator': self.page.locator(DragPL.SIMPLE_DRAG_BOX),
+            'selector': DragPL.SIMPLE_DRAG_BOX
+        }
+        self.axis_tab = {
+            'title': 'axis_tab',
+            'locator': self.page.locator(DragPL.AXIS_TAB),
+            'selector': DragPL.AXIS_TAB
+        }
+        self.only_x_drag = {
+            'title': 'only_x_drag',
+            'locator': self.page.locator(DragPL.ONLY_X_DRAG),
+            'selector': DragPL.ONLY_X_DRAG
+        }
+        self.only_y_drag = {
+            'title': 'only_y_drag',
+            'locator': self.page.locator(DragPL.ONLY_Y_DRAG),
+            'selector': DragPL.ONLY_Y_DRAG
+        }
+        self.container_tab = {
+            'title': 'container_tab',
+            'locator': self.page.locator(DragPL.CONTAINER_TAB),
+            'selector': DragPL.CONTAINER_TAB
+        }
+        self.container = {
+            'title': 'container',
+            'locator': self.page.locator(DragPL.CONTAINER),
+            'selector': DragPL.CONTAINER
+        }
+        self.drag_in_container = {
+            'title': 'drag_in_container',
+            'locator': self.page.locator(DragPL.DRAG_IN_CONTAINER),
+            'selector': DragPL.DRAG_IN_CONTAINER
+        }
+        self.draggable_container = {
+            'title': 'draggable_container',
+            'locator': self.page.locator(DragPL.DRAGGABLE_CONTAINER),
+            'selector': DragPL.DRAGGABLE_CONTAINER
+        }
+        self.drag_span = {
+            'title': 'drag_span',
+            'locator': self.page.locator(DragPL.DRAG_SPAN),
+            'selector': DragPL.DRAG_SPAN
+        }
+        self.cursor_style_tab = {
+            'title': 'cursor_style_tab',
+            'locator': self.page.locator(DragPL.CURSOR_STYLE_TAB),
+            'selector': DragPL.CURSOR_STYLE_TAB
+        }
+        self.cursor_center = {
+            'title': 'cursor_center',
+            'locator': self.page.locator(DragPL.CURSOR_CENTER),
+            'selector': DragPL.CURSOR_CENTER
+        }
+        self.cursor_top_left = {
+            'title': 'cursor_top_left',
+            'locator': self.page.locator(DragPL.CURSOR_TOP_LEFT),
+            'selector': DragPL.CURSOR_TOP_LEFT
+        }
+        self.cursor_bottom = {
+            'title': 'cursor_bottom',
+            'locator': self.page.locator(DragPL.CURSOR_BOTTOM),
+            'selector': DragPL.CURSOR_BOTTOM
         }

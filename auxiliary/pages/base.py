@@ -1,4 +1,5 @@
 # from playwright.sync_api import Page
+import time
 
 
 class BasePage:
@@ -80,6 +81,18 @@ class BasePage:
 
     def up(self):
         self.page.mouse.up()
+
+    def drag(self, el, x, y, mode="relative"):
+        self.hover(el)
+        if mode == "relative":
+            el_params = self.bounding_box(el)
+            print(el_params)
+            x = x + el_params['x']
+            y = y + el_params['y']
+        time.sleep(1)
+        self.down()
+        self.move(x, y)
+        self.up()
 
     def drag_n_drop(self, drag, drop, target_position=None):
         self.page.drag_and_drop(drag['selector'], drop['selector'], target_position=target_position)

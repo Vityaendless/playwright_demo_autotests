@@ -64,6 +64,10 @@ class Helper:
         assert first != second, f"[{first}] == [{second}]"
 
     @staticmethod
+    def is_less(first, second):
+        assert first < second, f"[{first}] >= [{second}]"
+
+    @staticmethod
     def is_in(first, second):
         assert first in second, f"[{first}] not in [{second}]"
 

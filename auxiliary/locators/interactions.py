@@ -35,3 +35,19 @@ class DropPageLocator:
     REVERTABLE = "#revertable"
     NOT_REVERTABLE = "#notRevertable"
     REVERT_DROPPABLE = "#droppableExample-tabpane-revertable #droppable"
+
+
+class DraggablePageLocator:
+    SIMPLE_DRAG_BOX = "#dragBox"
+    AXIS_TAB = "#draggableExample-tab-axisRestriction"
+    ONLY_X_DRAG = "#restrictedX"
+    ONLY_Y_DRAG = "#restrictedY"
+    CONTAINER_TAB = "#draggableExample-tab-containerRestriction"
+    CONTAINER = "#containmentWrapper"
+    DRAG_IN_CONTAINER = "#containmentWrapper .draggable"
+    DRAGGABLE_CONTAINER = "#draggableExample-tabpane-containerRestriction > .draggable"
+    DRAG_SPAN = "#draggableExample-tabpane-containerRestriction > .draggable span"
+    CURSOR_STYLE_TAB = "#draggableExample-tab-cursorStyle"
+    CURSOR_CENTER = "#cursorCenter"
+    CURSOR_TOP_LEFT = "#cursorTopLeft"
+    CURSOR_BOTTOM = "#cursorBottom"

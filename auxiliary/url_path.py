@@ -123,3 +123,7 @@ class UrlPaths:
     @property
     def droppable(self):
         return self.get_path("droppable")
+
+    @property
+    def dragabble(self):
+        return self.get_path("dragabble")

@@ -8,6 +8,7 @@ from auxiliary.constants import HTMLAttr
 
 @allure.epic("Тесты взаимодейстий между элементами")
 class TestInteractions:
+    DEFAULT_POSITION = "position: relative;"
 
     @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
@@ -235,3 +236,122 @@ class TestInteractions:
             time.sleep(1)
             style = controller.droppable_page.get_attr(controller.droppable_page.not_revertable, HTMLAttr.STYLE)
             controller.helper.is_not_eq(style, DEFAULT_POSITION)
+
+    @pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Перемещение элемента")
+    @allure.description("Перемещение элемента относительно текущего положения")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_simple_drag(self, controller):
+        with allure.step('Открыть страницу Draggable'):
+            controller.draggable_page.navigate()
+        with allure.step('Сделать drag и проверить что он отработал'):
+            controller.helper.to_have_css(controller.draggable_page.simple_drag_box, "position", "relative")
+            default_style = controller.draggable_page.get_attr(
+                controller.draggable_page.simple_drag_box, HTMLAttr.STYLE
+            )
+            controller.helper.is_eq(default_style, TestInteractions.DEFAULT_POSITION)
+            controller.draggable_page.drag(controller.draggable_page.simple_drag_box, 150, 120)
+            style = controller.draggable_page.get_attr(controller.draggable_page.simple_drag_box, "style")
+            print(style)
+            controller.helper.to_have_css(controller.draggable_page.simple_drag_box, "left", "100px")
+            controller.helper.to_have_css(controller.draggable_page.simple_drag_box, "top", "100px")
+
+    @pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Перемещение элемента")
+    @allure.description("Перемещение элементов по какой-то отдельной оси")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_asix_drag(self, controller):
+        with allure.step('Открыть страницу Draggable'):
+            controller.draggable_page.navigate()
+        with allure.step('Перейти на вкладку Axis Drag'):
+            controller.draggable_page.click(controller.draggable_page.axis_tab)
+        with allure.step('Сделать drag и проверить что он отработал только по определенной оси'):
+            controller.helper.to_have_css(controller.draggable_page.only_x_drag, "position", "relative")
+            controller.helper.to_have_css(controller.draggable_page.only_y_drag, "position", "relative")
+            default_style_only_x = controller.draggable_page.get_attr(
+                controller.draggable_page.only_x_drag, HTMLAttr.STYLE
+            )
+            controller.helper.is_eq(default_style_only_x, TestInteractions.DEFAULT_POSITION)
+            default_style_only_y = controller.draggable_page.get_attr(
+                controller.draggable_page.only_y_drag, HTMLAttr.STYLE
+            )
+            controller.helper.is_eq(default_style_only_y, TestInteractions.DEFAULT_POSITION)
+            controller.draggable_page.drag(controller.draggable_page.only_x_drag, 150, 120)
+            only_x_style = controller.draggable_page.get_attr(controller.draggable_page.only_x_drag, "style")
+            print(only_x_style)
+            controller.draggable_page.drag(controller.draggable_page.only_y_drag, 150, 120)
+            only_y_style = controller.draggable_page.get_attr(controller.draggable_page.only_y_drag, "style")
+            print(only_y_style)
+            controller.helper.to_have_css(controller.draggable_page.only_x_drag, "left", "100px")
+            controller.helper.to_have_css(controller.draggable_page.only_x_drag, "top", "0px")
+            controller.helper.to_have_css(controller.draggable_page.only_y_drag, "left", "0px")
+            controller.helper.to_have_css(controller.draggable_page.only_y_drag, "top", "100px")
+
+    @pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Перемещение элемента")
+    @allure.description("Перемещение элементов внутри контейнера")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_container_drag(self, controller):
+        with allure.step('Открыть страницу Draggable'):
+            controller.draggable_page.navigate()
+        with allure.step('Перейти на вкладку Contsiner Drag'):
+            controller.draggable_page.click(controller.draggable_page.container_tab)
+        with allure.step('Сделать drag и проверить что он отработал только внутри контейнера'):
+            controller.helper.to_have_css(controller.draggable_page.drag_in_container, "position", "relative")
+            controller.helper.to_have_css(controller.draggable_page.drag_span, "position", "relative")
+            default_style_in_container = controller.draggable_page.get_attr(
+                controller.draggable_page.drag_in_container, HTMLAttr.STYLE
+            )
+            controller.helper.is_eq(default_style_in_container, TestInteractions.DEFAULT_POSITION)
+            default_span_style = controller.draggable_page.get_attr(
+                controller.draggable_page.drag_span, HTMLAttr.STYLE
+            )
+            controller.helper.is_eq(default_span_style, TestInteractions.DEFAULT_POSITION)
+            el_params_container = controller.draggable_page.bounding_box(controller.draggable_page.container)
+            el_params_draggable_container = controller.draggable_page.bounding_box(
+                controller.draggable_page.draggable_container
+            )
+            print(el_params_container)
+            print(el_params_draggable_container)
+            controller.draggable_page.drag(
+                controller.draggable_page.drag_in_container, el_params_container['width'], el_params_container['height']
+            )
+            drag_in_container_style = controller.draggable_page.get_attr(
+                controller.draggable_page.drag_in_container, "style"
+            )
+            print(drag_in_container_style)
+            controller.draggable_page.hover(controller.draggable_page.draggable_container)
+            controller.draggable_page.drag(
+                controller.draggable_page.drag_span,
+                el_params_draggable_container['width'],
+                el_params_draggable_container['height']
+            )
+            drag_span_style = controller.draggable_page.get_attr(controller.draggable_page.drag_span, "style")
+            print(drag_span_style)
+
+    #@pytest.mark.skip
+    @allure.feature("Взаимодействие элементов")
+    @allure.story("Взаимодействие между различными элементами")
+    @allure.title("Положение курсора")
+    @allure.description("Положение курсора относительно перемещаемого элемента")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_cursor_position(self, controller):
+        with allure.step('Открыть страницу Draggable'):
+            controller.draggable_page.navigate()
+        with allure.step('Перейти на вкладку Cursor Position'):
+            controller.draggable_page.click(controller.draggable_page.cursor_style_tab)
+        with allure.step('Сделать drag и проверить что он отработал только внутри контейнера'):
+            controller.draggable_page.hover(controller.draggable_page.cursor_center)
+            controller.draggable_page.up()
+            controller.draggable_page.move(50, 50)
+            cursor_center = controller.draggable_page.bounding_box(controller.draggable_page.cursor_center)
+            print(cursor_center)
+            x = controller.draggable_page.page.evaluate("(event) => {return event.clientX;}")
+            print(x)
+            controller.draggable_page.down()
