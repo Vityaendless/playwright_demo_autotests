@@ -335,7 +335,7 @@ class TestInteractions:
             drag_span_style = controller.draggable_page.get_attr(controller.draggable_page.drag_span, "style")
             print(drag_span_style)
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Положение курсора")
@@ -347,11 +347,20 @@ class TestInteractions:
         with allure.step('Перейти на вкладку Cursor Position'):
             controller.draggable_page.click(controller.draggable_page.cursor_style_tab)
         with allure.step('Сделать drag и проверить что он отработал только внутри контейнера'):
-            controller.draggable_page.hover(controller.draggable_page.cursor_center)
-            controller.draggable_page.up()
-            controller.draggable_page.move(50, 50)
-            cursor_center = controller.draggable_page.bounding_box(controller.draggable_page.cursor_center)
-            print(cursor_center)
-            x = controller.draggable_page.page.evaluate("(event) => {return event.clientX;}")
-            print(x)
-            controller.draggable_page.down()
+            controller.draggable_page.page.evaluate("var x; var y;"
+                                                    "document.addEventListener('mousemove', mousePosition);"
+                                                    "function mousePosition(e) {"
+                                                    "x = e.clientX;"
+                                                    "y = e.clientY;"
+                                                    "console.log(x);"
+                                                    "console.log(y);"
+                                                    "}")
+            controller.draggable_page.get_cursor_position_while_moving(
+                controller.draggable_page.cursor_center, 350, 150
+            )
+            controller.draggable_page.get_cursor_position_while_moving(
+                controller.draggable_page.cursor_top_left, 50, 150
+            )
+            controller.draggable_page.get_cursor_position_while_moving(
+                controller.draggable_page.cursor_bottom, 150, 150
+            )

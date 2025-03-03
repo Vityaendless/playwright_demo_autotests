@@ -250,3 +250,15 @@ class DraggablePage(BasePage):
             'locator': self.page.locator(DragPL.CURSOR_BOTTOM),
             'selector': DragPL.CURSOR_BOTTOM
         }
+
+    def get_cursor_position_while_moving(self, el, x, y):
+        self.hover(el)
+        down_params = self.bounding_box(el)
+        print(down_params)
+        self.down()
+        self.move(down_params['x'] + x, down_params['y'] + y)
+        self.up()
+        up_params = self.bounding_box(el)
+        x = self.page.evaluate('() => x')
+        y = self.page.evaluate('() => y')
+        print(el["title"], up_params, x, y)
