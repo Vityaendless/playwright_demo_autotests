@@ -3,3 +3,4 @@ class LoginPageLocator:
     PASS = "#password"
     LOGIN_BTN = "#login"
     USERNAME_VALUE = "#userName-value"
+    MESSAGE = "#name"

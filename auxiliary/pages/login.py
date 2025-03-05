@@ -27,3 +27,8 @@ class LoginPage(BasePage):
             'locator': self.page.locator(LoginPL.USERNAME_VALUE),
             'selector': LoginPL.USERNAME_VALUE
         }
+        self.message = {
+            'title': 'message',
+            'locator': self.page.locator(LoginPL.MESSAGE),
+            'selector': LoginPL.MESSAGE
+        }

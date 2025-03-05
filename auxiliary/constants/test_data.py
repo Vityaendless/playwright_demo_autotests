@@ -13,5 +13,7 @@ DRAG_N_DROP_INFO = ["Drop here", "Dropped!", "Outer droppable"]
 
 TEST_USER = {
     "username": "testqwerty",
-    "password": "Qwerty123!"
+    "invalid_username": "Testuserwhoneverussed",
+    "password": "Qwerty123!",
+    "invalid_password": "Qwerty123",
 }
