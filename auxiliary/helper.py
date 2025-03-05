@@ -52,8 +52,8 @@ class Helper:
          to_have_css(attr, value, timeout=timeout))
 
     @staticmethod
-    def to_have_url(page, url):
-        expect(page, f"The page doesn't have url: [{url}]").to_have_url(url)
+    def to_have_url(page, url, timeout=None):
+        expect(page, f"The page doesn't have url: [{url}]").to_have_url(url, timeout=timeout)
 
     @staticmethod
     def is_eq(first, second):

@@ -127,3 +127,7 @@ class UrlPaths:
     @property
     def dragabble(self):
         return self.get_path("dragabble")
+
+    @property
+    def login(self):
+        return self.get_path("login")

@@ -9,3 +9,4 @@ from .alerts import AlertsPage
 from .iframes import IframesPage, NestedIframesPage
 from .modal_dialogs import ModalDialogsPage
 from .interactions import SortablePage, SelectablePage, ResizablePage, DroppablePage, DraggablePage
+from .login import LoginPage

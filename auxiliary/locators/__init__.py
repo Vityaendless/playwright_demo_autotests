@@ -12,3 +12,4 @@ from .iframes import IframePageLocator, NestedIframePageLocator
 from .modal_dialogs import ModalDialogsPageLocator
 from .interactions import (SortablePageLocator, SelectablePageLocator, ResizablePageLocator, DropPageLocator,
                            DraggablePageLocator)
+from .login import LoginPageLocator
