@@ -6,7 +6,7 @@ from auxiliary.pages import (TextboxPage, CheckboxPage, RadioBtnPage, BtnPage, L
                              PracticeFormPage, WindowsPage, SamplePage, AlertsPage, IframesPage, NestedIframesPage,
                              ModalDialogsPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage,
                              ToolTipPage, MenuPage, SelectMenuPage, SortablePage, SelectablePage, ResizablePage,
-                             DroppablePage, DraggablePage, LoginPage)
+                             DroppablePage, DraggablePage, LoginPage, RegisterPage)
 
 
 class Controller:
@@ -45,3 +45,4 @@ class Controller:
         self.droppable_page = DroppablePage(self.page)
         self.draggable_page = DraggablePage(self.page)
         self.login_page = LoginPage(self.page)
+        self.register_page = RegisterPage(self.page)

@@ -1,7 +1,6 @@
-from .elements_pages import (
-    TextboxPageLocator, CheckboxPageLocator, RadioBtnPageLocator, ButtonsPageLocator, LinksPageLocator,
-    BrokenLinksImagesPageLocator, UploadDownloadPageLocator, DynamicPropertiesPageLocator, WebTablesPageLocator
-)
+from .elements_pages import (TextboxPageLocator, CheckboxPageLocator, RadioBtnPageLocator, ButtonsPageLocator,
+                             LinksPageLocator, BrokenLinksImagesPageLocator, UploadDownloadPageLocator,
+                             DynamicPropertiesPageLocator, WebTablesPageLocator)
 from .widgets import (TabsPageLocator, AccordianPageLocator, AutoCompletePageLocator, DatePickerPageLocator,
                       SliderPageLocator, ProgressBarPageLocator, ToolTipsPageLocator, MenuPageLocator,
                       SelectMenuPageLocator)
@@ -13,3 +12,4 @@ from .modal_dialogs import ModalDialogsPageLocator
 from .interactions import (SortablePageLocator, SelectablePageLocator, ResizablePageLocator, DropPageLocator,
                            DraggablePageLocator)
 from .login import LoginPageLocator
+from .register import RegisterPageLocator

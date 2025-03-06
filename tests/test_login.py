@@ -28,7 +28,7 @@ class TestLogin:
     @allure.story("Пользователь может авторизоваться на сайте")
     @allure.title("Авторизация несуществующего пользователя")
     @allure.description("Авторизация несуществующего пользователя на сайте")
-    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.severity(allure.severity_level.NORMAL)
     def test_invalid_username(self, controller, test_user):
         with allure.step('Открыть страницу авторизации'):
             controller.login_page.navigate()
@@ -44,7 +44,7 @@ class TestLogin:
     @allure.story("Пользователь может авторизоваться на сайте")
     @allure.title("Авторизация с некорректным паролем")
     @allure.description("Авторизация пользователя с паролем, не подходящим под условия")
-    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.severity(allure.severity_level.NORMAL)
     def test_invalid_password(self, controller, test_user):
         with allure.step('Открыть страницу авторизации'):
             controller.login_page.navigate()

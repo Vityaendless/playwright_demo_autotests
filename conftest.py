@@ -1,4 +1,5 @@
 import pytest
+from faker import Faker
 
 from auxiliary.controller import Controller
 from auxiliary.constants import COLORS, TOOL_TIPS_TEXTS, DRAG_N_DROP_INFO, VisibilityState, TEST_USER
@@ -36,6 +37,18 @@ def user_data():
         'per_address': 'Test permanent address'
     }
     yield user_data
+
+
+@pytest.fixture(scope="function")
+def fake_user():
+    fake = Faker()
+    user = {
+        'first_name': fake.first_name(),
+        'last_name': fake.last_name(),
+        'username': fake.user_name(),
+        'password': 'Qwerty123!'
+    }
+    yield user
 
 
 @pytest.fixture(scope="function")

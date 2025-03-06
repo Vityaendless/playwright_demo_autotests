@@ -131,3 +131,7 @@ class UrlPaths:
     @property
     def login(self):
         return self.get_path("login")
+
+    @property
+    def register(self):
+        return self.get_path("register")
