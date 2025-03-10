@@ -135,3 +135,7 @@ class UrlPaths:
     @property
     def register(self):
         return self.get_path("register")
+
+    @property
+    def profile(self):
+        return self.get_path("profile")

@@ -37,3 +37,13 @@ class LoginPage(BasePage):
             'locator': self.page.locator(LoginPL.MESSAGE),
             'selector': LoginPL.MESSAGE
         }
+        self.loading_label = {
+            'title': 'loading_label',
+            'locator': self.page.locator(LoginPL.LOADING_LABEL),
+            'selector': LoginPL.LOADING_LABEL
+        }
+        self.to_profile_link = {
+            'title': 'to_profile_link',
+            'locator': self.page.locator(LoginPL.TO_PROFILE_LINK),
+            'selector': LoginPL.TO_PROFILE_LINK
+        }

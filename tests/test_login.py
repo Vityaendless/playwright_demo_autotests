@@ -1,5 +1,9 @@
+import time
+
 import allure
 import pytest
+
+from auxiliary.constants import HTMLAttr
 
 
 @allure.epic("Тесты авторизации")
@@ -20,8 +24,7 @@ class TestLogin:
             controller.login_page.fill(controller.login_page.password, test_user['password'])
             controller.login_page.click(controller.login_page.login_btn)
         with allure.step('Проверка, что авторизация произошла'):
-            controller.helper.to_have_url(controller.login_page.page, "https://demoqa.com/profile", timeout=10000)
-            #controller.helper.to_have_url(controller.login_page.page, controller.register_page.page.url, timeout=10000)
+            controller.helper.to_have_url(controller.login_page.page, controller.profile_page.page.url, timeout=10000)
             controller.helper.to_contain_text(controller.login_page.username_value, test_user['username'])
 
     @pytest.mark.skip
@@ -68,3 +71,21 @@ class TestLogin:
         with allure.step('Проверка перехода к странице регистрации'):
             controller.login_page.click(controller.login_page.reg_btn)
             controller.helper.to_have_url(controller.login_page.page, controller.register_page.page.url, timeout=10000)
+
+    #@pytest.mark.skip
+    @allure.feature("Авторизация")
+    @allure.story("Пользователь может авторизоваться на сайте")
+    @allure.title("Страница авторизации после авторизации")
+    @allure.description("Проверка содержимого страницы авторизации после авторизации")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_login_after_login(self, auth):
+        auth_controller = auth
+        with allure.step('Открыть страницу авторизации'):
+            # auth_controller.profile_page.
+            auth_controller.profile_page.click(auth_controller.profile_page.to_login_page)
+        auth_controller.helper.is_present(auth_controller.login_page.page, auth_controller.login_page.loading_label)
+        auth_controller.helper.is_present(auth_controller.login_page.page, auth_controller.login_page.to_profile_link)
+        auth_controller.helper.to_contain_text(
+            auth_controller.login_page.loading_label, "You are already logged in. View your profile."
+        )
+        auth_controller.helper.to_have_attribute(auth_controller.login_page.to_profile_link, HTMLAttr.HREF, "/profile")

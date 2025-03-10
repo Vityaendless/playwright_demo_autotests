@@ -6,6 +6,12 @@ class BasePage:
     def __init__(self, page):
         self.page = page
         self.url = None
+        self.to_login_page = {
+            'title': 'to_login_page',
+            'locator': self.page.locator("//li[@id='item-0']//*[text()='Login']"),
+            'selector': "//li[@id='item-0']//*[text()='Login']"
+        }
+
 
     def navigate(self):
         self.page.goto(self.url, timeout=120000)

@@ -13,3 +13,4 @@ from .interactions import (SortablePageLocator, SelectablePageLocator, Resizable
                            DraggablePageLocator)
 from .login import LoginPageLocator
 from .register import RegisterPageLocator
+from .profile import ProfilePageLocator

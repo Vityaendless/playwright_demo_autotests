@@ -27,6 +27,14 @@ def drag_n_drop_info():
 def test_user():
     yield TEST_USER
 
+@pytest.fixture(scope="function")
+def auth(page, test_user):
+    auth = Controller(page)
+    auth.login_page.navigate()
+    auth.login_page.fill(auth.login_page.username, test_user['username'])
+    auth.login_page.fill(auth.login_page.password, test_user['password'])
+    auth.login_page.click(auth.login_page.login_btn)
+    yield auth
 
 @pytest.fixture(scope="function")
 def user_data():

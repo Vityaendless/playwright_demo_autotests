@@ -10,7 +10,7 @@ from auxiliary.constants import HTMLAttr
 @allure.epic("Тесты регистрации")
 class TestRegister:
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Регистрация")
     @allure.story("Пользователь может зарегистрироваться на сайте на сайте")
     @allure.title("Регистрация")
@@ -20,16 +20,16 @@ class TestRegister:
         with allure.step('Открыть страницу регистрации'):
             controller.register_page.navigate()
         with allure.step('Зарегистрироваться на сайте'):
-            controller.helper.is_present_custom(
+            controller.helper.is_present(
                 controller.register_page.page, controller.register_page.first_name, HTMLAttr.REQUIRED
             )
-            controller.helper.is_present_custom(
+            controller.helper.is_present(
                 controller.register_page.page, controller.register_page.last_name, HTMLAttr.REQUIRED
             )
-            controller.helper.is_present_custom(
+            controller.helper.is_present(
                 controller.register_page.page, controller.register_page.username, HTMLAttr.REQUIRED
             )
-            controller.helper.is_present_custom(
+            controller.helper.is_present(
                 controller.register_page.page, controller.register_page.password, HTMLAttr.REQUIRED
             )
             controller.register_page.page.wait_for_timeout(random.randint(1, 5) * 2000 + 500)
