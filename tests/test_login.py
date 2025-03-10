@@ -21,6 +21,7 @@ class TestLogin:
             controller.login_page.click(controller.login_page.login_btn)
         with allure.step('Проверка, что авторизация произошла'):
             controller.helper.to_have_url(controller.login_page.page, "https://demoqa.com/profile", timeout=10000)
+            #controller.helper.to_have_url(controller.login_page.page, controller.register_page.page.url, timeout=10000)
             controller.helper.to_contain_text(controller.login_page.username_value, test_user['username'])
 
     @pytest.mark.skip
@@ -54,3 +55,16 @@ class TestLogin:
             controller.login_page.click(controller.login_page.login_btn)
         with allure.step('Проверка, что авторизация НЕ произошла'):
             controller.helper.to_contain_text(controller.login_page.message, TestLogin.LOGIN_ERROR_MESSAGE)
+
+    @pytest.mark.skip
+    @allure.feature("Авторизация")
+    @allure.story("Пользователь может авторизоваться на сайте")
+    @allure.title("Переход к странице регистрации")
+    @allure.description("Проверка перехода к странице регистрации")
+    @allure.severity(allure.severity_level.MINOR)
+    def test_to_register(self, controller):
+        with allure.step('Открыть страницу авторизации'):
+            controller.login_page.navigate()
+        with allure.step('Проверка перехода к странице регистрации'):
+            controller.login_page.click(controller.login_page.reg_btn)
+            controller.helper.to_have_url(controller.login_page.page, controller.register_page.page.url, timeout=10000)

@@ -56,6 +56,10 @@ class Helper:
         expect(page, f"The page doesn't have url: [{url}]").to_have_url(url, timeout=timeout)
 
     @staticmethod
+    def is_present_custom(page, el, css_mod):
+        assert page.locator(f"{el['selector']}[{css_mod}]"), f"There's no el:[{el}] in page"
+
+    @staticmethod
     def is_eq(first, second):
         assert first == second, f"[{first}] != [{second}]"
 

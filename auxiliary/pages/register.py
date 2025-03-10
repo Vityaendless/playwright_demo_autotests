@@ -32,6 +32,11 @@ class RegisterPage(BasePage):
             'locator': self.page.locator(RegisterPL.REGISTER_BTN),
             'selector': RegisterPL.REGISTER_BTN
         }
+        self.login_btn = {
+            'title': 'login_btn',
+            'locator': self.page.locator(RegisterPL.GO_TO_LOGIN_BTN),
+            'selector': RegisterPL.GO_TO_LOGIN_BTN
+        }
         self.recaptcha = {
             'title': 'recaptcha',
             'locator': self.page.locator(RegisterPL.RECAPTCHA),

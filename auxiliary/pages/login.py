@@ -22,6 +22,11 @@ class LoginPage(BasePage):
             'locator': self.page.locator(LoginPL.LOGIN_BTN),
             'selector': LoginPL.LOGIN_BTN
         }
+        self.reg_btn = {
+            'title': 'reg_btn',
+            'locator': self.page.locator(LoginPL.REG_BTN),
+            'selector': LoginPL.REG_BTN
+        }
         self.username_value = {
             'title': 'username_value',
             'locator': self.page.locator(LoginPL.USERNAME_VALUE),

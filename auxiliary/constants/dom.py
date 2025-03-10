@@ -15,6 +15,7 @@ class HTMLAttr:
     VALUE = "value"
     CLASS = "class"
     STYLE = "style"
+    REQUIRED = "required"
 
 
 class HTMLValue:
