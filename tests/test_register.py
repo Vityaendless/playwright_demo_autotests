@@ -46,11 +46,10 @@ class TestRegister:
             controller.register_page.down()
             controller.register_page.up()
             controller.register_page.page.wait_for_timeout(random.randint(1, 5) * 2000 + 500)
-            # controller.register_page.click(controller.register_page.register_btn)
-            # time.sleep(5)
-        # with allure.step('Проверка, что авторизация произошла'):
-        #     controller.helper.to_have_url(controller.login_page.page, "https://demoqa.com/profile", timeout=10000)
-        #     controller.helper.to_contain_text(controller.login_page.username_value, test_user['username'])
+            controller.register_page.click(controller.register_page.register_btn)
+        with allure.step('Проверка, что авторизация произошла'):
+            controller.helper.to_have_url(controller.login_page.page, "https://demoqa.com/profile", timeout=10000)
+            controller.helper.to_contain_text(controller.login_page.username_value, test_user['username'])
 
     @pytest.mark.skip
     @allure.feature("Регистрация")

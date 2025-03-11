@@ -12,7 +12,6 @@ class BasePage:
             'selector': "//li[@id='item-0']//*[text()='Login']"
         }
 
-
     def navigate(self):
         self.page.goto(self.url, timeout=120000)
 
