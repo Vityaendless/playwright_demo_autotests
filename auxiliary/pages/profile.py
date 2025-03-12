@@ -27,3 +27,13 @@ class ProfilePage(BasePage):
             'locator': self.page.locator(ProfilePL.LOGOUT_BTN),
             'selector': ProfilePL.LOGOUT_BTN
         }
+        self.go_to_bookstore = {
+            'title': 'go_to_bookstore',
+            'locator': self.page.locator(ProfilePL.GO_BOOKSTORE),
+            'selector': ProfilePL.GO_BOOKSTORE
+        }
+        self.delete_acc_btn = {
+            'title': 'delete_acc_btn',
+            'locator': self.page.locator(ProfilePL.DELETE_ACC_BTN),
+            'selector': ProfilePL.DELETE_ACC_BTN
+        }

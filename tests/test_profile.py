@@ -29,8 +29,40 @@ class TestProfile:
     @allure.description("Проверка возможности выйти из профиля")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_logout(self, controller, auth):
-        login = auth
+        login_controller = auth
         with allure.step('Нажать на кнопку логаута'):
             controller.profile_page.click(controller.profile_page.logout)
         with allure.step('Проверка, что логаут произошел'):
-            controller.helper.to_have_url(controller.profile_page.page, login.login_page.page.url, timeout=10000)
+            controller.helper.to_have_url(
+                controller.profile_page.page, login_controller.login_page.page.url, timeout=10000
+            )
+
+    @pytest.mark.skip
+    @allure.feature("Профиль")
+    @allure.story("Пользователь может зайти в свой профиль")
+    @allure.title("Переход к разделу Bookstore")
+    @allure.description("Проверка возможности перейти в Bookstore")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_go_to_bookstore(self, auth):
+        login_controller = auth
+        with allure.step('Нажать на кнопку перехода в Bookstore'):
+            login_controller.profile_page.click(login_controller.profile_page.go_to_bookstore)
+        with allure.step('Проверка, что переход в раздел BooksStore произошел'):
+            login_controller.helper.to_have_url(
+                login_controller.profile_page.page, login_controller.books_page.page.url, timeout=10000
+            )
+
+    #@pytest.mark.skip
+    @allure.feature("Профиль")
+    @allure.story("Пользователь может зайти в свой профиль")
+    @allure.title("Удаление пользователя")
+    @allure.description("Проверка возможности удалить пользователя в профиле")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_go_to_bookstore(self, auth):
+        login_controller = auth
+        with allure.step('Нажать на кнопку перехода в Bookstore'):
+            login_controller.profile_page.click(login_controller.profile_page.delete_acc_btn)
+        with allure.step('Проверка, что пользователь удален и произошел переход к разделу login'):
+            login_controller.helper.to_have_url(
+                login_controller.profile_page.page, login_controller.login_page.page.url, timeout=10000
+            )

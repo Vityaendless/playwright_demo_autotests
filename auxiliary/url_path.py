@@ -139,3 +139,7 @@ class UrlPaths:
     @property
     def profile(self):
         return self.get_path("profile")
+
+    @property
+    def books_store(self):
+        return self.get_path("books")

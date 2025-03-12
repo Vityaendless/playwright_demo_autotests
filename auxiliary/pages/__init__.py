@@ -12,3 +12,4 @@ from .interactions import SortablePage, SelectablePage, ResizablePage, Droppable
 from .login import LoginPage
 from .register import RegisterPage
 from .profile import ProfilePage
+from .books_store import BooksPage
