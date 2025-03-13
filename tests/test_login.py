@@ -1,5 +1,3 @@
-import time
-
 import allure
 import pytest
 
@@ -27,7 +25,6 @@ class TestLogin:
             controller.helper.to_have_url(controller.login_page.page, controller.profile_page.page.url, timeout=10000)
             controller.helper.to_contain_text(controller.login_page.username_value, test_user['username'])
 
-    @pytest.mark.skip
     @allure.feature("Авторизация")
     @allure.story("Пользователь может авторизоваться на сайте")
     @allure.title("Авторизация несуществующего пользователя")
@@ -43,7 +40,6 @@ class TestLogin:
         with allure.step('Проверка, что авторизация НЕ произошла'):
             controller.helper.to_contain_text(controller.login_page.message, TestLogin.LOGIN_ERROR_MESSAGE)
 
-    @pytest.mark.skip
     @allure.feature("Авторизация")
     @allure.story("Пользователь может авторизоваться на сайте")
     @allure.title("Авторизация с некорректным паролем")
@@ -59,7 +55,6 @@ class TestLogin:
         with allure.step('Проверка, что авторизация НЕ произошла'):
             controller.helper.to_contain_text(controller.login_page.message, TestLogin.LOGIN_ERROR_MESSAGE)
 
-    @pytest.mark.skip
     @allure.feature("Авторизация")
     @allure.story("Пользователь может авторизоваться на сайте")
     @allure.title("Переход к странице регистрации")
@@ -72,7 +67,6 @@ class TestLogin:
             controller.login_page.click(controller.login_page.reg_btn)
             controller.helper.to_have_url(controller.login_page.page, controller.register_page.page.url, timeout=10000)
 
-    @pytest.mark.skip
     @allure.feature("Авторизация")
     @allure.story("Пользователь может авторизоваться на сайте")
     @allure.title("Страница авторизации после авторизации")

@@ -37,3 +37,8 @@ class ProfilePage(BasePage):
             'locator': self.page.locator(ProfilePL.DELETE_ACC_BTN),
             'selector': ProfilePL.DELETE_ACC_BTN
         }
+        self.accept_delete_btn = {
+            'title': 'accept_delete_btn',
+            'locator': self.page.locator(ProfilePL.ACCEPT_DELETE_BTN),
+            'selector': ProfilePL.ACCEPT_DELETE_BTN
+        }

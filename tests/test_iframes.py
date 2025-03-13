@@ -1,11 +1,9 @@
 import allure
-import pytest
 
 
 @allure.epic("Тесты встроенных окон")
 class TestIframes:
 
-    @pytest.mark.skip
     @allure.feature("Работа со встроенными окнами")
     @allure.story("Взаимодействие с элементами встроенных окон")
     @allure.title("Проверка доступа к элементам встроенного окна")
@@ -21,7 +19,6 @@ class TestIframes:
             iframe2_heading = iframe2.locator(controller.sample_page.heading["selector"])
             controller.helper.is_eq(iframe1_heading.text_content(), iframe2_heading.text_content())
 
-    @pytest.mark.skip
     @allure.feature("Работа со встроенными окнами")
     @allure.story("Взаимодействие с элементами встроенных окон")
     @allure.title("Проверка доступа к дочернему встроенному окну")

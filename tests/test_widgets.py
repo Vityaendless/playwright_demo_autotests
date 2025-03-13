@@ -1,14 +1,11 @@
-import time
-
 import allure
-import pytest
 
 from auxiliary.constants import TAB_CLASSES, HTMLAttr
 
 
 @allure.epic("Тесты виджетов")
 class TestWidgets:
-    @pytest.mark.skip
+
     @allure.feature("Раздел аккордеона")
     @allure.story("Разбиение информации по разделам аккордеона")
     @allure.title("Проверка доступности разделов аккордеона")
@@ -47,7 +44,6 @@ class TestWidgets:
             controller.helper.not_to_be_visible(controller.accordian_page.section2_content)
             controller.helper.to_be_visible(controller.accordian_page.section3_content)
 
-    @pytest.mark.skip
     @allure.feature("Раздел вкладок с информацией")
     @allure.story("Разбиение информации по вкладкам")
     @allure.title("Проверка доступности вкладок")
@@ -108,7 +104,6 @@ class TestWidgets:
             controller.helper.not_to_be_visible(controller.tabs_page.more_content)
             assert controller.tabs_page.is_not_clickable(controller.tabs_page.more_tab), f"[{controller.tabs_page.more_tab['title']}] is clickable"
 
-    @pytest.mark.skip
     @allure.feature("Раздел полей авто подбора информации")
     @allure.story("Ввод информации в поля автоподбора")
     @allure.title("Проверить ввод информации в поля автоподбора")
@@ -143,7 +138,6 @@ class TestWidgets:
         with allure.step('Проверить эквивалентность введенного значения'):
             controller.helper.to_contain_text(controller.auto_complete_page.single_input_value, black)
 
-    @pytest.mark.skip
     @allure.feature("Раздел полей выбора дат, времени")
     @allure.story("Ввод информации в поля дат, времени")
     @allure.title("Проверить ввод информации в поля дат, времени")
@@ -172,7 +166,6 @@ class TestWidgets:
                 controller.date_picker_page.select_time_date, HTMLAttr.VALUE, "May 14, 2027 4:45 PM"
             )
 
-    @pytest.mark.skip
     @allure.feature("Раздел слайдера")
     @allure.story("Взаимодействие со слайдером")
     @allure.title("Проверить отображение изменения значения при взаимодействии со слайдером")
@@ -189,7 +182,6 @@ class TestWidgets:
         with allure.step('Проверка изменение значения после взаимодействия со слайдером'):
             controller.helper.to_have_attribute(controller.slider_page.slider_value, HTMLAttr.VALUE, slider_amount)
 
-    @pytest.mark.skip
     @allure.feature("Раздел прогресс-бара")
     @allure.story("Взаимодействие с элементами прогресс-бара")
     @allure.title("Проверить взаимодействие с прогресс-баром")
@@ -209,7 +201,6 @@ class TestWidgets:
             controller.progress_bar.click(controller.progress_bar.reset_btn)
             controller.progress_bar.check_default_state()
 
-    @pytest.mark.skip
     @allure.feature("Раздел тул-типов")
     @allure.story("Взаимодействие с элементами тул-типов")
     @allure.title("Проверить взаимодействие с туд-типами")
@@ -242,7 +233,6 @@ class TestWidgets:
                 controller.tool_tip_page.second_link, controller.tool_tip_page.second_link_tt, tool_tips_data[3]
             )
 
-    @pytest.mark.skip
     @allure.feature("Раздел меню")
     @allure.story("Взаимодействие с элементами раздела меню")
     @allure.title("Проверить взаимодействие с меню")
@@ -265,7 +255,6 @@ class TestWidgets:
             controller.menu_page.check_with_sub_menu(sub_items, sub_sub_items, 2, visibility_data)
             controller.helper.is_eq(controller.menu_page.count(controller.menu_page.sub_sub_items), 2)
 
-    @pytest.mark.skip
     @allure.feature("Раздел селектов")
     @allure.story("Взаимодействие с селектами")
     @allure.title("Проверить взаимодействие с селектами")

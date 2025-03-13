@@ -1,8 +1,5 @@
-import time
 import random
-
 import allure
-import pytest
 
 from auxiliary.constants import HTMLAttr
 
@@ -10,7 +7,6 @@ from auxiliary.constants import HTMLAttr
 @allure.epic("Тесты регистрации")
 class TestRegister:
 
-    @pytest.mark.skip
     @allure.feature("Регистрация")
     @allure.story("Пользователь может зарегистрироваться на сайте на сайте")
     @allure.title("Регистрация")
@@ -51,7 +47,6 @@ class TestRegister:
             controller.helper.to_have_url(controller.login_page.page, "https://demoqa.com/profile", timeout=10000)
             controller.helper.to_contain_text(controller.login_page.username_value, test_user['username'])
 
-    @pytest.mark.skip
     @allure.feature("Регистрация")
     @allure.story("Пользователь может зарегистрироваться на сайте на сайте")
     @allure.title("Переход к странице авторизации")

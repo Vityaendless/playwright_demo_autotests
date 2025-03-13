@@ -1,7 +1,4 @@
-import time
-
 import allure
-import pytest
 import os
 from datetime import datetime
 
@@ -11,7 +8,6 @@ from auxiliary.constants import HTMLEl, PseudoClsEl
 @allure.epic("Тесты работоспособности формы")
 class TestForm:
 
-    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Форма для заполнения данных пользователя")
     @allure.title("Тест обязательности заполнения полей")
@@ -48,8 +44,6 @@ class TestForm:
             data = (input, el, invalid)
             controller.practice_form_page.is_required(*data)
 
-
-    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Форма для заполнения данных пользователя")
     @allure.title("Тест НЕ обязательности заполнения полей")
@@ -87,8 +81,6 @@ class TestForm:
             data = (textarea, el, valid)
             controller.practice_form_page.is_required(*data)
 
-
-    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Форма для заполнения данных пользователя")
     @allure.title("Тест отправки формы 1")
@@ -123,7 +115,6 @@ class TestForm:
                 practice_form_user_data['phone']
             )
 
-    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Форма для заполнения данных пользователя")
     @allure.title("Тест отправки формы 2")

@@ -1,11 +1,9 @@
 import allure
-import pytest
 
 
 @allure.epic("Тесты уведомлений")
 class TestAlerts:
 
-    @pytest.mark.skip
     @allure.feature("Работа с всплывающими уведомлениями")
     @allure.story("Взаимодействие с элементами всплывающих уведомлений")
     @allure.title("Проверка открытия алерта")
@@ -25,8 +23,6 @@ class TestAlerts:
             controller.alerts_page.click(controller.alerts_page.alert_btn)
             controller.alerts_page.page.remove_listener("dialog", handle_alert)
 
-
-    @pytest.mark.skip
     @allure.feature("Работа с всплывающими уведомлениями")
     @allure.story("Взаимодействие с элементами всплывающих уведомлений")
     @allure.title("Проверка открытия алерта с задержкой")
@@ -50,8 +46,6 @@ class TestAlerts:
             controller.alerts_page.page.wait_for_function("() => window.is_alert")
             controller.alerts_page.page.remove_listener("dialog", handle_alert)
 
-
-    @pytest.mark.skip
     @allure.feature("Работа с всплывающими уведомлениями")
     @allure.story("Взаимодействие с элементами всплывающих уведомлений")
     @allure.title("Проверка открытия окна подтверждения")
@@ -86,8 +80,6 @@ class TestAlerts:
         with allure.step('Проверить содержимое строки результата в зависимости от выбранного действия'):
             controller.helper.to_contain_text(controller.alerts_page.confirm_result, "Cancel")
 
-
-    @pytest.mark.skip
     @allure.feature("Работа с всплывающими уведомлениями")
     @allure.story("Взаимодействие с элементами всплывающих уведомлений")
     @allure.title("Проверка открытия окна ввода результата")

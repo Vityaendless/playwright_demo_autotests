@@ -10,7 +10,6 @@ from auxiliary.constants import HTMLAttr
 class TestInteractions:
     DEFAULT_POSITION = "position: relative;"
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Перемещение элементов в списке")
@@ -25,7 +24,6 @@ class TestInteractions:
             last_el_new_text = controller.sortable_page.get_element_text(controller.sortable_page.second_el)
             controller.helper.is_eq(first_el_text, last_el_new_text)
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Перемещение элементов в гриде")
@@ -44,7 +42,6 @@ class TestInteractions:
             last_el_new_text = controller.sortable_page.get_element_text(controller.sortable_page.second_el_grid)
             controller.helper.is_eq(first_el_text, last_el_new_text)
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Выбор элементов в списке")
@@ -63,8 +60,6 @@ class TestInteractions:
         with allure.step('Проверить, что рандомный элемент выбран'):
             controller.selectable_page.check_active(list_els, random_number)
 
-
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Выбор элементов в гриде")
@@ -85,7 +80,6 @@ class TestInteractions:
         with allure.step('Проверить, что рандомный элемент выбран'):
             controller.selectable_page.check_active(grid_els, random_number)
 
-    @pytest.mark.skip
     @pytest.mark.parametrize("coord", [(-55, -55), (310, 110), (100, 50)])
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
@@ -119,7 +113,6 @@ class TestInteractions:
             style = controller.resizable_page.get_attr(controller.resizable_page.resizable_box, "style")
             print(style)
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Простой Drag'n'drop")
@@ -135,7 +128,6 @@ class TestInteractions:
             )
             controller.helper.to_contain_text(controller.droppable_page.simple_droppable, drag_n_drop_info[1])
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Drag'n'drop с подтверждением")
@@ -166,7 +158,6 @@ class TestInteractions:
             )
             controller.helper.to_contain_text(controller.droppable_page.accept_droppable, drag_n_drop_info[1])
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Drag'n'drop с вложенностью элементов")
@@ -200,7 +191,6 @@ class TestInteractions:
             controller.helper.to_contain_text(controller.droppable_page.greedy_out_drop, drag_n_drop_info[2])
             controller.helper.to_contain_text(controller.droppable_page.greedy_inner_drop, drag_n_drop_info[1])
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Drag'n'drop с отменой действия")
@@ -237,7 +227,6 @@ class TestInteractions:
             style = controller.droppable_page.get_attr(controller.droppable_page.not_revertable, HTMLAttr.STYLE)
             controller.helper.is_not_eq(style, DEFAULT_POSITION)
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Перемещение элемента")
@@ -258,7 +247,6 @@ class TestInteractions:
             controller.helper.to_have_css(controller.draggable_page.simple_drag_box, "left", "100px")
             controller.helper.to_have_css(controller.draggable_page.simple_drag_box, "top", "100px")
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Перемещение элемента")
@@ -291,7 +279,6 @@ class TestInteractions:
             controller.helper.to_have_css(controller.draggable_page.only_y_drag, "left", "0px")
             controller.helper.to_have_css(controller.draggable_page.only_y_drag, "top", "100px")
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Перемещение элемента")
@@ -335,7 +322,6 @@ class TestInteractions:
             drag_span_style = controller.draggable_page.get_attr(controller.draggable_page.drag_span, "style")
             print(drag_span_style)
 
-    @pytest.mark.skip
     @allure.feature("Взаимодействие элементов")
     @allure.story("Взаимодействие между различными элементами")
     @allure.title("Положение курсора")

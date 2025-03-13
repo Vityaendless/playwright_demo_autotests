@@ -1,11 +1,9 @@
 import allure
-import pytest
 
 
 @allure.epic("Тесты окон браузера")
 class TestWindows:
 
-    @pytest.mark.skip
     @allure.feature("Работа с окнами браузера")
     @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
     @allure.title("Проверка открытия новой вкладки")
@@ -24,8 +22,6 @@ class TestWindows:
             )
             assert sample_page_text.is_visible()
 
-
-    @pytest.mark.skip
     @allure.feature("Работа с окнами браузера")
     @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
     @allure.title("Проверка открытия нового окна")
@@ -44,7 +40,6 @@ class TestWindows:
             )
             assert sample_page_text.is_visible()
 
-    @pytest.mark.skip
     @allure.feature("Работа с окнами браузера")
     @allure.story("Взаимодействие с элементами окон и вкладок блаузера")
     @allure.title("Проверка открытия нового окна с сообщением")

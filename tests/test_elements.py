@@ -1,6 +1,3 @@
-import time
-
-import pytest
 import os
 import allure
 from random import choice
@@ -12,7 +9,6 @@ from auxiliary.constants import HTMLAttr, HTMLValue, RCode, TABLE_ROW
 @allure.epic("Тесты элементов")
 class TestElements:
 
-    @pytest.mark.skip
     @allure.feature("Форма отправки данных юзера")
     @allure.story("Авторизация")
     @allure.title("Тест заполнения текстовой формы")
@@ -42,7 +38,6 @@ class TestElements:
             controller.helper.to_contain_text(controller.textbox_page.output_c_address, curr_address)
             controller.helper.to_contain_text(controller.textbox_page.output_p_address, per_address)
 
-    @pytest.mark.skip
     @allure.feature("Раскрывающийся список")
     @allure.story("Иеархия элементов")
     @allure.title("Тест выбора элементов в иеархии")
@@ -74,7 +69,6 @@ class TestElements:
         with allure.step('Повторно проверить отсуствие элемента результата'):
             controller.helper.not_to_be_visible(controller.checkbox_page.result)
 
-    @pytest.mark.skip
     @allure.feature("Выбор ответа через radio btns")
     @allure.story("Выбор ответа")
     @allure.title("Тест выбора ответа")
@@ -102,7 +96,6 @@ class TestElements:
                 controller.radio_btn_page.result, controller.radio_btn_page.impressive['title'].capitalize()
             )
 
-    @pytest.mark.skip
     @allure.feature("Проверка кликабельности")
     @allure.story("Производим различные клики мыши")
     @allure.title("Тест различных кликов по элементам")
@@ -130,7 +123,6 @@ class TestElements:
             controller.btn_page.click(controller.btn_page.click_el)
             controller.helper.to_be_visible(controller.btn_page.click_result)
 
-    @pytest.mark.skip
     @allure.feature("Проверка работы ссылок")
     @allure.story("Проверяем ответы и переходы по ссылкам")
     @allure.title("Тест различных ответов и переходов по ссылкам")
@@ -183,7 +175,6 @@ class TestElements:
         with allure.step('Проверить корректность нажатия на кнопку "Not Found"'):
             controller.links_page.resp_check(controller.links_page.invalid_url)
 
-    @pytest.mark.skip
     @allure.feature("Проверка корректности ссылок и изображений")
     @allure.story("Проверяем коды ответа ссылок и изображений")
     @allure.title("Тест неверных кодов ответа для изображений и ссылок")
@@ -211,7 +202,6 @@ class TestElements:
         with allure.step('Проверить код ответа href для НЕ валидной ссылки'):
             controller.broken_obj_page.check_resp_code(broken_link_href, RCode.INTERNAL_SERVER_ERR.code)
 
-    @pytest.mark.skip
     @allure.feature("Проверка скачивания и загрузки файлов")
     @allure.story("Проверяем процесс скачивания файла и процесс загрузки файлов")
     @allure.title("Тест процесса скачивания файла и процесса загрузки файлов")
@@ -239,7 +229,6 @@ class TestElements:
         with allure.step('Проверить данные загрузки файла'):
             controller.helper.to_contain_text(controller.upload_download_page.upload_path, file_name)
 
-    @pytest.mark.skip
     @allure.feature("Проверка динамических изменений")
     @allure.story("Проверяем изменения свойст элементов")
     @allure.title("Тест изменения свойств элементов и процесса взаимодействия с ними")
@@ -257,7 +246,6 @@ class TestElements:
         with allure.step('Проверка видимости элемента спустя время'):
             controller.helper.to_be_visible(controller.dyn_properties_page.visible_after)
 
-    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест удаления записи из таблицы")
@@ -279,7 +267,6 @@ class TestElements:
         with allure.step('Проверить что кол-во записей уменьшилось на 1'):
             controller.helper.is_eq(len(rows) - 1, len(rows_after_deleting))
 
-    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест поиска данных в таблице")
@@ -306,7 +293,6 @@ class TestElements:
         with allure.step(f'Проверить, что информация о пустом результате есть'):
             controller.helper.to_be_visible(controller.web_table_page.no_rows)
 
-    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест редактирования данных в таблице")
@@ -366,7 +352,6 @@ class TestElements:
             for item in TABLE_ROW:
                 controller.helper.is_in(item, cur_chosen_row_text)
 
-    @pytest.mark.skip
     @allure.feature("Проверка функциональности таблиц")
     @allure.story("Проверяем работу с записями в таблицах")
     @allure.title("Тест добавления данных в таблице")

@@ -1,4 +1,5 @@
 import pytest
+import requests
 from faker import Faker
 
 from auxiliary.controller import Controller
@@ -99,3 +100,13 @@ def practice_form_user_data():
 def controller(page):
     controller = Controller(page)
     yield controller
+
+
+@pytest.fixture(scope="function")
+def restore_user_api():
+    url_new_user = 'https://demoqa.com/Account/v1/User'
+    body = {"userName": "testqwerty", "password": "Qwerty123!"}
+    response = requests.post(url_new_user, data=body)
+    print(response.status_code)
+    print(response.json())
+    yield response

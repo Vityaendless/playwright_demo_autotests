@@ -5,3 +5,4 @@ class ProfilePageLocator:
     LOGOUT_BTN = ".text-right label~#submit"
     GO_BOOKSTORE = "#gotoStore"
     DELETE_ACC_BTN = ".text-center #submit"
+    ACCEPT_DELETE_BTN = "#closeSmallModal-ok"

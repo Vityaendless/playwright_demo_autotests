@@ -7,7 +7,6 @@ class TestProfile:
     NOT_LOGIN_LABEL = ("Currently you are not logged into the Book Store application, please visit the login page to "
                        "enter or register page to register yourself.")
 
-    @pytest.mark.skip
     @allure.feature("Профиль")
     @allure.story("Пользователь может зайти в свой профиль")
     @allure.title("Переход в раздел профиля до авторизации")
@@ -21,8 +20,6 @@ class TestProfile:
             controller.helper.is_present(controller.profile_page.page, controller.profile_page.to_login_link)
             controller.helper.is_present(controller.profile_page.page, controller.profile_page.to_reg_link)
 
-
-    @pytest.mark.skip
     @allure.feature("Профиль")
     @allure.story("Пользователь может зайти в свой профиль")
     @allure.title("Выход из профиля")
@@ -37,7 +34,6 @@ class TestProfile:
                 controller.profile_page.page, login_controller.login_page.page.url, timeout=10000
             )
 
-    @pytest.mark.skip
     @allure.feature("Профиль")
     @allure.story("Пользователь может зайти в свой профиль")
     @allure.title("Переход к разделу Bookstore")
@@ -52,17 +48,20 @@ class TestProfile:
                 login_controller.profile_page.page, login_controller.books_page.page.url, timeout=10000
             )
 
-    #@pytest.mark.skip
+    @pytest.mark.skip
     @allure.feature("Профиль")
     @allure.story("Пользователь может зайти в свой профиль")
     @allure.title("Удаление пользователя")
     @allure.description("Проверка возможности удалить пользователя в профиле")
     @allure.severity(allure.severity_level.NORMAL)
-    def test_go_to_bookstore(self, auth):
+    def test_go_to_bookstore(self, auth, restore_user_api):
         login_controller = auth
         with allure.step('Нажать на кнопку перехода в Bookstore'):
             login_controller.profile_page.click(login_controller.profile_page.delete_acc_btn)
+            login_controller.profile_page.click(login_controller.profile_page.accept_delete_btn)
         with allure.step('Проверка, что пользователь удален и произошел переход к разделу login'):
             login_controller.helper.to_have_url(
                 login_controller.profile_page.page, login_controller.login_page.page.url, timeout=10000
             )
+        with allure.step('Восстановление удаленного пользователя'):
+            restoring = restore_user_api
